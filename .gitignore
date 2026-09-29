@@ -23,6 +23,7 @@ build/
 
 # Editor directories
 .vscode/*
+!.vscode/settings.json
 !.vscode/extensions.json
 .idea/
 *.suo
