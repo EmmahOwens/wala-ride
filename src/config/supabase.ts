@@ -1,16 +1,28 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '../types/database.types';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const rawSupabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const rawSupabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
+export const isSupabaseConfigured = Boolean(
+  rawSupabaseUrl &&
+  rawSupabaseAnonKey &&
+  rawSupabaseUrl.startsWith('http') &&
+  !rawSupabaseUrl.includes('your-project-ref')
+);
+
+if (!isSupabaseConfigured) {
   console.warn(
-    'Supabase URL or Anon Key is missing. Please check your .env.local file.'
+    '[Wala Ride] Supabase URL or Anon Key is missing or invalid. Please check your environment variables (.env.local or Vercel project settings).'
   );
 }
 
+// Fallback to placeholder to prevent createClient from throwing 'supabaseUrl is required' and blanking the screen
+const supabaseUrl = isSupabaseConfigured ? rawSupabaseUrl : 'https://placeholder.supabase.co';
+const supabaseAnonKey = isSupabaseConfigured ? rawSupabaseAnonKey : 'placeholder-anon-key';
+
 export const supabase = createClient<Database>(
-  supabaseUrl || '',
-  supabaseAnonKey || ''
+  supabaseUrl,
+  supabaseAnonKey
 );
+

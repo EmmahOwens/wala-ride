@@ -6,7 +6,8 @@ import { DriverOnboarding } from './components/driver/DriverOnboarding';
 import { AdminVerificationQueue } from './components/admin/AdminVerificationQueue';
 import { PassengerView } from './components/passenger/PassengerView';
 import { AddPickupPointModal } from './components/common/AddPickupPointModal';
-import { Car, ShieldCheck, ArrowRight, Check } from 'lucide-react';
+import { isSupabaseConfigured } from './config/supabase';
+import { Car, ShieldCheck, ArrowRight, Check, AlertTriangle } from 'lucide-react';
 
 const AppContent: React.FC = () => {
   const { user, activeRole, setActiveRole, roles } = useAuth();
@@ -15,6 +16,27 @@ const AppContent: React.FC = () => {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-canvas)' }}>
+      {!isSupabaseConfigured && (
+        <div style={{
+          backgroundColor: '#fffbeb',
+          borderBottom: '1px solid #fde68a',
+          color: '#92400e',
+          padding: '10px 16px',
+          fontSize: '13px',
+          fontWeight: 500,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px',
+          zIndex: 1000,
+        }}>
+          <AlertTriangle size={16} color="#d97706" />
+          <span>
+            <strong>Supabase configuration missing:</strong> Please configure <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> in your Vercel Project Settings.
+          </span>
+        </div>
+      )}
+
       {/* Top Navigation */}
       <Navbar
         onOpenAuth={() => setIsAuthOpen(true)}
