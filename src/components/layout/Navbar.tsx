@@ -27,19 +27,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, onOpenAddStage }) =>
       }}>
         {/* Brand */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-            <div style={{
-              width: '38px',
-              height: '38px',
-              backgroundColor: 'var(--color-primary)',
-              borderRadius: 'var(--radius-lg)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-            }}>
-              <Car size={20} strokeWidth={2.5} />
-            </div>
+          <div
+            style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
+            onClick={() => setActiveRole('passenger')}
+          >
+            <img
+              src="/wala-ride.jpeg"
+              alt="Wala Ride"
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                objectFit: 'cover',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+              }}
+            />
             <div>
               <span style={{
                 fontFamily: 'var(--font-family-display)',

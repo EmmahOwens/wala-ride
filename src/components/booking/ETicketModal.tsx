@@ -66,9 +66,14 @@ export const ETicketModal: React.FC<ETicketModalProps> = ({
             <X size={16} />
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#a0a0a0' }}>
-              Confirmed Boarding Pass
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+            <img
+              src="/wala-ride.jpeg"
+              alt="Wala Ride"
+              style={{ width: '28px', height: '28px', borderRadius: '6px', objectFit: 'cover' }}
+            />
+            <span style={{ fontSize: '12px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#ffffff' }}>
+              Wala Ride Boarding Pass
             </span>
             <span className="badge badge-verified" style={{ fontSize: '11px', padding: '2px 8px' }}>
               {ticket.status}

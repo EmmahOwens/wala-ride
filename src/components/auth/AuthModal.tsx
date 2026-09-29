@@ -141,11 +141,24 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         {/* STEP 1: Phone / Password Selection */}
         {step === 'phone' && (
           <div>
-            <div style={{ marginBottom: '24px' }}>
-              <h2 className="display-lg">Welcome to Wala Ride</h2>
-              <p className="body-md" style={{ marginTop: '6px' }}>
-                Long-distance travel across Uganda made seamless.
-              </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '24px' }}>
+              <img
+                src="/wala-ride.jpeg"
+                alt="Wala Ride"
+                style={{
+                  width: '52px',
+                  height: '52px',
+                  borderRadius: '12px',
+                  objectFit: 'cover',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
+                }}
+              />
+              <div>
+                <h2 className="display-lg" style={{ margin: 0 }}>Welcome to Wala Ride</h2>
+                <p className="body-md" style={{ margin: '3px 0 0' }}>
+                  Intercity travel across Uganda made seamless.
+                </p>
+              </div>
             </div>
 
             {/* Auth Mode Toggle */}
