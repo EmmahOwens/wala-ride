@@ -3,12 +3,14 @@ import { useAuth } from '../../context/AuthContext';
 import { driverService } from '../../services/supabase/SupabaseDriverService';
 import type { DriverDocument, Vehicle } from '../../types/domain';
 import { TripPublisher } from './TripPublisher';
-import { ShieldCheck, Clock, AlertTriangle, Upload, Car, FileText, ChevronRight, Calendar } from 'lucide-react';
+import { DriverRadarDashboard } from './DriverRadarDashboard';
+import { DriverSubscriptionView } from './DriverSubscriptionView';
+import { ShieldCheck, Clock, AlertTriangle, Upload, Car, FileText, ChevronRight, Calendar, Radio, CreditCard } from 'lucide-react';
 
 export const DriverOnboarding: React.FC = () => {
   const { user, driverProfile, refreshProfile } = useAuth();
 
-  const [activeTab, setActiveTab] = useState<'profile' | 'documents' | 'vehicle' | 'trips'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'documents' | 'vehicle' | 'trips' | 'radar' | 'subscription'>('profile');
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -204,7 +206,19 @@ export const DriverOnboarding: React.FC = () => {
           className={`btn-pill-tab ${activeTab === 'trips' ? 'active' : ''}`}
           onClick={() => setActiveTab('trips')}
         >
-          <Calendar size={16} /> 4. Publish & Manage Trips
+          <Calendar size={16} /> 4. Publish Trips
+        </button>
+        <button
+          className={`btn-pill-tab ${activeTab === 'radar' ? 'active' : ''}`}
+          onClick={() => setActiveTab('radar')}
+        >
+          <Radio size={16} /> 5. Demand Radar
+        </button>
+        <button
+          className={`btn-pill-tab ${activeTab === 'subscription' ? 'active' : ''}`}
+          onClick={() => setActiveTab('subscription')}
+        >
+          <CreditCard size={16} /> 6. Subscriptions
         </button>
       </div>
 
@@ -498,6 +512,23 @@ export const DriverOnboarding: React.FC = () => {
 
       {/* TAB 4: Trip Publisher & Manifests */}
       {activeTab === 'trips' && <TripPublisher />}
+
+      {/* TAB 5: Passenger Demand Radar */}
+      {activeTab === 'radar' && driverProfile && (
+        <DriverRadarDashboard
+          driverId={driverProfile.id}
+          onPostTripForRoute={() => setActiveTab('trips')}
+          onOpenSubscriptions={() => setActiveTab('subscription')}
+        />
+      )}
+
+      {/* TAB 6: Driver Subscriptions & Quotas */}
+      {activeTab === 'subscription' && driverProfile && (
+        <DriverSubscriptionView
+          driverId={driverProfile.id}
+          onPlanChanged={() => refreshProfile()}
+        />
+      )}
     </div>
   );
 };

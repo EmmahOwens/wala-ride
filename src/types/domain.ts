@@ -94,6 +94,7 @@ export interface SubscriptionPlan {
   max_leads_per_period: number;
   is_active: boolean;
   features?: { feature_key: string; feature_value: string }[];
+  featuresMap?: Record<string, string>;
 }
 
 export interface Route {
@@ -229,4 +230,48 @@ export interface TripManifest {
   passengers: ManifestPassenger[];
   total_boarded: number;
   total_expected_fare_ugx: number;
+}
+
+
+export interface DriverSubscriptionSummary {
+  subscription_id: string;
+  plan_id: string;
+  plan_name: string;
+  price_ugx: number;
+  status: string;
+  starts_at: string;
+  ends_at: string;
+  days_remaining: number;
+  trips_posted: number;
+  max_trips: number;
+  trips_remaining: number;
+  leads_viewed: number;
+  max_leads: number;
+  leads_remaining: number;
+}
+
+export interface RadarLead {
+  alert_id: string;
+  passenger_id: string;
+  origin_town_id: string;
+  origin_town_name: string;
+  destination_town_id: string;
+  destination_town_name: string;
+  travel_date: string;
+  seats_needed: number;
+  created_at: string;
+  is_unlocked: boolean;
+  passenger_name: string;
+  passenger_phone: string;
+}
+
+export interface TripAlert {
+  id: string;
+  passenger_id: string;
+  origin_town_id: string;
+  destination_town_id: string;
+  travel_date: string;
+  seats_needed: number;
+  status: string;
+  created_at: string;
 }

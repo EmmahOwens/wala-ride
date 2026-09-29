@@ -4,6 +4,7 @@ import { geographyService } from '../../services/supabase/SupabaseGeographyServi
 import { bookingService } from '../../services/supabase/SupabaseBookingService';
 import { BookingHoldModal } from '../booking/BookingHoldModal';
 import { ETicketModal } from '../booking/ETicketModal';
+import { TripAlertModal } from './TripAlertModal';
 import type { Town, PickupPoint, SearchResultTrip, BookingTicket } from '../../types/domain';
 import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock } from 'lucide-react';
 
@@ -36,6 +37,7 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
   // Modals
   const [selectedTripForHold, setSelectedTripForHold] = useState<SearchResultTrip | null>(null);
   const [selectedTicketForView, setSelectedTicketForView] = useState<BookingTicket | null>(null);
+  const [showTripAlertModal, setShowTripAlertModal] = useState<boolean>(false);
 
   useEffect(() => {
     geographyService.getTowns().then((tList) => {
@@ -426,7 +428,13 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
                 </p>
                 <button
                   className="btn btn-primary btn-md"
-                  onClick={onOpenAuth}
+                  onClick={() => {
+                    if (!user) {
+                      onOpenAuth();
+                    } else {
+                      setShowTripAlertModal(true);
+                    }
+                  }}
                 >
                   Alert Me When a Driver Posts This Route
                   <ArrowRight size={16} />
@@ -566,6 +574,18 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
         onClose={() => setSelectedTicketForView(null)}
         onCancelBooking={handleCancelBooking}
       />
+
+      {showTripAlertModal && user && (
+        <TripAlertModal
+          passengerId={user.id}
+          towns={towns}
+          initialOriginId={originTownId}
+          initialDestId={destinationTownId}
+          initialDate={travelDate}
+          initialSeats={seats}
+          onClose={() => setShowTripAlertModal(false)}
+        />
+      )}
     </div>
   );
 };
