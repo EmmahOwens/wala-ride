@@ -1,6 +1,11 @@
 import { supabase } from '../../config/supabase';
 import type { ISubscriptionService } from '../interfaces/ISubscriptionService';
-import type { SubscriptionPlan, DriverSubscriptionSummary } from '../../types/domain';
+import type {
+  SubscriptionPlan,
+  DriverSubscriptionSummary,
+  PaymentRecord,
+  InitiatePaymentResult,
+} from '../../types/domain';
 
 export class SupabaseSubscriptionService implements ISubscriptionService {
   async getPlans(): Promise<SubscriptionPlan[]> {
@@ -56,6 +61,111 @@ export class SupabaseSubscriptionService implements ISubscriptionService {
 
     const row = Array.isArray(data) ? data[0] : data;
     return row as DriverSubscriptionSummary;
+  }
+
+  async initiatePayment(params: {
+    driverId: string;
+    purpose: 'subscription' | 'lead_topup';
+    planId?: string;
+    amountUgx?: number;
+    phoneNumber?: string;
+    network?: string;
+    leadsCount?: number;
+  }): Promise<InitiatePaymentResult | null> {
+    const { data, error } = await supabase.rpc('initiate_momo_payment' as any, {
+      p_driver_id: params.driverId,
+      p_purpose: params.purpose,
+      p_plan_id: params.planId || null,
+      p_amount_ugx: params.amountUgx || null,
+      p_phone_number: params.phoneNumber || '+256700000000',
+      p_network: params.network || 'MTN MoMo',
+      p_leads_count: params.leadsCount || 10,
+    });
+
+    if (error || !data) {
+      console.error('Failed to initiate MoMo payment:', error);
+      return null;
+    }
+
+    return data as InitiatePaymentResult;
+  }
+
+  async processWebhook(params: {
+    paymentId: string;
+    status: string;
+    providerRef?: string;
+    rawCallback?: Record<string, any>;
+  }): Promise<{ success: boolean; status: string } | null> {
+    const { data, error } = await supabase.rpc('process_payment_webhook' as any, {
+      p_payment_id: params.paymentId,
+      p_status: params.status,
+      p_provider_ref: params.providerRef || null,
+      p_raw_callback: params.rawCallback || {},
+    });
+
+    if (error || !data) {
+      console.error('Failed to process webhook:', error);
+      return null;
+    }
+
+    return data as { success: boolean; status: string };
+  }
+
+  async getPaymentHistory(driverId: string): Promise<PaymentRecord[]> {
+    const { data, error } = await supabase.rpc('get_driver_payment_history' as any, {
+      p_driver_id: driverId,
+    });
+
+    if (error || !data) {
+      console.error('Error fetching driver payment history:', error);
+      return [];
+    }
+
+    return data as PaymentRecord[];
+  }
+
+  subscribeToPayment(paymentId: string, onStatusChange: (status: string) => void): () => void {
+    let isCancelled = false;
+
+    // 1. Supabase Realtime Channel
+    const channel = supabase
+      .channel(`payment-live-${paymentId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'payments',
+          filter: `id=eq.${paymentId}`,
+        },
+        (payload) => {
+          if (payload.new && (payload.new as any).status) {
+            onStatusChange((payload.new as any).status);
+          }
+        }
+      )
+      .subscribe();
+
+    // 2. Fallback polling every 2.5s (up to 2 minutes)
+    const interval = setInterval(async () => {
+      if (isCancelled) return;
+      const { data } = await supabase
+        .from('payments')
+        .select('status')
+        .eq('id', paymentId)
+        .maybeSingle();
+
+      if (data && data.status && data.status !== 'pending') {
+        onStatusChange(data.status);
+        clearInterval(interval);
+      }
+    }, 2500);
+
+    return () => {
+      isCancelled = true;
+      clearInterval(interval);
+      supabase.removeChannel(channel);
+    };
   }
 
   async simulatePayment(

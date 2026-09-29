@@ -275,3 +275,28 @@ export interface TripAlert {
   status: string;
   created_at: string;
 }
+
+export interface PaymentRecord {
+  payment_id: string;
+  purpose: string;
+  amount_ugx: number;
+  method: string;
+  status: string;
+  provider: string;
+  provider_ref: string;
+  plan_name: string;
+  initiated_at: string;
+  completed_at: string | null;
+}
+
+export interface InitiatePaymentResult {
+  payment_id: string;
+  provider_ref: string;
+  amount_ugx: number;
+  method: string;
+  status: string;
+  phone_number: string;
+  network: string;
+  instructions: string;
+}
+
