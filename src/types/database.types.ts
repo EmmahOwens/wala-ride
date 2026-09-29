@@ -1986,6 +1986,10 @@ export type Database = {
       }
       current_driver_id: { Args: never; Returns: string }
       expire_stale_holds: { Args: never; Returns: undefined }
+      get_or_create_driver_operator: {
+        Args: { p_user_id: string }
+        Returns: string
+      }
       is_admin: { Args: never; Returns: boolean }
       is_driver: { Args: never; Returns: boolean }
       is_support: { Args: never; Returns: boolean }
@@ -1993,10 +1997,48 @@ export type Database = {
         Args: { p_payment_id: string }
         Returns: undefined
       }
+      publish_trip: {
+        Args: {
+          p_base_fare_ugx: number
+          p_departs_at: string
+          p_driver_id: string
+          p_notes?: string
+          p_route_id: string
+          p_vehicle_id: string
+        }
+        Returns: string
+      }
       reveal_lead: {
         Args: { p_driver_id: string; p_trip_alert_id: string }
         Returns: {
           passenger_phone: string
+        }[]
+      }
+      search_available_trips: {
+        Args: {
+          p_date: string
+          p_dest_town_id: string
+          p_origin_town_id: string
+          p_required_seats?: number
+        }
+        Returns: {
+          departs_at: string
+          dest_pickup_name: string
+          dest_town_name: string
+          dest_trip_stop_id: string
+          driver_name: string
+          driver_phone: string
+          driver_rating: number
+          estimated_arrives_at: string
+          fare_ugx: number
+          origin_pickup_name: string
+          origin_town_name: string
+          origin_trip_stop_id: string
+          seats_available: number
+          seats_total: number
+          trip_id: string
+          vehicle_info: string
+          vehicle_plate: string
         }[]
       }
     }

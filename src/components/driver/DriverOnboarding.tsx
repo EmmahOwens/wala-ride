@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { driverService } from '../../services/supabase/SupabaseDriverService';
 import type { DriverDocument, Vehicle } from '../../types/domain';
-import { ShieldCheck, Clock, AlertTriangle, Upload, Car, FileText, ChevronRight } from 'lucide-react';
+import { TripPublisher } from './TripPublisher';
+import { ShieldCheck, Clock, AlertTriangle, Upload, Car, FileText, ChevronRight, Calendar } from 'lucide-react';
 
 export const DriverOnboarding: React.FC = () => {
   const { user, driverProfile, refreshProfile } = useAuth();
 
-  const [activeTab, setActiveTab] = useState<'profile' | 'documents' | 'vehicle'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'documents' | 'vehicle' | 'trips'>('profile');
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -198,6 +199,12 @@ export const DriverOnboarding: React.FC = () => {
           onClick={() => setActiveTab('vehicle')}
         >
           <Car size={16} /> 3. Vehicle ({vehicles.length})
+        </button>
+        <button
+          className={`btn-pill-tab ${activeTab === 'trips' ? 'active' : ''}`}
+          onClick={() => setActiveTab('trips')}
+        >
+          <Calendar size={16} /> 4. Publish & Manage Trips
         </button>
       </div>
 
@@ -488,6 +495,9 @@ export const DriverOnboarding: React.FC = () => {
           </form>
         </div>
       )}
+
+      {/* TAB 4: Trip Publisher & Manifests */}
+      {activeTab === 'trips' && <TripPublisher />}
     </div>
   );
 };

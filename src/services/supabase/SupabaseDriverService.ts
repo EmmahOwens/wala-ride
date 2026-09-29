@@ -15,18 +15,12 @@ export class SupabaseDriverService implements IDriverService {
   }
 
   async createDriverProfile(userId: string, data: Partial<DriverProfile>): Promise<DriverProfile | null> {
-    const { data: profile, error } = await supabase
-      .from('driver_profiles')
-      .insert({
-        user_id: userId,
-        license_number: data.license_number,
-        license_class: data.license_class,
-        license_expiry: data.license_expiry,
-        national_id: data.national_id,
-        verification_status: 'pending',
-      } as any)
-      .select()
-      .single();
+    const { data: profile, error } = await supabase.rpc('register_driver_profile' as any, {
+      p_user_id: userId,
+      p_license_number: data.license_number,
+      p_license_class: data.license_class,
+      p_national_id: data.national_id,
+    });
 
     if (error || !profile) {
       console.error('Error creating driver profile:', error);
@@ -101,20 +95,15 @@ export class SupabaseDriverService implements IDriverService {
       color?: string;
     }
   ): Promise<Vehicle | null> {
-    const { data, error } = await supabase
-      .from('vehicles')
-      .insert({
-        primary_driver_id: driverId,
-        make: vehicleData.make,
-        model: vehicleData.model,
-        year: vehicleData.year,
-        license_plate: vehicleData.license_plate.toUpperCase().trim(),
-        capacity_seats: vehicleData.capacity_seats,
-        color: vehicleData.color,
-        verification_status: 'pending',
-      } as any)
-      .select()
-      .single();
+    const { data, error } = await supabase.rpc('register_vehicle' as any, {
+      p_driver_id: driverId,
+      p_make: vehicleData.make,
+      p_model: vehicleData.model,
+      p_year: vehicleData.year || 2020,
+      p_license_plate: vehicleData.license_plate.toUpperCase().trim(),
+      p_capacity_seats: vehicleData.capacity_seats,
+      p_color: vehicleData.color || 'White',
+    });
 
     if (error || !data) {
       console.error('Error registering vehicle:', error);

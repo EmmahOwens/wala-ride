@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import { geographyService } from '../../services/supabase/SupabaseGeographyService';
-import type { Town, PickupPoint } from '../../types/domain';
-import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation } from 'lucide-react';
+import { bookingService } from '../../services/supabase/SupabaseBookingService';
+import { BookingHoldModal } from '../booking/BookingHoldModal';
+import { ETicketModal } from '../booking/ETicketModal';
+import type { Town, PickupPoint, SearchResultTrip, BookingTicket } from '../../types/domain';
+import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock } from 'lucide-react';
 
 interface PassengerViewProps {
   onOpenAuth: () => void;
@@ -9,6 +13,8 @@ interface PassengerViewProps {
 }
 
 export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpenAddStage }) => {
+  const { user } = useAuth();
+
   const [towns, setTowns] = useState<Town[]>([]);
   const [originTownId, setOriginTownId] = useState<string>('');
   const [destinationTownId, setDestinationTownId] = useState<string>('');
@@ -18,7 +24,18 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
   const [selectedDestinationStage, setSelectedDestinationStage] = useState<string>('');
   const [travelDate, setTravelDate] = useState<string>(new Date().toISOString().split('T')[0]);
   const [seats, setSeats] = useState<number>(1);
+
+  // Search Results State
+  const [searchResults, setSearchResults] = useState<SearchResultTrip[]>([]);
   const [hasSearched, setHasSearched] = useState<boolean>(false);
+  const [searchLoading, setSearchLoading] = useState<boolean>(false);
+
+  // Active Passenger Tickets
+  const [passengerTickets, setPassengerTickets] = useState<BookingTicket[]>([]);
+
+  // Modals
+  const [selectedTripForHold, setSelectedTripForHold] = useState<SearchResultTrip | null>(null);
+  const [selectedTicketForView, setSelectedTicketForView] = useState<BookingTicket | null>(null);
 
   useEffect(() => {
     geographyService.getTowns().then((tList) => {
@@ -50,6 +67,17 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
     }
   }, [destinationTownId]);
 
+  useEffect(() => {
+    if (user?.id) {
+      loadPassengerTickets(user.id);
+    }
+  }, [user?.id]);
+
+  const loadPassengerTickets = async (passengerId: string) => {
+    const tickets = await bookingService.getPassengerTickets(passengerId);
+    setPassengerTickets(tickets);
+  };
+
   const handleQuickRoute = (originName: string, destName: string) => {
     const o = towns.find((t) => t.name === originName);
     const d = towns.find((t) => t.name === destName);
@@ -59,9 +87,28 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
     }
   };
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!originTownId || !destinationTownId) return;
+
+    setSearchLoading(true);
     setHasSearched(true);
+
+    const results = await bookingService.searchTrips({
+      originTownId,
+      destTownId: destinationTownId,
+      date: travelDate,
+      seats,
+    });
+
+    setSearchResults(results);
+    setSearchLoading(false);
+  };
+
+  const handleCancelBooking = async (bookingId: string) => {
+    await bookingService.cancelBooking(bookingId);
+    setSelectedTicketForView(null);
+    if (user?.id) loadPassengerTickets(user.id);
   };
 
   const originTown = towns.find((t) => t.id === originTownId)?.name || 'Origin';
@@ -69,6 +116,33 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
 
   return (
     <div>
+      {/* PASSENGER'S ACTIVE E-TICKETS BANNER */}
+      {passengerTickets.length > 0 && (
+        <section style={{ backgroundColor: 'var(--color-canvas-soft)', borderBottom: '1px solid var(--color-hairline)', padding: '16px 0' }}>
+          <div className="container">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Ticket size={20} color="var(--color-primary)" />
+                <span style={{ fontWeight: 700, fontSize: '15px' }}>
+                  You have {passengerTickets.length} confirmed trip {passengerTickets.length === 1 ? 'ticket' : 'tickets'}
+                </span>
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {passengerTickets.slice(0, 2).map((tk) => (
+                  <button
+                    key={tk.booking_id}
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => setSelectedTicketForView(tk)}
+                  >
+                    View Ticket ({tk.booking_reference}) &bull; {tk.origin_town} &rarr; {tk.dest_town}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* HERO SECTION */}
       <section style={{
         padding: '60px 0 40px',
@@ -229,9 +303,9 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
                   ))}
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-lg">
+                <button type="submit" className="btn btn-primary btn-lg" disabled={searchLoading}>
                   <Search size={18} />
-                  <span>Search Scheduled Trips</span>
+                  <span>{searchLoading ? 'Searching routes...' : 'Search Scheduled Trips'}</span>
                 </button>
               </div>
             </form>
@@ -239,7 +313,7 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
         </div>
       </section>
 
-      {/* SEARCH RESULTS PREVIEW (Phase 1 Ready) */}
+      {/* SEARCH RESULTS FEED */}
       {hasSearched && (
         <section style={{ padding: '20px 0 60px' }}>
           <div className="container">
@@ -247,14 +321,16 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: '20px',
+              marginBottom: '24px',
+              flexWrap: 'wrap',
+              gap: '12px',
             }}>
               <div>
                 <h2 className="display-md">
                   Trips from {originTown} to {destTown}
                 </h2>
                 <p className="body-sm">
-                  Showing scheduled departures for {new Date(travelDate).toLocaleDateString('en-GB', { dateStyle: 'full' })}
+                  {searchResults.length} scheduled departure(s) found for {new Date(travelDate).toLocaleDateString('en-GB', { dateStyle: 'full' })}
                 </p>
               </div>
 
@@ -266,26 +342,97 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
               </button>
             </div>
 
-            {/* Empty Demand Alert Card */}
-            <div className="card" style={{
-              padding: '40px 24px',
-              textAlign: 'center',
-              borderStyle: 'dashed',
-              backgroundColor: 'var(--color-canvas-soft)',
-            }}>
-              <Navigation size={40} style={{ margin: '0 auto 12px', color: 'var(--color-body)' }} />
-              <h3 className="display-sm">No driver has published this route yet for today</h3>
-              <p className="body-md" style={{ maxWidth: '520px', margin: '8px auto 20px' }}>
-                We've logged your route search as a demand signal. Click below to save an alert so drivers running from <strong>{originTown} to {destTown}</strong> see you on their radar.
-              </p>
-              <button
-                className="btn btn-primary btn-md"
-                onClick={onOpenAuth}
-              >
-                Alert Me When a Driver Posts This Route
-                <ArrowRight size={16} />
-              </button>
-            </div>
+            {searchLoading ? (
+              <div style={{ textAlign: 'center', padding: '60px' }}>
+                <p className="body-md">Checking available vehicle segment capacity...</p>
+              </div>
+            ) : searchResults.length > 0 ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                {searchResults.map((trip) => (
+                  <div
+                    key={trip.trip_id}
+                    className="card"
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: '20px',
+                      padding: '24px',
+                    }}
+                  >
+                    <div>
+                      {/* Driver & Rating */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                        <span style={{ fontWeight: 800, fontSize: '18px' }}>{trip.driver_name}</span>
+                        <span className="badge badge-verified">
+                          Verified &bull; {trip.driver_rating} &star;
+                        </span>
+                        <span className="body-sm">
+                          {trip.vehicle_info} ({trip.vehicle_plate})
+                        </span>
+                      </div>
+
+                      {/* Stops & Times */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '10px 0', flexWrap: 'wrap' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <Clock size={16} color="var(--color-primary)" />
+                          <span style={{ fontWeight: 700, fontSize: '16px' }}>
+                            {new Date(trip.departs_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </span>
+                        </div>
+                        <div className="body-sm" style={{ color: 'var(--color-body)' }}>
+                          Boarding: <strong>{trip.origin_pickup_name}</strong> &rarr; Alighting: <strong>{trip.dest_pickup_name}</strong>
+                        </div>
+                      </div>
+
+                      {/* Available Seats Pill */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '6px' }}>
+                        <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--color-success)' }}>
+                          &bull; {trip.seats_available} seats remaining on this segment
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Price and Book Button */}
+                    <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
+                      <div style={{ fontSize: '12px', color: 'var(--color-mute)' }}>Fare per seat</div>
+                      <div style={{ fontSize: '26px', fontWeight: 800 }}>
+                        {trip.fare_ugx.toLocaleString()} <span style={{ fontSize: '14px', fontWeight: 600 }}>UGX</span>
+                      </div>
+                      <button
+                        className="btn btn-primary btn-md"
+                        onClick={() => setSelectedTripForHold(trip)}
+                      >
+                        Book Seat
+                        <ArrowRight size={16} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Empty Demand Alert Card */
+              <div className="card" style={{
+                padding: '40px 24px',
+                textAlign: 'center',
+                borderStyle: 'dashed',
+                backgroundColor: 'var(--color-canvas-soft)',
+              }}>
+                <Navigation size={40} style={{ margin: '0 auto 12px', color: 'var(--color-body)' }} />
+                <h3 className="display-sm">No driver has published this route yet for this date</h3>
+                <p className="body-md" style={{ maxWidth: '520px', margin: '8px auto 20px' }}>
+                  We've logged your search as a demand signal. Save an alert below so drivers running from <strong>{originTown} to {destTown}</strong> see you on their radar.
+                </p>
+                <button
+                  className="btn btn-primary btn-md"
+                  onClick={onOpenAuth}
+                >
+                  Alert Me When a Driver Posts This Route
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -399,6 +546,26 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
           </div>
         </div>
       </section>
+
+      {/* MODALS */}
+      <BookingHoldModal
+        trip={selectedTripForHold}
+        isOpen={Boolean(selectedTripForHold)}
+        onClose={() => setSelectedTripForHold(null)}
+        onBookingConfirmed={(ticket) => {
+          setSelectedTripForHold(null);
+          setSelectedTicketForView(ticket);
+          if (user?.id) loadPassengerTickets(user.id);
+        }}
+        onOpenAuth={onOpenAuth}
+      />
+
+      <ETicketModal
+        ticket={selectedTicketForView}
+        isOpen={Boolean(selectedTicketForView)}
+        onClose={() => setSelectedTicketForView(null)}
+        onCancelBooking={handleCancelBooking}
+      />
     </div>
   );
 };
