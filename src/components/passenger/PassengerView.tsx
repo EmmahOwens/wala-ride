@@ -5,8 +5,10 @@ import { bookingService } from '../../services/supabase/SupabaseBookingService';
 import { BookingHoldModal } from '../booking/BookingHoldModal';
 import { ETicketModal } from '../booking/ETicketModal';
 import { TripAlertModal } from './TripAlertModal';
+import { LiveTripTrackerModal } from '../tracking/LiveTripTrackerModal';
+import { EmergencyContactsModal } from '../tracking/EmergencyContactsModal';
 import type { Town, PickupPoint, SearchResultTrip, BookingTicket } from '../../types/domain';
-import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock } from 'lucide-react';
+import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock, ShieldAlert } from 'lucide-react';
 
 interface PassengerViewProps {
   onOpenAuth: () => void;
@@ -37,6 +39,9 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
   // Modals
   const [selectedTripForHold, setSelectedTripForHold] = useState<SearchResultTrip | null>(null);
   const [selectedTicketForView, setSelectedTicketForView] = useState<BookingTicket | null>(null);
+  const [selectedTicketForTracking, setSelectedTicketForTracking] = useState<BookingTicket | null>(null);
+  const [isLiveTrackingOpen, setIsLiveTrackingOpen] = useState<boolean>(false);
+  const [isContactsOpen, setIsContactsOpen] = useState<boolean>(false);
   const [showTripAlertModal, setShowTripAlertModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -129,16 +134,38 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
                   You have {passengerTickets.length} confirmed trip {passengerTickets.length === 1 ? 'ticket' : 'tickets'}
                 </span>
               </div>
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
                 {passengerTickets.slice(0, 2).map((tk) => (
-                  <button
-                    key={tk.booking_id}
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => setSelectedTicketForView(tk)}
-                  >
-                    View Ticket ({tk.booking_reference}) &bull; {tk.origin_town} &rarr; {tk.dest_town}
-                  </button>
+                  <div key={tk.booking_id} style={{ display: 'flex', gap: '6px' }}>
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      onClick={() => setSelectedTicketForView(tk)}
+                    >
+                      Ticket ({tk.booking_reference})
+                    </button>
+                    <button
+                      className="btn btn-primary btn-sm"
+                      style={{ backgroundColor: '#111827', color: '#ffffff', gap: '6px' }}
+                      onClick={() => {
+                        setSelectedTicketForTracking(tk);
+                        setIsLiveTrackingOpen(true);
+                      }}
+                    >
+                      <Navigation size={12} color="#60a5fa" />
+                      <span>Live Track</span>
+                    </button>
+                  </div>
                 ))}
+                {user && (
+                  <button
+                    className="btn btn-subtle btn-sm"
+                    style={{ gap: '6px' }}
+                    onClick={() => setIsContactsOpen(true)}
+                  >
+                    <ShieldAlert size={14} color="#dc2626" />
+                    <span>Safety Contacts</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -573,6 +600,25 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
         isOpen={Boolean(selectedTicketForView)}
         onClose={() => setSelectedTicketForView(null)}
         onCancelBooking={handleCancelBooking}
+        onOpenLiveTracking={() => {
+          setSelectedTicketForTracking(selectedTicketForView);
+          setIsLiveTrackingOpen(true);
+        }}
+      />
+
+      {/* Live GPS Tracker Modal */}
+      <LiveTripTrackerModal
+        ticket={selectedTicketForTracking}
+        isOpen={isLiveTrackingOpen}
+        onClose={() => setIsLiveTrackingOpen(false)}
+        userId={user?.id}
+      />
+
+      {/* Emergency Safety Contacts Modal */}
+      <EmergencyContactsModal
+        isOpen={isContactsOpen}
+        onClose={() => setIsContactsOpen(false)}
+        userId={user?.id}
       />
 
       {showTripAlertModal && user && (

@@ -153,6 +153,7 @@ export class SupabaseBookingService implements IBookingService {
     return {
       booking_id: b.id,
       booking_reference: b.booking_reference,
+      trip_id: trip?.id || b.trip_id,
       status: b.status,
       total_seats: b.total_seats,
       total_fare_ugx: b.total_fare_ugx,

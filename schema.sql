@@ -1252,3 +1252,395 @@ alter table promotion_redemptions enable row level security;
 create policy promo_redemptions_select on promotion_redemptions for select using (user_id = auth.uid() or is_admin());
 create policy promo_redemptions_insert on promotion_redemptions for insert with check (user_id = auth.uid() or is_admin());
 
+-- ============================================================================
+-- PHASE 4 — TRACKING, SAFETY, INCIDENTS & REALTIME FUNCTIONS
+-- ============================================================================
+
+-- Function: record_trip_location
+create or replace function record_trip_location(
+  p_trip_id uuid,
+  p_lat numeric,
+  p_lng numeric,
+  p_speed numeric default null,
+  p_heading numeric default null,
+  p_accuracy numeric default null
+) returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_driver_id uuid;
+  v_inserted_id bigint;
+begin
+  select driver_id into v_driver_id from trips where id = p_trip_id;
+  if v_driver_id is null then
+    raise exception 'Trip not found: %', p_trip_id;
+  end if;
+
+  insert into trip_locations (trip_id, driver_id, lat, lng, speed, heading, accuracy, recorded_at)
+  values (p_trip_id, v_driver_id, p_lat, p_lng, p_speed, p_heading, p_accuracy, now())
+  returning id into v_inserted_id;
+
+  return jsonb_build_object(
+    'id', v_inserted_id,
+    'trip_id', p_trip_id,
+    'lat', p_lat,
+    'lng', p_lng,
+    'speed', p_speed,
+    'recorded_at', now()
+  );
+end;
+$$;
+
+-- Function: report_incident / SOS
+create or replace function report_incident(
+  p_trip_id uuid default null,
+  p_booking_id uuid default null,
+  p_kind incident_kind_enum default 'sos',
+  p_lat numeric default null,
+  p_lng numeric default null,
+  p_description text default null,
+  p_reported_by uuid default null
+) returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_user_id uuid;
+  v_incident_id uuid;
+  v_trip_id uuid;
+begin
+  v_user_id := coalesce(auth.uid(), p_reported_by);
+  v_trip_id := p_trip_id;
+
+  if v_trip_id is null and p_booking_id is not null then
+    select trip_id, coalesce(v_user_id, passenger_id)
+      into v_trip_id, v_user_id
+      from bookings where id = p_booking_id;
+  end if;
+
+  if v_user_id is null then
+    select id into v_user_id from profiles limit 1;
+  end if;
+
+  insert into incidents (trip_id, booking_id, reported_by, kind, lat, lng, description, status)
+  values (v_trip_id, p_booking_id, v_user_id, p_kind, p_lat, p_lng, p_description, 'open')
+  returning id into v_incident_id;
+
+  if v_trip_id is not null then
+    insert into trip_events (trip_id, event_type, lat, lng, created_by, metadata)
+    values (
+      v_trip_id,
+      'INCIDENT_REPORTED',
+      p_lat,
+      p_lng,
+      v_user_id,
+      jsonb_build_object('incident_id', v_incident_id, 'kind', p_kind, 'description', p_description)
+    );
+  end if;
+
+  return jsonb_build_object(
+    'incident_id', v_incident_id,
+    'status', 'open',
+    'kind', p_kind,
+    'created_at', now()
+  );
+end;
+$$;
+
+-- Function: create_trip_share
+create or replace function create_trip_share(
+  p_booking_id uuid,
+  p_hours_valid int default 48
+) returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_share trip_shares%rowtype;
+begin
+  select * into v_share
+    from trip_shares
+   where booking_id = p_booking_id
+     and expires_at > now()
+   order by created_at desc
+   limit 1;
+
+  if v_share.id is not null then
+    return jsonb_build_object(
+      'id', v_share.id,
+      'share_token', v_share.share_token,
+      'expires_at', v_share.expires_at
+    );
+  end if;
+
+  insert into trip_shares (booking_id, expires_at)
+  values (p_booking_id, now() + (p_hours_valid || ' hours')::interval)
+  returning * into v_share;
+
+  return jsonb_build_object(
+    'id', v_share.id,
+    'share_token', v_share.share_token,
+    'expires_at', v_share.expires_at
+  );
+end;
+$$;
+
+-- Function: get_public_trip_tracking
+create or replace function get_public_trip_tracking(p_share_token text)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_share record;
+  v_booking record;
+  v_trip record;
+  v_latest_location record;
+  v_breadcrumbs jsonb;
+  v_stops jsonb;
+begin
+  select * into v_share
+    from trip_shares
+   where share_token = p_share_token
+     and expires_at > now();
+
+  if v_share.id is null then
+    return jsonb_build_object('error', 'Tracking link has expired or is invalid');
+  end if;
+
+  select b.id, b.booking_reference, b.total_seats, b.status as booking_status,
+         p.first_name as passenger_first_name, p.phone as passenger_phone,
+         b.trip_id
+    into v_booking
+    from bookings b
+    left join profiles p on p.id = b.passenger_id
+   where b.id = v_share.booking_id;
+
+  select t.id as trip_id, t.status as trip_status, t.departs_at, t.estimated_arrives_at,
+         r.name as route_name,
+         ot.name as origin_town, dt.name as dest_town,
+         dp.rating_average as driver_rating, dp.total_trips as driver_total_trips,
+         du.first_name as driver_first_name, du.last_name as driver_last_name, du.phone as driver_phone,
+         v.make as vehicle_make, v.model as vehicle_model, v.color as vehicle_color, v.license_plate as vehicle_plate
+    into v_trip
+    from trips t
+    left join routes r on r.id = t.route_id
+    left join towns ot on ot.id = r.origin_town_id
+    left join towns dt on dt.id = r.destination_town_id
+    left join driver_profiles dp on dp.id = t.driver_id
+    left join profiles du on du.id = dp.user_id
+    left join vehicles v on v.id = t.vehicle_id
+   where t.id = v_booking.trip_id;
+
+  select lat, lng, speed, heading, accuracy, recorded_at
+    into v_latest_location
+    from trip_locations
+   where trip_id = v_trip.trip_id
+   order by recorded_at desc
+   limit 1;
+
+  select coalesce(jsonb_agg(loc order by loc.recorded_at asc), '[]'::jsonb)
+    into v_breadcrumbs
+    from (
+      select lat, lng, speed, recorded_at
+        from trip_locations
+       where trip_id = v_trip.trip_id
+       order by recorded_at desc
+       limit 20
+    ) loc;
+
+  select coalesce(jsonb_agg(jsonb_build_object(
+      'sequence', ts.sequence,
+      'stage_name', pp.name,
+      'town_name', tw.name,
+      'status', ts.status
+    ) order by ts.sequence asc), '[]'::jsonb)
+    into v_stops
+    from trip_stops ts
+    left join pickup_points pp on pp.id = ts.pickup_point_id
+    left join towns tw on tw.id = pp.town_id
+   where ts.trip_id = v_trip.trip_id;
+
+  return jsonb_build_object(
+    'share_token', p_share_token,
+    'expires_at', v_share.expires_at,
+    'booking', jsonb_build_object(
+      'reference', v_booking.booking_reference,
+      'passenger_first_name', v_booking.passenger_first_name,
+      'seats', v_booking.total_seats,
+      'status', v_booking.booking_status
+    ),
+    'trip', jsonb_build_object(
+      'id', v_trip.trip_id,
+      'status', v_trip.trip_status,
+      'route_name', v_trip.route_name,
+      'origin_town', v_trip.origin_town,
+      'dest_town', v_trip.dest_town,
+      'departs_at', v_trip.departs_at,
+      'estimated_arrives_at', v_trip.estimated_arrives_at
+    ),
+    'driver', jsonb_build_object(
+      'name', trim(coalesce(v_trip.driver_first_name, '') || ' ' || coalesce(v_trip.driver_last_name, '')),
+      'phone', v_trip.driver_phone,
+      'rating', v_trip.driver_rating,
+      'total_trips', v_trip.driver_total_trips
+    ),
+    'vehicle', jsonb_build_object(
+      'make', v_trip.vehicle_make,
+      'model', v_trip.vehicle_model,
+      'color', v_trip.vehicle_color,
+      'license_plate', v_trip.vehicle_plate
+    ),
+    'latest_location', case when v_latest_location.lat is not null then jsonb_build_object(
+      'lat', v_latest_location.lat,
+      'lng', v_latest_location.lng,
+      'speed', v_latest_location.speed,
+      'heading', v_latest_location.heading,
+      'accuracy', v_latest_location.accuracy,
+      'recorded_at', v_latest_location.recorded_at
+    ) else null end,
+    'breadcrumbs', v_breadcrumbs,
+    'stops', v_stops
+  );
+end;
+$$;
+
+-- Function: get_admin_incidents
+create or replace function get_admin_incidents()
+returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_result jsonb;
+begin
+  select coalesce(jsonb_agg(item order by item.created_at desc), '[]'::jsonb)
+    into v_result
+    from (
+      select 
+        i.id,
+        i.kind,
+        i.status,
+        i.lat,
+        i.lng,
+        i.description,
+        i.created_at,
+        i.resolved_at,
+        i.trip_id,
+        i.booking_id,
+        jsonb_build_object(
+          'id', rep.id,
+          'name', trim(coalesce(rep.first_name, '') || ' ' || coalesce(rep.last_name, '')),
+          'phone', rep.phone
+        ) as reporter,
+        case when t.id is not null then jsonb_build_object(
+          'id', t.id,
+          'status', t.status,
+          'departs_at', t.departs_at,
+          'route_name', r.name,
+          'driver_name', trim(coalesce(du.first_name, '') || ' ' || coalesce(du.last_name, '')),
+          'driver_phone', du.phone,
+          'vehicle_plate', v.license_plate,
+          'vehicle_model', v.make || ' ' || v.model
+        ) else null end as trip,
+        case when b.id is not null then jsonb_build_object(
+          'reference', b.booking_reference,
+          'seats', b.total_seats
+        ) else null end as booking,
+        case when h.id is not null then jsonb_build_object(
+          'id', h.id,
+          'name', trim(coalesce(h.first_name, '') || ' ' || coalesce(h.last_name, ''))
+        ) else null end as handler
+      from incidents i
+      left join profiles rep on rep.id = i.reported_by
+      left join trips t on t.id = i.trip_id
+      left join routes r on r.id = t.route_id
+      left join driver_profiles dp on dp.id = t.driver_id
+      left join profiles du on du.id = dp.user_id
+      left join vehicles v on v.id = t.vehicle_id
+      left join bookings b on b.id = i.booking_id
+      left join profiles h on h.id = i.handled_by
+      order by i.created_at desc
+    ) item;
+
+  return v_result;
+end;
+$$;
+
+-- Function: resolve_incident
+create or replace function resolve_incident(
+  p_incident_id uuid,
+  p_status text,
+  p_handler_id uuid default null
+) returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_handler_id uuid;
+begin
+  v_handler_id := coalesce(auth.uid(), p_handler_id);
+
+  update incidents
+     set status = p_status,
+         handled_by = coalesce(v_handler_id, handled_by),
+         resolved_at = case when p_status = 'resolved' then now() else resolved_at end
+   where id = p_incident_id;
+
+  return jsonb_build_object(
+    'incident_id', p_incident_id,
+    'status', p_status,
+    'updated_at', now()
+  );
+end;
+$$;
+
+-- Function: submit_trip_rating
+create or replace function submit_trip_rating(
+  p_trip_id uuid,
+  p_booking_id uuid,
+  p_score integer,
+  p_comment text default null,
+  p_reviewer_id uuid default null,
+  p_reviewee_id uuid default null
+) returns jsonb
+language plpgsql
+security definer
+set search_path = public as $$
+declare
+  v_reviewer_id uuid;
+  v_reviewee_id uuid;
+  v_rating_id uuid;
+begin
+  v_reviewer_id := coalesce(auth.uid(), p_reviewer_id);
+
+  if p_reviewee_id is not null then
+    v_reviewee_id := p_reviewee_id;
+  elsif p_trip_id is not null then
+    select dp.user_id into v_reviewee_id
+      from trips t
+      join driver_profiles dp on dp.id = t.driver_id
+     where t.id = p_trip_id;
+  end if;
+
+  if v_reviewer_id is null then
+    select id into v_reviewer_id from profiles limit 1;
+  end if;
+  if v_reviewee_id is null then
+    select user_id into v_reviewee_id from driver_profiles limit 1;
+  end if;
+
+  insert into ratings (trip_id, booking_id, reviewer_id, reviewee_id, score, comment)
+  values (p_trip_id, p_booking_id, v_reviewer_id, v_reviewee_id, p_score, p_comment)
+  returning id into v_rating_id;
+
+  return jsonb_build_object(
+    'rating_id', v_rating_id,
+    'score', p_score,
+    'created_at', now()
+  );
+end;
+$$;
+
+

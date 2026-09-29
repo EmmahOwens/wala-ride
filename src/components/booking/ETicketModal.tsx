@@ -1,12 +1,13 @@
 import React from 'react';
 import type { BookingTicket } from '../../types/domain';
-import { X, Phone, Car, QrCode, AlertCircle, Share2, Download } from 'lucide-react';
+import { X, Phone, Car, QrCode, AlertCircle, Share2, Download, Navigation } from 'lucide-react';
 
 interface ETicketModalProps {
   ticket: BookingTicket | null;
   isOpen: boolean;
   onClose: () => void;
   onCancelBooking?: (bookingId: string) => void;
+  onOpenLiveTracking?: () => void;
 }
 
 export const ETicketModal: React.FC<ETicketModalProps> = ({
@@ -14,6 +15,7 @@ export const ETicketModal: React.FC<ETicketModalProps> = ({
   isOpen,
   onClose,
   onCancelBooking,
+  onOpenLiveTracking,
 }) => {
   if (!isOpen || !ticket) return null;
 
@@ -245,6 +247,26 @@ export const ETicketModal: React.FC<ETicketModalProps> = ({
               Pay {ticket.total_fare_ugx.toLocaleString()} UGX directly to {ticket.driver_name} when you board.
             </span>
           </div>
+
+          {/* Live GPS Tracking & Safety */}
+          {onOpenLiveTracking && (
+            <button
+              className="btn btn-primary btn-md"
+              style={{
+                width: '100%',
+                marginBottom: '14px',
+                justifyContent: 'center',
+                backgroundColor: '#111827',
+                color: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
+              }}
+              onClick={onOpenLiveTracking}
+            >
+              <Navigation size={16} color="#60a5fa" />
+              <span>Live GPS Tracking & Safety SOS</span>
+            </button>
+          )}
 
           {/* Action buttons */}
           <div style={{ display: 'flex', gap: '10px' }}>

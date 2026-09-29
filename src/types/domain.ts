@@ -193,6 +193,7 @@ export interface Booking {
 export interface BookingTicket {
   booking_id: string;
   booking_reference: string;
+  trip_id?: string;
   status: BookingStatus;
   total_seats: number;
   total_fare_ugx: number;
@@ -299,4 +300,143 @@ export interface InitiatePaymentResult {
   network: string;
   instructions: string;
 }
+
+// ============================================================================
+// PHASE 4 — TRACKING & SAFETY DOMAIN TYPES
+// ============================================================================
+
+export type IncidentKind = 'sos' | 'accident' | 'breakdown' | 'harassment' | 'other';
+export type IncidentStatus = 'open' | 'investigating' | 'resolved' | 'dismissed';
+
+export interface TripLocation {
+  id: number;
+  trip_id: string;
+  driver_id: string;
+  lat: number;
+  lng: number;
+  speed: number | null;
+  heading: number | null;
+  accuracy: number | null;
+  recorded_at: string;
+}
+
+export interface EmergencyContact {
+  id: string;
+  user_id: string;
+  name: string;
+  phone: string;
+  relationship: string | null;
+  created_at: string;
+}
+
+export interface TripShare {
+  id: string;
+  booking_id: string;
+  share_token: string;
+  expires_at: string;
+  created_at: string;
+}
+
+export interface Incident {
+  id: string;
+  trip_id: string | null;
+  booking_id: string | null;
+  reported_by: string;
+  kind: IncidentKind;
+  lat: number | null;
+  lng: number | null;
+  description: string | null;
+  status: IncidentStatus;
+  handled_by: string | null;
+  created_at: string;
+  resolved_at: string | null;
+  reporter?: {
+    id: string;
+    name: string;
+    phone: string | null;
+  } | null;
+  trip?: {
+    id: string;
+    status: string;
+    departs_at: string;
+    route_name: string;
+    driver_name: string;
+    driver_phone: string | null;
+    vehicle_plate: string;
+    vehicle_model: string;
+  } | null;
+  booking?: {
+    reference: string;
+    seats: number;
+  } | null;
+  handler?: {
+    id: string;
+    name: string;
+  } | null;
+}
+
+export interface PublicTripTracking {
+  share_token: string;
+  expires_at: string;
+  error?: string;
+  booking?: {
+    reference: string;
+    passenger_first_name: string;
+    seats: number;
+    status: string;
+  };
+  trip?: {
+    id: string;
+    status: string;
+    route_name: string;
+    origin_town: string;
+    dest_town: string;
+    departs_at: string;
+    estimated_arrives_at: string | null;
+  };
+  driver?: {
+    name: string;
+    phone: string | null;
+    rating: number;
+    total_trips: number;
+  };
+  vehicle?: {
+    make: string;
+    model: string;
+    color: string | null;
+    license_plate: string;
+  };
+  latest_location?: {
+    lat: number;
+    lng: number;
+    speed: number | null;
+    heading: number | null;
+    accuracy: number | null;
+    recorded_at: string;
+  } | null;
+  breadcrumbs?: Array<{
+    lat: number;
+    lng: number;
+    speed: number | null;
+    recorded_at: string;
+  }>;
+  stops?: Array<{
+    sequence: number;
+    stage_name: string;
+    town_name: string;
+    status: string;
+  }>;
+}
+
+export interface Rating {
+  id: string;
+  trip_id: string | null;
+  booking_id: string | null;
+  reviewer_id: string;
+  reviewee_id: string;
+  score: number;
+  comment: string | null;
+  created_at: string;
+}
+
 
