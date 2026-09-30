@@ -8,14 +8,19 @@ import { TripAlertModal } from './TripAlertModal';
 import { LiveTripTrackerModal } from '../tracking/LiveTripTrackerModal';
 import { EmergencyContactsModal } from '../tracking/EmergencyContactsModal';
 import type { Town, PickupPoint, SearchResultTrip, BookingTicket } from '../../types/domain';
-import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock, ShieldAlert } from 'lucide-react';
+import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock, ShieldAlert, LifeBuoy } from 'lucide-react';
 
 interface PassengerViewProps {
   onOpenAuth: () => void;
   onOpenAddStage: () => void;
+  onOpenSupport?: (booking?: BookingTicket) => void;
 }
 
-export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpenAddStage }) => {
+export const PassengerView: React.FC<PassengerViewProps> = ({
+  onOpenAuth,
+  onOpenAddStage,
+  onOpenSupport,
+}) => {
   const { user } = useAuth();
 
   const [towns, setTowns] = useState<Town[]>([]);
@@ -154,6 +159,17 @@ export const PassengerView: React.FC<PassengerViewProps> = ({ onOpenAuth, onOpen
                       <Navigation size={12} color="#60a5fa" />
                       <span>Live Track</span>
                     </button>
+                    {onOpenSupport && (
+                      <button
+                        className="btn btn-subtle btn-sm"
+                        style={{ gap: '4px' }}
+                        title="Get help with this journey"
+                        onClick={() => onOpenSupport(tk)}
+                      >
+                        <LifeBuoy size={12} color="var(--color-primary)" />
+                        <span>Help</span>
+                      </button>
+                    )}
                   </div>
                 ))}
                 {user && (

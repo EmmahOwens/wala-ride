@@ -5,17 +5,35 @@ import { AuthModal } from './components/auth/AuthModal';
 import { DriverOnboarding } from './components/driver/DriverOnboarding';
 import { AdminVerificationQueue } from './components/admin/AdminVerificationQueue';
 import { AdminIncidentConsole } from './components/admin/AdminIncidentConsole';
+import { AdminSupportQueue } from './components/admin/AdminSupportQueue';
+import { AdminDemandAnalytics } from './components/admin/AdminDemandAnalytics';
+import { AdminRouteManager } from './components/admin/AdminRouteManager';
 import { PassengerView } from './components/passenger/PassengerView';
+import { PassengerSupportModal } from './components/passenger/PassengerSupportModal';
 import { PublicTrackingView } from './components/tracking/PublicTrackingView';
 import { AddPickupPointModal } from './components/common/AddPickupPointModal';
 import { isSupabaseConfigured } from './config/supabase';
-import { Car, ArrowRight, Check, AlertTriangle, ShieldAlert, UserCheck } from 'lucide-react';
+import {
+  Car,
+  ArrowRight,
+  Check,
+  AlertTriangle,
+  ShieldAlert,
+  UserCheck,
+  LifeBuoy,
+  TrendingUp,
+  Route as RouteIcon,
+} from 'lucide-react';
 
 const AppContent: React.FC = () => {
-  const { user, activeRole, setActiveRole } = useAuth();
+  const { user, activeRole } = useAuth();
   const [isAuthOpen, setIsAuthOpen] = useState<boolean>(false);
   const [isAddStageOpen, setIsAddStageOpen] = useState<boolean>(false);
-  const [adminTab, setAdminTab] = useState<'incidents' | 'verification'>('incidents');
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState<boolean>(false);
+  const [supportBookingRef, setSupportBookingRef] = useState<string | null>(null);
+  const [supportBookingId, setSupportBookingId] = useState<string | null>(null);
+  const [supportTripId, setSupportTripId] = useState<string | null>(null);
+  const [adminTab, setAdminTab] = useState<'incidents' | 'support' | 'demand' | 'routes' | 'verification'>('incidents');
   const [trackToken, setTrackToken] = useState<string | null>(() => {
     return new URLSearchParams(window.location.search).get('track');
   });
@@ -47,6 +65,15 @@ const AppContent: React.FC = () => {
       <Navbar
         onOpenAuth={() => setIsAuthOpen(true)}
         onOpenAddStage={() => setIsAddStageOpen(true)}
+        onOpenSupport={() => {
+          setSupportBookingRef(null);
+          setSupportBookingId(null);
+          setSupportTripId(null);
+          setIsSupportModalOpen(true);
+        }}
+        onOpenTicket={() => {
+          setIsSupportModalOpen(true);
+        }}
       />
 
       {/* Main View based on Active Role or Public Tracking */}
@@ -65,6 +92,18 @@ const AppContent: React.FC = () => {
               <PassengerView
                 onOpenAuth={() => setIsAuthOpen(true)}
                 onOpenAddStage={() => setIsAddStageOpen(true)}
+                onOpenSupport={(booking) => {
+                  if (booking) {
+                    setSupportBookingRef(booking.booking_reference);
+                    setSupportBookingId(booking.booking_id);
+                    setSupportTripId(booking.trip_id || null);
+                  } else {
+                    setSupportBookingRef(null);
+                    setSupportBookingId(null);
+                    setSupportTripId(null);
+                  }
+                  setIsSupportModalOpen(true);
+                }}
               />
             )}
 
@@ -134,12 +173,12 @@ const AppContent: React.FC = () => {
                   <div>
                     <h1 className="display-md">Platform Operations & Safety</h1>
                     <p className="body-sm" style={{ marginTop: '4px' }}>
-                      Real-time Uganda transport corridor oversight, driver onboarding, and emergency SOS incident handling.
+                      Real-time Uganda transport corridor oversight, customer support, demand signals & corridor management.
                     </p>
                   </div>
 
                   {/* Admin Tab Switcher */}
-                  <div style={{ display: 'flex', gap: '8px' }}>
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                     <button
                       className={`btn-pill-tab ${adminTab === 'incidents' ? 'active' : ''}`}
                       onClick={() => setAdminTab('incidents')}
@@ -149,17 +188,44 @@ const AppContent: React.FC = () => {
                       <span>Live SOS & Incidents</span>
                     </button>
                     <button
+                      className={`btn-pill-tab ${adminTab === 'support' ? 'active' : ''}`}
+                      onClick={() => setAdminTab('support')}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      <LifeBuoy size={14} color="#2563eb" />
+                      <span>Support Queue</span>
+                    </button>
+                    <button
+                      className={`btn-pill-tab ${adminTab === 'demand' ? 'active' : ''}`}
+                      onClick={() => setAdminTab('demand')}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      <TrendingUp size={14} color="#ea580c" />
+                      <span>Demand Radar</span>
+                    </button>
+                    <button
+                      className={`btn-pill-tab ${adminTab === 'routes' ? 'active' : ''}`}
+                      onClick={() => setAdminTab('routes')}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      <RouteIcon size={14} color="#16a34a" />
+                      <span>Routes & Towns</span>
+                    </button>
+                    <button
                       className={`btn-pill-tab ${adminTab === 'verification' ? 'active' : ''}`}
                       onClick={() => setAdminTab('verification')}
                       style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                     >
                       <UserCheck size={14} />
-                      <span>Driver KYC Queue</span>
+                      <span>Driver KYC</span>
                     </button>
                   </div>
                 </div>
 
                 {adminTab === 'incidents' && <AdminIncidentConsole />}
+                {adminTab === 'support' && <AdminSupportQueue />}
+                {adminTab === 'demand' && <AdminDemandAnalytics onNavigateToRoutes={() => setAdminTab('routes')} />}
+                {adminTab === 'routes' && <AdminRouteManager />}
                 {adminTab === 'verification' && <AdminVerificationQueue />}
               </div>
             )}
@@ -199,24 +265,20 @@ const AppContent: React.FC = () => {
                 <li>Kampala &harr; Mbarara</li>
                 <li>Jinja &harr; Mbale</li>
                 <li>Kampala &harr; Gulu</li>
-                <li>Soroti &harr; Kampala</li>
-                <li>Kampala &harr; Masaka</li>
+                <li>Kampala &harr; Fort Portal</li>
               </ul>
             </div>
 
             <div>
-              <h4 style={{ color: '#ffffff', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Platform Roles</h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px', color: '#a0a0a0' }}>
-                <li style={{ cursor: 'pointer' }} onClick={() => setActiveRole('passenger')}>Passenger Booking</li>
-                <li style={{ cursor: 'pointer' }} onClick={() => setActiveRole('driver')}>Driver & Fleet Onboarding</li>
-                <li style={{ cursor: 'pointer' }} onClick={() => setActiveRole('admin')}>Admin Verification Console</li>
-                <li style={{ cursor: 'pointer' }} onClick={() => setIsAddStageOpen(true)}>Suggest a Stage</li>
-              </ul>
+              <h4 style={{ color: '#ffffff', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Driver Subscriptions</h4>
+              <p className="body-sm" style={{ color: '#a0a0a0', maxWidth: '280px', lineHeight: 1.6 }}>
+                Flat monthly driver plans with zero cut of fares. Receive traveler leads and fill vehicle seats seamlessly.
+              </p>
             </div>
 
             <div>
-              <h4 style={{ color: '#ffffff', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Direct Payments</h4>
-              <p className="body-sm" style={{ color: '#a0a0a0', lineHeight: 1.6 }}>
+              <h4 style={{ color: '#ffffff', fontSize: '14px', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Safety & Trust</h4>
+              <p className="body-sm" style={{ color: '#a0a0a0', maxWidth: '280px', lineHeight: 1.6 }}>
                 Passengers pay drivers directly at boarding in cash or via MTN MoMo / Airtel Money. Zero app commission on your fares.
               </p>
             </div>
@@ -252,6 +314,14 @@ const AppContent: React.FC = () => {
       <AddPickupPointModal
         isOpen={isAddStageOpen}
         onClose={() => setIsAddStageOpen(false)}
+      />
+
+      <PassengerSupportModal
+        isOpen={isSupportModalOpen}
+        onClose={() => setIsSupportModalOpen(false)}
+        initialBookingId={supportBookingId}
+        initialTripId={supportTripId}
+        initialBookingRef={supportBookingRef}
       />
     </div>
   );

@@ -1,14 +1,22 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Car, ShieldCheck, User, LogOut, Compass, PlusCircle } from 'lucide-react';
+import { Car, ShieldCheck, User, LogOut, Compass, PlusCircle, LifeBuoy } from 'lucide-react';
+import { NotificationBell } from '../common/NotificationBell';
 import type { UserRoleType } from '../../types/domain';
 
 interface NavbarProps {
   onOpenAuth: () => void;
   onOpenAddStage?: () => void;
+  onOpenSupport?: () => void;
+  onOpenTicket?: (ticketId: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, onOpenAddStage }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onOpenAuth,
+  onOpenAddStage,
+  onOpenSupport,
+  onOpenTicket,
+}) => {
   const { user, profile, roles, activeRole, setActiveRole, signOut } = useAuth();
 
   return (
@@ -93,6 +101,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, onOpenAddStage }) =>
 
         {/* Right Action buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {onOpenSupport && (
+            <button
+              className="btn btn-subtle btn-sm"
+              onClick={onOpenSupport}
+              title="Customer Support"
+              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              <LifeBuoy size={16} color="var(--color-primary)" />
+              <span style={{ fontWeight: 600 }}>Help</span>
+            </button>
+          )}
+
           {onOpenAddStage && (
             <button
               className="btn btn-secondary btn-sm"
@@ -102,6 +122,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAuth, onOpenAddStage }) =>
               <PlusCircle size={15} />
               <span>Add Stage</span>
             </button>
+          )}
+
+          {user && (
+            <NotificationBell onOpenTicket={onOpenTicket} />
           )}
 
           {user ? (

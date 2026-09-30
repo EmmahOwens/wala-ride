@@ -1,4 +1,14 @@
-import type { DriverProfile, DriverDocument, UserProfile, Vehicle } from '../../types/domain';
+import type {
+  DriverProfile,
+  DriverDocument,
+  UserProfile,
+  Vehicle,
+  Town,
+  Route,
+  DemandAnalyticsResult,
+  AdminTownInput,
+  AdminRouteInput,
+} from '../../types/domain';
 
 export interface PendingDriverVerification {
   driver: DriverProfile;
@@ -16,4 +26,13 @@ export interface IAdminService {
     rejectionReason?: string
   ): Promise<boolean>;
   getSignedDocumentUrl(filePath: string): Promise<string | null>;
+
+  // Phase 5: Demand Analytics & Route/Town Operations
+  getDemandAnalytics(days?: number): Promise<DemandAnalyticsResult | null>;
+  getAllTowns(): Promise<Town[]>;
+  upsertTown(input: AdminTownInput): Promise<Town | null>;
+  toggleTownStatus(townId: string): Promise<boolean>;
+  getAllRoutes(): Promise<Route[]>;
+  upsertRoute(input: AdminRouteInput): Promise<Route | null>;
+  deleteRoute(routeId: string): Promise<boolean>;
 }

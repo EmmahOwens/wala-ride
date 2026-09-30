@@ -1,6 +1,16 @@
 import { supabase } from '../../config/supabase';
 import type { IAdminService, PendingDriverVerification } from '../interfaces/IAdminService';
-import type { DriverProfile, DriverDocument, UserProfile, Vehicle } from '../../types/domain';
+import type {
+  DriverProfile,
+  DriverDocument,
+  UserProfile,
+  Vehicle,
+  Town,
+  Route,
+  DemandAnalyticsResult,
+  AdminTownInput,
+  AdminRouteInput,
+} from '../../types/domain';
 
 export class SupabaseAdminService implements IAdminService {
   async getPendingDrivers(): Promise<PendingDriverVerification[]> {
@@ -90,6 +100,160 @@ export class SupabaseAdminService implements IAdminService {
     if (error || !data) return null;
     return data.signedUrl;
   }
+
+  // ==========================================================================
+  // PHASE 5: DEMAND ANALYTICS & ROUTE/TOWN OPERATIONS
+  // ==========================================================================
+
+  async getDemandAnalytics(days: number = 30): Promise<DemandAnalyticsResult | null> {
+    try {
+      const { data, error } = await (supabase.rpc as any)('get_demand_analytics', {
+        p_days: days,
+      });
+
+      if (error || !data) {
+        console.error('Error fetching demand analytics RPC:', error);
+        return null;
+      }
+
+      return data as DemandAnalyticsResult;
+    } catch (err) {
+      console.error('Exception fetching demand analytics:', err);
+      return null;
+    }
+  }
+
+  async getAllTowns(): Promise<Town[]> {
+    try {
+      const { data, error } = await supabase
+        .from('towns')
+        .select('*')
+        .order('name');
+
+      if (error) {
+        console.error('Error fetching towns:', error);
+        return [];
+      }
+
+      return (data || []) as Town[];
+    } catch (err) {
+      console.error('Exception fetching towns:', err);
+      return [];
+    }
+  }
+
+  async upsertTown(input: AdminTownInput): Promise<Town | null> {
+    try {
+      const action = input.id ? 'update' : 'create';
+      const { data, error } = await (supabase.rpc as any)('admin_manage_town', {
+        p_action: action,
+        p_id: input.id || null,
+        p_name: input.name,
+        p_region: input.region || null,
+        p_lat: input.lat || null,
+        p_lng: input.lng || null,
+        p_is_active: input.is_active ?? true,
+      });
+
+      if (error || !data) {
+        console.error('Error managing town RPC:', error);
+        return null;
+      }
+
+      return data as Town;
+    } catch (err) {
+      console.error('Exception managing town:', err);
+      return null;
+    }
+  }
+
+  async toggleTownStatus(townId: string): Promise<boolean> {
+    try {
+      const { error } = await (supabase.rpc as any)('admin_manage_town', {
+        p_action: 'toggle_active',
+        p_id: townId,
+      });
+
+      return !error;
+    } catch (err) {
+      console.error('Exception toggling town status:', err);
+      return false;
+    }
+  }
+
+  async getAllRoutes(): Promise<Route[]> {
+    try {
+      const { data, error } = await supabase
+        .from('routes')
+        .select(`
+          *,
+          origin_town:towns!routes_origin_town_id_fkey(*),
+          destination_town:towns!routes_destination_town_id_fkey(*),
+          stops:route_stops(
+            *,
+            town:towns(*),
+            pickup_point:pickup_points(*)
+          )
+        `)
+        .order('name');
+
+      if (error) {
+        console.error('Error fetching routes with stops:', error);
+        return [];
+      }
+
+      // Sort stops by sequence
+      return (data || []).map((r: any) => ({
+        ...r,
+        stops: (r.stops || []).sort((a: any, b: any) => a.sequence - b.sequence),
+      })) as Route[];
+    } catch (err) {
+      console.error('Exception fetching routes:', err);
+      return [];
+    }
+  }
+
+  async upsertRoute(input: AdminRouteInput): Promise<Route | null> {
+    try {
+      const action = input.id ? 'update' : 'create';
+      const { data, error } = await (supabase.rpc as any)('admin_manage_route', {
+        p_action: action,
+        p_id: input.id || null,
+        p_name: input.name,
+        p_origin_town_id: input.origin_town_id,
+        p_destination_town_id: input.destination_town_id,
+        p_distance_km: input.distance_km || null,
+        p_duration_mins: input.estimated_duration_minutes || null,
+        p_status: input.status || 'active',
+        p_stops: input.stops || [],
+      });
+
+      if (error || !data) {
+        console.error('Error managing route RPC:', error);
+        return null;
+      }
+
+      return data as Route;
+    } catch (err) {
+      console.error('Exception managing route:', err);
+      return null;
+    }
+  }
+
+  async deleteRoute(routeId: string): Promise<boolean> {
+    try {
+      const { error } = await supabase
+        .from('routes')
+        .delete()
+        .eq('id', routeId);
+
+      return !error;
+    } catch (err) {
+      console.error('Exception deleting route:', err);
+      return false;
+    }
+  }
 }
 
 export const adminService = new SupabaseAdminService();
+

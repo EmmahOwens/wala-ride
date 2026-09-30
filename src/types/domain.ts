@@ -439,4 +439,148 @@ export interface Rating {
   created_at: string;
 }
 
+// ============================================================================
+// PHASE 5 — ADMIN, SUPPORT, NOTIFICATIONS & DEMAND ANALYTICS TYPES
+// ============================================================================
+
+export type SupportTicketPriority = 'low' | 'normal' | 'high' | 'urgent';
+export type SupportTicketStatus = 'open' | 'in_progress' | 'waiting_on_user' | 'resolved' | 'closed';
+export type SupportTicketCategory = 'payment_issue' | 'delay_cancellation' | 'safety' | 'luggage' | 'app_bug' | 'general';
+
+export interface SupportTicket {
+  id: string;
+  user_id: string;
+  subject: string;
+  description: string | null;
+  category: string;
+  priority: SupportTicketPriority;
+  status: SupportTicketStatus;
+  assigned_to: string | null;
+  trip_id: string | null;
+  booking_id: string | null;
+  created_at: string;
+  updated_at: string;
+  resolved_at: string | null;
+  customer?: {
+    id: string;
+    name: string;
+    phone: string | null;
+    email: string | null;
+  } | null;
+  assigned_agent?: {
+    id: string;
+    name: string;
+  } | null;
+  booking?: {
+    id: string;
+    reference: string;
+    total_seats: number;
+    total_fare_ugx?: number;
+    status?: string;
+  } | null;
+  trip?: {
+    id: string;
+    status: string;
+    departs_at: string;
+    route_name: string;
+  } | null;
+  messages_count?: number;
+  last_message?: string | null;
+  last_message_at?: string | null;
+}
+
+export interface SupportMessage {
+  id: string;
+  ticket_id: string;
+  sender_id: string;
+  message: string;
+  attachment_url: string | null;
+  created_at: string;
+  sender_name?: string;
+  is_staff?: boolean;
+}
+
+export interface TicketDetailsResult {
+  ticket: SupportTicket;
+  messages: SupportMessage[];
+}
+
+export type NotificationChannel = 'in_app' | 'push' | 'sms';
+
+export interface AppNotification {
+  id: string;
+  user_id: string;
+  channel: NotificationChannel;
+  type: string;
+  title: string | null;
+  body: string | null;
+  data: Record<string, any> | null;
+  read_at: string | null;
+  created_at: string;
+}
+
+export interface DemandAnalyticsSummary {
+  period_days: number;
+  total_searches: number;
+  unserved_searches: number;
+  unserved_rate_pct: number;
+  passengers_demanding: number;
+  alert_conversions: number;
+}
+
+export interface DemandCorridorMetric {
+  origin_town_id: string;
+  origin_town_name: string;
+  destination_town_id: string;
+  destination_town_name: string;
+  search_count: number;
+  unserved_count: number;
+  total_seats_requested: number;
+  active_trips_count: number;
+  supply_status: 'CRITICAL_SHORTAGE' | 'HIGH_DEMAND' | 'BALANCED';
+}
+
+export interface DemandDailyTrend {
+  date: string;
+  search_count: number;
+  unserved_count: number;
+}
+
+export interface DemandAnalyticsResult {
+  summary: DemandAnalyticsSummary;
+  corridors: DemandCorridorMetric[];
+  daily_trends: DemandDailyTrend[];
+}
+
+export interface AdminTownInput {
+  id?: string;
+  name: string;
+  region?: string;
+  lat?: number;
+  lng?: number;
+  is_active?: boolean;
+}
+
+export interface AdminRouteStopInput {
+  town_id: string;
+  pickup_point_id?: string | null;
+  sequence: number;
+  distance_from_origin_km?: number | null;
+  estimated_minutes_from_origin?: number | null;
+  pickup_allowed?: boolean;
+  dropoff_allowed?: boolean;
+}
+
+export interface AdminRouteInput {
+  id?: string;
+  name: string;
+  origin_town_id: string;
+  destination_town_id: string;
+  distance_km?: number | null;
+  estimated_duration_minutes?: number | null;
+  status?: string;
+  stops?: AdminRouteStopInput[];
+}
+
+
 
