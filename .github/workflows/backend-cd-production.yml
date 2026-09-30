@@ -1,0 +1,60 @@
+name: Deploy Backend to Production
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  deploy-production:
+    name: Production Release Gate
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://api.walaride.com
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Link Production Project
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          supabase link --project-ref ${{ secrets.PROD_SUPABASE_PROJECT_REF }}
+
+      - name: Apply Production Migrations
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.PROD_DB_PASSWORD }}
+        run: |
+          supabase db push
+
+      - name: Deploy Production Edge Functions
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          supabase functions deploy payment-webhook --no-verify-jwt
+          if [ -d "supabase/functions/maps-proxy" ]; then
+            supabase functions deploy maps-proxy
+          fi
+          if [ -d "supabase/functions/notifications-dispatcher" ]; then
+            supabase functions deploy notifications-dispatcher
+          fi
+
+      - name: Verify Production Secrets Synchronized
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          supabase secrets list
+
+      - name: Post-Deployment Smoke Check
+        env:
+          SUPABASE_URL: ${{ secrets.PROD_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.PROD_SUPABASE_ANON_KEY }}
+        run: |
+          node scripts/test_phase5.mjs
