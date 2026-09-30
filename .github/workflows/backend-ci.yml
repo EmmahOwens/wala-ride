@@ -83,6 +83,7 @@ jobs:
           node scripts/test_phase4.mjs
           node scripts/test_phase5.mjs
           node scripts/test_google_maps_and_postgis.mjs
+          node scripts/test_phase3_concurrency.mjs
 
       - name: Stop Local Supabase
         if: always()

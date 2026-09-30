@@ -38,12 +38,12 @@ jobs:
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         run: |
-          supabase functions deploy payment-webhook --no-verify-jwt
+          supabase functions deploy payment-webhook --no-verify-jwt --use-api
           if [ -d "supabase/functions/maps-proxy" ]; then
-            supabase functions deploy maps-proxy
+            supabase functions deploy maps-proxy --no-verify-jwt --use-api
           fi
           if [ -d "supabase/functions/notifications-dispatcher" ]; then
-            supabase functions deploy notifications-dispatcher
+            supabase functions deploy notifications-dispatcher --use-api
           fi
 
       - name: Verify Production Secrets Synchronized
