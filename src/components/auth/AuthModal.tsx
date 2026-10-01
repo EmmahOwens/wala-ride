@@ -178,9 +178,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     await doVerifyOtp(otpToken);
   };
 
-  // Auto-submit when all 8 digits are entered (Supabase sends 8-digit codes)
+  // Auto-submit when all 6 digits are entered
   useEffect(() => {
-    if (otpToken.length === 8 && authMode === 'verify_otp' && !loading) {
+    if (otpToken.length === 6 && authMode === 'verify_otp' && !loading) {
       doVerifyOtp(otpToken);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -602,8 +602,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <input
                   type="text"
                   className="input-field"
-                  placeholder="••••••••"
-                  maxLength={8}
+                  placeholder="••••••"
+                  maxLength={6}
                   autoFocus
                   value={otpToken}
                   onChange={(e) => setOtpToken(e.target.value.replace(/\D/g, ''))}
