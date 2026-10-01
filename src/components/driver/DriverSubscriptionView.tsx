@@ -119,17 +119,21 @@ export const DriverSubscriptionView: React.FC<DriverSubscriptionViewProps> = ({
     if (!activePayment) return;
     setIsProcessing(true);
     try {
-      await subscriptionService.processWebhook({
-        paymentId: activePayment.payment_id,
-        status: 'successful',
-        providerRef: 'SIM_MOMO_PROMPT_' + Date.now(),
-        rawCallback: {
-          event: 'charge.completed',
-          status: 'successful',
-          tx_ref: activePayment.provider_ref,
-          customer: { phone_number: activePayment.phone_number },
-        },
-      });
+      if (selectedPlanForCheckout) {
+        await subscriptionService.simulatePayment(
+          driverId,
+          selectedPlanForCheckout.id,
+          activePayment.phone_number,
+          activePayment.network
+        );
+      } else {
+        await subscriptionService.simulateLeadTopup(
+          driverId,
+          10,
+          activePayment.amount_ugx,
+          activePayment.network
+        );
+      }
       // Realtime listener or direct reload will set step to success
       setPaymentStep('success');
       await loadData();

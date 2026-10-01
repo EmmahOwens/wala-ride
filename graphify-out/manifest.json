@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/DriverSubscriptionView.tsx": {
-    "mtime": 1790719211.4930212,
-    "ast_hash": "89a01fda58b5c53dd058b2ae533f7242",
+    "mtime": 1790860912.0263176,
+    "ast_hash": "8210178217a3ae64708a34ca7787bb3f",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/TripManifestModal.tsx": {
@@ -617,6 +617,26 @@
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/DriverRouteRequestModal.tsx": {
     "mtime": 1790859012.7209935,
     "ast_hash": "ec17b2a5846f4b1b63ab9fd5db338693",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001170000_security_hardening_rls.sql": {
+    "mtime": 1790860014.1830604,
+    "ast_hash": "9c0b83351270f71835ad73193802594e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001180000_security_hardening_admin_and_service.sql": {
+    "mtime": 1790860608.1451752,
+    "ast_hash": "6eddedca40b9afc3b5d3372a42bd0fc6",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001180001_security_hardening_driver_and_support.sql": {
+    "mtime": 1790860608.1451752,
+    "ast_hash": "6fbaef5041557be2884bf04a986a6f2d",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001180002_security_hardening_bookings_and_trips.sql": {
+    "mtime": 1790860608.1471753,
+    "ast_hash": "9b41f426951652fe02d4cdb977e58e3f",
     "semantic_hash": ""
   }
 }
