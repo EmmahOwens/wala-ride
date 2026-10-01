@@ -1,0 +1,607 @@
+{
+  "/home/iammbayo/Documents/Projects/wala-ride/.oxlintrc.json": {
+    "mtime": 1790702607.4283206,
+    "ast_hash": "029f4905006c1fffd96bc863e2d98d3e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.vscode/extensions.json": {
+    "mtime": 1790719509.6778498,
+    "ast_hash": "4ae972c7f82bc588281dd2ada293ea8f",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.vscode/settings.json": {
+    "mtime": 1790721042.8362787,
+    "ast_hash": "f5fa4e43d0deb605e8d165289e4730c1",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/package.json": {
+    "mtime": 1790844304.9232137,
+    "ast_hash": "bf46943d54c9cdf02cdae44986ca0a5c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/schema.sql": {
+    "mtime": 1790727030.8375177,
+    "ast_hash": "c2dbd5773b83448b7b80698ce25cc57c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase4.mjs": {
+    "mtime": 1790844600.5930088,
+    "ast_hash": "462551b4ee27c40a3d365989ba36fec5",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase5.mjs": {
+    "mtime": 1790849597.6926506,
+    "ast_hash": "8125143fe3d51776d10e6a2b4e75cde4",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase6.mjs": {
+    "mtime": 1790846470.2807913,
+    "ast_hash": "f8f79f45f30287f4a4a7805f0a6d5cb1",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase7.mjs": {
+    "mtime": 1790849482.1339064,
+    "ast_hash": "3cff45b43912eab64fdd29818b89797f",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_google_maps_and_postgis.mjs": {
+    "mtime": 1790729644.0175214,
+    "ast_hash": "40afc563514b2b0b885fc4fadf0d5131",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase1.mjs": {
+    "mtime": 1790705220.2969139,
+    "ast_hash": "3924d16b0994082cad666df80b991080",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase2.mjs": {
+    "mtime": 1790705700.1652098,
+    "ast_hash": "d9e5a14fa9fcddb2f286912cad7b73f1",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase3.mjs": {
+    "mtime": 1790718819.4336495,
+    "ast_hash": "8ffc392dca6ac533f58594270eb25f93",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase3_concurrency.mjs": {
+    "mtime": 1790731310.0400379,
+    "ast_hash": "5eb46f65af174e112cd577b4abec701a",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase4.mjs": {
+    "mtime": 1790725954.401209,
+    "ast_hash": "b1f86fe0cb881ca9ce3e8842f71f0191",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase5.mjs": {
+    "mtime": 1790728210.5999682,
+    "ast_hash": "5b7ac419b4315e2a7b964611dfeccc91",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/App.tsx": {
+    "mtime": 1790727969.2424784,
+    "ast_hash": "fd032eeefece177e7467b4af716ee70e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/admin/AdminDemandAnalytics.tsx": {
+    "mtime": 1790727987.6766458,
+    "ast_hash": "6c050f3ecdfc4c543d02f0a7fffbb7e8",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/admin/AdminIncidentConsole.tsx": {
+    "mtime": 1790725488.2558687,
+    "ast_hash": "a1500d6bc22295b0f59c8950189917e5",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/admin/AdminRouteManager.tsx": {
+    "mtime": 1790728046.1527894,
+    "ast_hash": "e2f8f647b48c14bc500bf4c50177b152",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/admin/AdminSupportQueue.tsx": {
+    "mtime": 1790728100.0419352,
+    "ast_hash": "5faa3d84d42b51e782052ad3ea6f4c1b",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/admin/AdminVerificationQueue.tsx": {
+    "mtime": 1790703637.7778842,
+    "ast_hash": "38b2c779f416c1153a4c2a2100c14dfb",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/auth/AuthModal.tsx": {
+    "mtime": 1790706731.664119,
+    "ast_hash": "57d9e751370e192bc8419c7745444965",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/booking/BookingHoldModal.tsx": {
+    "mtime": 1790704742.035144,
+    "ast_hash": "661af223122d9ae8618f12899b6542d2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/booking/ETicketModal.tsx": {
+    "mtime": 1790724801.626589,
+    "ast_hash": "177362b6afe2f60fc7f23fc494457e60",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/common/AddPickupPointModal.tsx": {
+    "mtime": 1790703541.8958752,
+    "ast_hash": "6351e73af853c837804c0829c268f3e1",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/common/ErrorBoundary.tsx": {
+    "mtime": 1790721674.5948114,
+    "ast_hash": "f872e1674cf71f2d050bfeffb292276a",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/common/NotificationBell.tsx": {
+    "mtime": 1790728124.4927516,
+    "ast_hash": "a41a81970a1c80346c224b66f2cec686",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/DriverOnboarding.tsx": {
+    "mtime": 1790706260.9606004,
+    "ast_hash": "6cc47b64b60cc825aaf1fd022c9a7c89",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/DriverRadarDashboard.tsx": {
+    "mtime": 1790705985.084627,
+    "ast_hash": "8cdeb06c9c9fc22c18f2f7813590bedb",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/DriverSubscriptionView.tsx": {
+    "mtime": 1790719211.4930212,
+    "ast_hash": "89a01fda58b5c53dd058b2ae533f7242",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/TripManifestModal.tsx": {
+    "mtime": 1790725526.07361,
+    "ast_hash": "9d24e5a8f8767352d4a301c10c2ecbd2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/driver/TripPublisher.tsx": {
+    "mtime": 1790704631.8263996,
+    "ast_hash": "69b144980cd1fdaf5b2fb1d534e06c2d",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/layout/Navbar.tsx": {
+    "mtime": 1790727620.0981243,
+    "ast_hash": "b967b1ec2f7925aaaddb6464f4ed7944",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/passenger/PassengerSupportModal.tsx": {
+    "mtime": 1790728143.4920988,
+    "ast_hash": "60ebb974e9ef8a9485feec8ee65ae0d2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/passenger/PassengerView.tsx": {
+    "mtime": 1790727767.1372235,
+    "ast_hash": "387d9cdcbef751c9d03cbf881b10cd03",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/passenger/TripAlertModal.tsx": {
+    "mtime": 1790705969.2565613,
+    "ast_hash": "ebbddf8ce194671e43abf9a482b3a831",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/tracking/EmergencyContactsModal.tsx": {
+    "mtime": 1790725555.4809208,
+    "ast_hash": "1abcd73e8d287755d75d82ba8de4e85b",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/tracking/LiveTripTrackerModal.tsx": {
+    "mtime": 1790725594.6112068,
+    "ast_hash": "6a805611e2b14a0f859c0b9d21d1fb68",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/tracking/PublicTrackingView.tsx": {
+    "mtime": 1790725622.117644,
+    "ast_hash": "451ac94a321ae5437453ce3f0039a178",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/tracking/TripRatingModal.tsx": {
+    "mtime": 1790725650.8092852,
+    "ast_hash": "d72181552e422f2e3643b3aa2d8543ef",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/config/supabase.ts": {
+    "mtime": 1790722359.7842882,
+    "ast_hash": "00f89e5d2412c980a8375488ed022711",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/context/AuthContext.tsx": {
+    "mtime": 1790703464.3907466,
+    "ast_hash": "eb36b2c7054fd450fb11b5472b804879",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/main.tsx": {
+    "mtime": 1790721618.7202535,
+    "ast_hash": "593477f82394edb3693a559d9f8f7bb9",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IAdminService.ts": {
+    "mtime": 1790727145.4656034,
+    "ast_hash": "a232c014639d447f2139acb8b2d04b4e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IAuthService.ts": {
+    "mtime": 1790703382.154752,
+    "ast_hash": "e39a5743ba6114fbcf349743bc2c4932",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IBookingService.ts": {
+    "mtime": 1790704399.570984,
+    "ast_hash": "2add4701a20fb903fac1c3bba186293c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IDriverService.ts": {
+    "mtime": 1790703391.9746273,
+    "ast_hash": "3579dd2ae4da056c4cc5fcb5fcb1309e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IGeographyService.ts": {
+    "mtime": 1790729494.1824784,
+    "ast_hash": "97230e042f6c3b42d8b703d5fcd9e651",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/INotificationService.ts": {
+    "mtime": 1790727114.9270217,
+    "ast_hash": "9c8f31e12a65482c27436ec87af5dd22",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IRadarService.ts": {
+    "mtime": 1790705894.5632334,
+    "ast_hash": "40dbaf8c76697add2a0366f41b3fa322",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/ISubscriptionService.ts": {
+    "mtime": 1790718623.5017054,
+    "ast_hash": "a10ca50f020217f9e0b7cc9a0015a390",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/ISupportService.ts": {
+    "mtime": 1790727098.607258,
+    "ast_hash": "6a63165de1ff8b12010baa4e44102ee9",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/ITrackingService.ts": {
+    "mtime": 1790725170.1806107,
+    "ast_hash": "486abf74a19ac893a7ec1d8c8587bc7d",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/ITripService.ts": {
+    "mtime": 1790704392.42303,
+    "ast_hash": "97a2a427bc8c09f2e58450f90028a2c2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseAdminService.ts": {
+    "mtime": 1790727943.0481167,
+    "ast_hash": "c6e3d8437bdd32d5ef8501de34ca3697",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseAuthService.ts": {
+    "mtime": 1790703425.7302082,
+    "ast_hash": "16708c4a50faef07f240e9748b33c6b3",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseBookingService.ts": {
+    "mtime": 1790724076.2890387,
+    "ast_hash": "63e805c9659c896705dd5bbf9f016157",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseDriverService.ts": {
+    "mtime": 1790705168.3592098,
+    "ast_hash": "5170a27141a80e2e7e901dde8763b7cf",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseGeographyService.ts": {
+    "mtime": 1790729572.9410784,
+    "ast_hash": "b3fad0ee272e1b0dc36736c3798bb116",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseNotificationService.ts": {
+    "mtime": 1790727203.6769688,
+    "ast_hash": "cdcdbadfb0cb8b8f43576bfd6db66b33",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseRadarService.ts": {
+    "mtime": 1790705955.7255042,
+    "ast_hash": "c32d5d49720fed225597dfa76ec8029d",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseSubscriptionService.ts": {
+    "mtime": 1790718649.993705,
+    "ast_hash": "139aa43e7e1fa56dcffaa1d0e2296438",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseSupportService.ts": {
+    "mtime": 1790727183.8922155,
+    "ast_hash": "1449bae7a035a60d714c41bf111d6d47",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseTrackingService.ts": {
+    "mtime": 1790725437.356656,
+    "ast_hash": "6b485fe935856569c4be984accdab004",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseTripService.ts": {
+    "mtime": 1790704686.3203473,
+    "ast_hash": "9dfd7d922d3a42ec9714c9edad6e9a8c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/types/database.types.ts": {
+    "mtime": 1790704370.2371733,
+    "ast_hash": "15a00a2530206d47603020a3b6581b78",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/types/domain.ts": {
+    "mtime": 1790727089.1950288,
+    "ast_hash": "56cbcbf77f33c1a5445adcfdda2f2e89",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/ambient.d.ts": {
+    "mtime": 1790846904.2392118,
+    "ast_hash": "67e14e7993cf9035b33601dce7cd65b8",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/deno.json": {
+    "mtime": 1790846270.8474705,
+    "ast_hash": "e8e8f71fde47054bb37ee793f124a1af",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/maps-proxy/index.ts": {
+    "mtime": 1790729112.1695857,
+    "ast_hash": "d510ddbbaf8376cffc61eb060a21da43",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/notifications-dispatcher/deno.json": {
+    "mtime": 1790845203.491962,
+    "ast_hash": "34c59a20d1a0a67fd8ab7532ac9ffd4e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/notifications-dispatcher/index.ts": {
+    "mtime": 1790846891.0022175,
+    "ast_hash": "acf070280cff6d419384d7db4153a133",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/payment-webhook/deno.json": {
+    "mtime": 1790839513.5034041,
+    "ast_hash": "34c59a20d1a0a67fd8ab7532ac9ffd4e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/payment-webhook/index.ts": {
+    "mtime": 1790839520.6206462,
+    "ast_hash": "d52ea7519d2f10384f3fb66232db74c8",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/system-health/deno.json": {
+    "mtime": 1790849297.046356,
+    "ast_hash": "42e1e24d06d13fde0b0e562342533503",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/system-health/index.ts": {
+    "mtime": 1790849457.2479637,
+    "ast_hash": "f4037f1169fe3450e6f1f68ab7e7901a",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/tsconfig.json": {
+    "mtime": 1790720959.3539438,
+    "ast_hash": "e8c18d71c5ed942f756732817edfa6a6",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000000_initial_schema.sql": {
+    "mtime": 1790701735.7378907,
+    "ast_hash": "12188ae4b6b89644961634c06b8c6cd5",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000001_seed_and_allow_user_pickup_points.sql": {
+    "mtime": 1790703060.5577936,
+    "ast_hash": "92d2f687e70dd3b6ff00dbcaedf5beda",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000002_phase0_auth_storage_policies.sql": {
+    "mtime": 1790703297.4848895,
+    "ast_hash": "5dab5980b7c0c7ba081c8e0a6410e398",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000003_phase1_core_trip_loop.sql": {
+    "mtime": 1790704329.0594423,
+    "ast_hash": "99a211ee60d4dccd192e03a202ac92f7",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000004_fix_vehicle_columns_and_helpers.sql": {
+    "mtime": 1790705009.6396139,
+    "ast_hash": "e7177fdf6e4f6586d8c8aaf30e9fc9a0",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000005_driver_profile_rpc.sql": {
+    "mtime": 1790705141.832825,
+    "ast_hash": "ef3bfb9e6a0a8f924656c80d284033cf",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000006_fix_publish_trip_columns.sql": {
+    "mtime": 1790705252.6053212,
+    "ast_hash": "3a745fc85644427c74806ce28a7d418a",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000007_fix_book_segment_ambiguity.sql": {
+    "mtime": 1790705303.7539217,
+    "ast_hash": "83561a45b86ab57d649e50f31924cad0",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000008_phase2_subscriptions_and_radar.sql": {
+    "mtime": 1790705667.2330067,
+    "ast_hash": "730f3328e66eb908d5051701802849ce",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000009_fix_subscription_summary_rpc.sql": {
+    "mtime": 1790705735.0444143,
+    "ast_hash": "ccbbac4cf32443688546e1f1f08212c9",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000010_fix_payment_simulation_method.sql": {
+    "mtime": 1790705792.0207276,
+    "ast_hash": "91565ea556ed8c6a2ae3bf99c0060d54",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000011_phase3_momo_payments.sql": {
+    "mtime": 1790718331.2737095,
+    "ast_hash": "ad46df404c77041f890f81b57548eeb3",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260929000012_payment_status_helper.sql": {
+    "mtime": 1790718738.5016508,
+    "ast_hash": "c005fb0426a099c3cd84377839721bef",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260930000944_phase5_admin_support_notifications.sql": {
+    "mtime": 1790730707.2705154,
+    "ast_hash": "348194c5e505b081b83f1108a0be9f5c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260930004935_postgis_and_geography_enhancements.sql": {
+    "mtime": 1790729391.0110915,
+    "ast_hash": "e192258e5c6e141d264b41718247f3c6",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260930011500_concurrency_and_private_hire_hardening.sql": {
+    "mtime": 1790731106.8334513,
+    "ast_hash": "276404b6527168e187ec95f1d0f16dc2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260930012000_fix_private_vehicle_booking_enum.sql": {
+    "mtime": 1790731179.1242154,
+    "ast_hash": "361d0a771022a2f4807dc543537eb1fc",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20260930232000_phase4_webhook_verification.sql": {
+    "mtime": 1790799727.0892482,
+    "ast_hash": "943cbb7c1b37dca1924e2a15b7961c49",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001120000_drop_ambiguous_function_overloads.sql": {
+    "mtime": 1790843998.8112104,
+    "ast_hash": "7fdd8266bbef29a4739c33e240388a1b",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001130000_phase5_sos_escalation_and_emergency_dispatch.sql": {
+    "mtime": 1790844673.768229,
+    "ast_hash": "96d1c5f2a70e45f811e2875872e93d11",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001140000_phase6_notifications_dispatcher_and_sms_templates.sql": {
+    "mtime": 1790845167.7726932,
+    "ast_hash": "063e9b3b1e99ce930835fb82955ac4a2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001150000_phase7_operations_storage_suspension_and_health.sql": {
+    "mtime": 1790849641.9535565,
+    "ast_hash": "8933dae71bae61279167deae14a84deb",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/tsconfig.app.json": {
+    "mtime": 1790702607.419321,
+    "ast_hash": "5f2dafd737dea8a4ddcbb10f5113ac5a",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/tsconfig.json": {
+    "mtime": 1790702607.419321,
+    "ast_hash": "a3d39fa780ebff65444de257f291ce6c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/tsconfig.node.json": {
+    "mtime": 1790702607.420321,
+    "ast_hash": "f9cb81ddcea69ffdab672fc8c48dca66",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/vercel.json": {
+    "mtime": 1790706579.1901283,
+    "ast_hash": "cf6fad1ce721da13630f9f3e7b81fd0c",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/vite.config.ts": {
+    "mtime": 1790722299.9653373,
+    "ast_hash": "37a0137a9fdb342019418663f368c845",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.agents/rules/graphify.md": {
+    "mtime": 1790846867.9542289,
+    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.agents/workflows/graphify.md": {
+    "mtime": 1790846867.9542289,
+    "ast_hash": "0bc020d491fca99550c1ea3de0a5f862",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.github/workflows/backend-cd-production.yml": {
+    "mtime": 1790849366.1271815,
+    "ast_hash": "db5ea877dc2a085b2f47e38a344b8d8b",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.github/workflows/backend-cd-staging.yml": {
+    "mtime": 1790849351.6942172,
+    "ast_hash": "43d00e584c89fbc8cff605a24d275cf0",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/.github/workflows/backend-ci.yml": {
+    "mtime": 1790849334.9472592,
+    "ast_hash": "f5fa71faaf8077b990c6829cf5bf29ae",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/PRD.md": {
+    "mtime": 1790052753.0,
+    "ast_hash": "b37a83dca900f463d9c07d449c09a8bc",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/README.md": {
+    "mtime": 1790702607.4163213,
+    "ast_hash": "10495bfcc6c568eca4dab6dd5df795d3",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/Work Plan.md": {
+    "mtime": 1790050890.0,
+    "ast_hash": "b6fafee71175affc9e35800280889260",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/index.html": {
+    "mtime": 1790706619.3701131,
+    "ast_hash": "877a3e498f5e4d8d1973b7a42928c89b",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/uber/DESIGN.md": {
+    "mtime": 1789824846.9016685,
+    "ast_hash": "5bc222b1d338c4354754c714d10e1004",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/public/favicon.svg": {
+    "mtime": 1790702607.415321,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/public/icons.svg": {
+    "mtime": 1790702607.4163213,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/public/wala-ride.jpeg": {
+    "mtime": 1790731195.0,
+    "ast_hash": "411e66a483be33538e7f7cfdf51d7753",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/assets/hero.png": {
+    "mtime": 1790702607.4183211,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/assets/react.svg": {
+    "mtime": 1790702607.4183211,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/assets/vite.svg": {
+    "mtime": 1790702607.4183211,
+    "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  }
+}

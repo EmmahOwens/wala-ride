@@ -72,7 +72,7 @@ jobs:
         run: |
           supabase db reset
 
-      - name: Execute End-to-End Test Suite (Phases 1 through 5)
+      - name: Execute End-to-End Test Suite (Phases 1 through 7)
         env:
           SUPABASE_URL: "http://127.0.0.1:54321"
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LOCAL_SUPABASE_SERVICE_ROLE_KEY }}
@@ -80,10 +80,12 @@ jobs:
           node scripts/test_phase1.mjs
           node scripts/test_phase2.mjs
           node scripts/test_phase3.mjs
-          node scripts/test_phase4.mjs
-          node scripts/test_phase5.mjs
           node scripts/test_google_maps_and_postgis.mjs
           node scripts/test_phase3_concurrency.mjs
+          node scripts/test_backend_phase4.mjs
+          node scripts/test_backend_phase5.mjs
+          node scripts/test_backend_phase6.mjs
+          node scripts/test_backend_phase7.mjs
 
       - name: Stop Local Supabase
         if: always()

@@ -11,10 +11,34 @@ async function runBackendPhase5Verification() {
   console.log('================================================================\n');
 
   // 1. Get test trip & passenger
-  const { data: trips } = await supabase
+  let { data: trips } = await supabase
     .from('trips')
     .select('id, driver_id, route:routes(name), vehicle:vehicles(license_plate)')
     .limit(1);
+
+  if (!trips || trips.length === 0) {
+    const { data: drivers } = await supabase.from('driver_profiles').select('id').limit(1);
+    const { data: routes } = await supabase.from('routes').select('id').limit(1);
+    const { data: vehicles } = await supabase.from('vehicles').select('id').limit(1);
+
+    if (drivers?.[0] && routes?.[0] && vehicles?.[0]) {
+      await supabase.from('trips').insert({
+        driver_id: drivers[0].id,
+        route_id: routes[0].id,
+        vehicle_id: vehicles[0].id,
+        departs_at: new Date(Date.now() + 86400000).toISOString(),
+        seats_total: 4,
+        seats_available: 4,
+        price_ugx: 25000,
+        status: 'scheduled',
+      });
+      const res = await supabase
+        .from('trips')
+        .select('id, driver_id, route:routes(name), vehicle:vehicles(license_plate)')
+        .limit(1);
+      trips = res.data;
+    }
+  }
 
   if (!trips || trips.length === 0) {
     throw new Error('No trips found for testing');

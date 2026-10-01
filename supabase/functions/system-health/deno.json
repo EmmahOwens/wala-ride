@@ -1,0 +1,10 @@
+{
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any", "no-import-prefix", "no-unversioned-import"]
+    }
+  },
+  "imports": {
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2"
+  }
+}

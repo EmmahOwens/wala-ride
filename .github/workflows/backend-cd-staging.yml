@@ -45,6 +45,9 @@ jobs:
           if [ -d "supabase/functions/notifications-dispatcher" ]; then
             supabase functions deploy notifications-dispatcher --use-api
           fi
+          if [ -d "supabase/functions/system-health" ]; then
+            supabase functions deploy system-health --no-verify-jwt --use-api
+          fi
 
       - name: Sync Staging Secrets
         env:
@@ -63,4 +66,5 @@ jobs:
           SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.STAGING_SUPABASE_ANON_KEY }}
         run: |
-          node scripts/test_phase5.mjs
+          curl -f -s https://${{ secrets.STAGING_SUPABASE_PROJECT_REF }}.supabase.co/functions/v1/system-health || true
+          node scripts/test_backend_phase7.mjs

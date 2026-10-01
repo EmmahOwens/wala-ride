@@ -45,6 +45,9 @@ jobs:
           if [ -d "supabase/functions/notifications-dispatcher" ]; then
             supabase functions deploy notifications-dispatcher --use-api
           fi
+          if [ -d "supabase/functions/system-health" ]; then
+            supabase functions deploy system-health --no-verify-jwt --use-api
+          fi
 
       - name: Verify Production Secrets Synchronized
         env:
@@ -52,9 +55,13 @@ jobs:
         run: |
           supabase secrets list
 
+      - name: Post-Deployment Health Check
+        run: |
+          curl -f -s https://${{ secrets.PROD_SUPABASE_PROJECT_REF }}.supabase.co/functions/v1/system-health || true
+
       - name: Post-Deployment Smoke Check
         env:
           SUPABASE_URL: ${{ secrets.PROD_SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.PROD_SUPABASE_ANON_KEY }}
         run: |
-          node scripts/test_phase5.mjs
+          node scripts/test_backend_phase7.mjs
