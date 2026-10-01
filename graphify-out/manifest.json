@@ -645,8 +645,13 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/helpers/getEnv.mjs": {
-    "mtime": 1790862814.9625268,
-    "ast_hash": "7429ca3745965830d9e48af5d6011bdf",
+    "mtime": 1790868391.872874,
+    "ast_hash": "e83594318d13d36e19cff05a3d1160d8",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001190000_security_advisor_remediation.sql": {
+    "mtime": 1790869266.1574976,
+    "ast_hash": "97ae0ae1e81d04b1e015bcdd03ce98d3",
     "semantic_hash": ""
   }
 }

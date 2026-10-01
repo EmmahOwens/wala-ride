@@ -16,6 +16,9 @@ export function getSupabaseCredentials() {
       path.join(rootDir, '.env'),
     ];
 
+    let envServiceKey = null;
+    let envAnonKey = null;
+
     for (const envFile of envCandidates) {
       if (fs.existsSync(envFile)) {
         try {
@@ -30,14 +33,19 @@ export function getSupabaseCredentials() {
             if (!url && (k === 'VITE_SUPABASE_URL' || k === 'SUPABASE_URL')) {
               url = v;
             }
-            if (!key && (k === 'VITE_SUPABASE_ANON_KEY' || k === 'SUPABASE_ANON_KEY' || k === 'SUPABASE_SERVICE_ROLE_KEY')) {
-              key = v;
+            if (k === 'SUPABASE_SERVICE_ROLE_KEY') {
+              envServiceKey = v;
+            } else if (k === 'VITE_SUPABASE_ANON_KEY' || k === 'SUPABASE_ANON_KEY') {
+              if (!envAnonKey) envAnonKey = v;
             }
           }
         } catch (_err) {
           // Ignore read errors
         }
       }
+    }
+    if (!key) {
+      key = envServiceKey || envAnonKey;
     }
   }
 
