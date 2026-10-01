@@ -21,8 +21,34 @@ if (!isSupabaseConfigured) {
 const supabaseUrl = isSupabaseConfigured ? rawSupabaseUrl : 'https://placeholder.supabase.co';
 const supabaseAnonKey = isSupabaseConfigured ? rawSupabaseAnonKey : 'placeholder-anon-key';
 
+export function getPortalStorageKey(): string {
+  if (typeof window === 'undefined') return 'wala_passenger_session';
+  const dataApp = document.documentElement.getAttribute('data-app');
+  if (dataApp === 'admin') return 'wala_admin_session';
+  if (dataApp === 'driver') return 'wala_driver_session';
+  if (dataApp === 'passenger') return 'wala_passenger_session';
+
+  const hostname = window.location.hostname;
+  const pathname = window.location.pathname;
+  if (hostname.startsWith('admin.') || pathname.startsWith('/admin')) {
+    return 'wala_admin_session';
+  }
+  if (hostname.startsWith('driver.') || pathname.startsWith('/driver')) {
+    return 'wala_driver_session';
+  }
+  return 'wala_passenger_session';
+}
+
 export const supabase = createClient<Database>(
   supabaseUrl,
-  supabaseAnonKey
+  supabaseAnonKey,
+  {
+    auth: {
+      storageKey: getPortalStorageKey(),
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  }
 );
 

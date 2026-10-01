@@ -850,6 +850,249 @@
       "norm_label": "app()"
     },
     {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L1",
+      "id": "admin_app",
+      "community": 46,
+      "norm_label": "app.tsx"
+    },
+    {
+      "label": "AdminTab",
+      "file_type": "code",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L24",
+      "id": "admin_app_admintab",
+      "community": 46,
+      "norm_label": "admintab"
+    },
+    {
+      "label": "AdminDashboard()",
+      "file_type": "code",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L26",
+      "id": "admin_app_admindashboard",
+      "community": 46,
+      "norm_label": "admindashboard()"
+    },
+    {
+      "label": "AdminAppContent()",
+      "file_type": "code",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L167",
+      "id": "admin_app_adminappcontent",
+      "community": 46,
+      "norm_label": "adminappcontent()"
+    },
+    {
+      "label": "AdminApp()",
+      "file_type": "code",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L220",
+      "id": "admin_app_adminapp",
+      "community": 46,
+      "norm_label": "adminapp()"
+    },
+    {
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L1",
+      "id": "admin_navbar",
+      "community": 46,
+      "norm_label": "navbar.tsx"
+    },
+    {
+      "label": "AdminNavbarProps",
+      "file_type": "code",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L6",
+      "id": "admin_navbar_adminnavbarprops",
+      "community": 46,
+      "norm_label": "adminnavbarprops"
+    },
+    {
+      "label": "AdminNavbar()",
+      "file_type": "code",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L11",
+      "id": "admin_navbar_adminnavbar",
+      "community": 46,
+      "norm_label": "adminnavbar()"
+    },
+    {
+      "label": "AdminUserDirectory.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L1",
+      "id": "components_adminuserdirectory",
+      "community": 0,
+      "norm_label": "adminuserdirectory.tsx"
+    },
+    {
+      "label": "DirectoryUser",
+      "file_type": "code",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L11",
+      "id": "components_adminuserdirectory_directoryuser",
+      "community": 0,
+      "norm_label": "directoryuser"
+    },
+    {
+      "label": "AdminUserDirectory()",
+      "file_type": "code",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L28",
+      "id": "components_adminuserdirectory_adminuserdirectory",
+      "community": 0,
+      "norm_label": "adminuserdirectory()"
+    },
+    {
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/admin/main.tsx",
+      "source_location": "L1",
+      "id": "admin_main",
+      "community": 17,
+      "norm_label": "main.tsx"
+    },
+    {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L1",
+      "id": "driver_app",
+      "community": 46,
+      "norm_label": "app.tsx"
+    },
+    {
+      "label": "DriverCockpit()",
+      "file_type": "code",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L25",
+      "id": "driver_app_drivercockpit",
+      "community": 46,
+      "norm_label": "drivercockpit()"
+    },
+    {
+      "label": "DriverAppContent()",
+      "file_type": "code",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L132",
+      "id": "driver_app_driverappcontent",
+      "community": 46,
+      "norm_label": "driverappcontent()"
+    },
+    {
+      "label": "DriverApp()",
+      "file_type": "code",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L276",
+      "id": "driver_app_driverapp",
+      "community": 46,
+      "norm_label": "driverapp()"
+    },
+    {
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L1",
+      "id": "driver_navbar",
+      "community": 46,
+      "norm_label": "navbar.tsx"
+    },
+    {
+      "label": "DriverNavbarProps",
+      "file_type": "code",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L6",
+      "id": "driver_navbar_drivernavbarprops",
+      "community": 46,
+      "norm_label": "drivernavbarprops"
+    },
+    {
+      "label": "DriverNavbar()",
+      "file_type": "code",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L12",
+      "id": "driver_navbar_drivernavbar",
+      "community": 46,
+      "norm_label": "drivernavbar()"
+    },
+    {
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/driver/main.tsx",
+      "source_location": "L1",
+      "id": "driver_main",
+      "community": 17,
+      "norm_label": "main.tsx"
+    },
+    {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L1",
+      "id": "passenger_app",
+      "community": 46,
+      "norm_label": "app.tsx"
+    },
+    {
+      "label": "PassengerAppContent()",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L13",
+      "id": "passenger_app_passengerappcontent",
+      "community": 46,
+      "norm_label": "passengerappcontent()"
+    },
+    {
+      "label": "PassengerApp()",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L243",
+      "id": "passenger_app_passengerapp",
+      "community": 46,
+      "norm_label": "passengerapp()"
+    },
+    {
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L1",
+      "id": "passenger_navbar",
+      "community": 46,
+      "norm_label": "navbar.tsx"
+    },
+    {
+      "label": "PassengerNavbarProps",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L6",
+      "id": "passenger_navbar_passengernavbarprops",
+      "community": 46,
+      "norm_label": "passengernavbarprops"
+    },
+    {
+      "label": "PassengerNavbar()",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L14",
+      "id": "passenger_navbar_passengernavbar",
+      "community": 46,
+      "norm_label": "passengernavbar()"
+    },
+    {
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "src/apps/passenger/main.tsx",
+      "source_location": "L1",
+      "id": "passenger_main",
+      "community": 17,
+      "norm_label": "main.tsx"
+    },
+    {
       "label": "AdminDemandAnalytics.tsx",
       "file_type": "code",
       "source_file": "src/components/admin/AdminDemandAnalytics.tsx",
@@ -900,7 +1143,7 @@
       "source_file": "src/components/admin/AdminIncidentConsole.tsx",
       "source_location": "L34",
       "id": "admin_adminincidentconsole_adminincidentconsole",
-      "community": 46,
+      "community": 3,
       "norm_label": "adminincidentconsole()"
     },
     {
@@ -936,7 +1179,7 @@
       "source_file": "src/components/admin/AdminSupportQueue.tsx",
       "source_location": "L24",
       "id": "admin_adminsupportqueue_adminsupportqueue",
-      "community": 9,
+      "community": 46,
       "norm_label": "adminsupportqueue()"
     },
     {
@@ -1089,7 +1332,7 @@
       "source_file": "src/components/common/AddPickupPointModal.tsx",
       "source_location": "L12",
       "id": "common_addpickuppointmodal_addpickuppointmodal",
-      "community": 6,
+      "community": 46,
       "norm_label": "addpickuppointmodal()"
     },
     {
@@ -1188,7 +1431,7 @@
       "source_file": "src/components/driver/DriverOnboarding.tsx",
       "source_location": "L1",
       "id": "driver_driveronboarding",
-      "community": 5,
+      "community": 46,
       "norm_label": "driveronboarding.tsx"
     },
     {
@@ -1224,7 +1467,7 @@
       "source_file": "src/components/driver/DriverRadarDashboard.tsx",
       "source_location": "L13",
       "id": "driver_driverradardashboard_driverradardashboard",
-      "community": 5,
+      "community": 46,
       "norm_label": "driverradardashboard()"
     },
     {
@@ -1233,7 +1476,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L1",
       "id": "driver_driverrouterequestmodal",
-      "community": 5,
+      "community": 0,
       "norm_label": "driverrouterequestmodal.tsx"
     },
     {
@@ -1242,7 +1485,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L11",
       "id": "driver_driverrouterequestmodal_routerequestentry",
-      "community": 5,
+      "community": 0,
       "norm_label": "routerequestentry"
     },
     {
@@ -1251,7 +1494,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L23",
       "id": "driver_driverrouterequestmodal_placeprediction",
-      "community": 5,
+      "community": 0,
       "norm_label": "placeprediction"
     },
     {
@@ -1260,7 +1503,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L30",
       "id": "driver_driverrouterequestmodal_driverrouterequestmodalprops",
-      "community": 5,
+      "community": 0,
       "norm_label": "driverrouterequestmodalprops"
     },
     {
@@ -1269,7 +1512,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L37",
       "id": "driver_driverrouterequestmodal_window",
-      "community": 5,
+      "community": 0,
       "norm_label": "window"
     },
     {
@@ -1278,7 +1521,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L41",
       "id": "driver_driverrouterequestmodal_mapscallbacks",
-      "community": 5,
+      "community": 0,
       "norm_label": "mapscallbacks"
     },
     {
@@ -1287,7 +1530,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L43",
       "id": "driver_driverrouterequestmodal_loadgooglemapssdk",
-      "community": 5,
+      "community": 0,
       "norm_label": "loadgooglemapssdk()"
     },
     {
@@ -1296,7 +1539,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L66",
       "id": "driver_driverrouterequestmodal_callproxy",
-      "community": 5,
+      "community": 0,
       "norm_label": "callproxy()"
     },
     {
@@ -1305,7 +1548,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L76",
       "id": "driver_driverrouterequestmodal_locationpickerprops",
-      "community": 5,
+      "community": 0,
       "norm_label": "locationpickerprops"
     },
     {
@@ -1314,7 +1557,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L84",
       "id": "driver_driverrouterequestmodal_locationpicker",
-      "community": 5,
+      "community": 0,
       "norm_label": "locationpicker()"
     },
     {
@@ -1323,7 +1566,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L178",
       "id": "driver_driverrouterequestmodal_mappreviewprops",
-      "community": 5,
+      "community": 0,
       "norm_label": "mappreviewprops"
     },
     {
@@ -1332,7 +1575,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L188",
       "id": "driver_driverrouterequestmodal_mappreview",
-      "community": 5,
+      "community": 0,
       "norm_label": "mappreview()"
     },
     {
@@ -1341,7 +1584,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L348",
       "id": "driver_driverrouterequestmodal_driverrouterequestmodal",
-      "community": 5,
+      "community": 46,
       "norm_label": "driverrouterequestmodal()"
     },
     {
@@ -1368,7 +1611,7 @@
       "source_file": "src/components/driver/DriverSubscriptionView.tsx",
       "source_location": "L24",
       "id": "driver_driversubscriptionview_driversubscriptionview",
-      "community": 5,
+      "community": 46,
       "norm_label": "driversubscriptionview()"
     },
     {
@@ -1413,7 +1656,7 @@
       "source_file": "src/components/driver/TripPublisher.tsx",
       "source_location": "L9",
       "id": "driver_trippublisher_trippublisher",
-      "community": 3,
+      "community": 46,
       "norm_label": "trippublisher()"
     },
     {
@@ -1467,7 +1710,7 @@
       "source_file": "src/components/passenger/PassengerSupportModal.tsx",
       "source_location": "L26",
       "id": "passenger_passengersupportmodal_passengersupportmodal",
-      "community": 9,
+      "community": 46,
       "norm_label": "passengersupportmodal()"
     },
     {
@@ -1503,7 +1746,7 @@
       "source_file": "src/components/passenger/TripAlertModal.tsx",
       "source_location": "L1",
       "id": "passenger_tripalertmodal",
-      "community": 47,
+      "community": 5,
       "norm_label": "tripalertmodal.tsx"
     },
     {
@@ -1512,7 +1755,7 @@
       "source_file": "src/components/passenger/TripAlertModal.tsx",
       "source_location": "L6",
       "id": "passenger_tripalertmodal_tripalertmodalprops",
-      "community": 47,
+      "community": 5,
       "norm_label": "tripalertmodalprops"
     },
     {
@@ -1521,7 +1764,7 @@
       "source_file": "src/components/passenger/TripAlertModal.tsx",
       "source_location": "L17",
       "id": "passenger_tripalertmodal_tripalertmodal",
-      "community": 47,
+      "community": 5,
       "norm_label": "tripalertmodal()"
     },
     {
@@ -1566,7 +1809,7 @@
       "source_file": "src/components/tracking/LiveTripTrackerModal.tsx",
       "source_location": "L22",
       "id": "tracking_livetriptrackermodal_livetriptrackermodalprops",
-      "community": 1,
+      "community": 3,
       "norm_label": "livetriptrackermodalprops"
     },
     {
@@ -1575,7 +1818,7 @@
       "source_file": "src/components/tracking/LiveTripTrackerModal.tsx",
       "source_location": "L29",
       "id": "tracking_livetriptrackermodal_livetriptrackermodal",
-      "community": 1,
+      "community": 3,
       "norm_label": "livetriptrackermodal()"
     },
     {
@@ -1584,7 +1827,7 @@
       "source_file": "src/components/tracking/PublicTrackingView.tsx",
       "source_location": "L1",
       "id": "tracking_publictrackingview",
-      "community": 3,
+      "community": 46,
       "norm_label": "publictrackingview.tsx"
     },
     {
@@ -1593,7 +1836,7 @@
       "source_file": "src/components/tracking/PublicTrackingView.tsx",
       "source_location": "L15",
       "id": "tracking_publictrackingview_publictrackingviewprops",
-      "community": 3,
+      "community": 46,
       "norm_label": "publictrackingviewprops"
     },
     {
@@ -1638,7 +1881,7 @@
       "source_file": "src/config/supabase.ts",
       "source_location": "L1",
       "id": "config_supabase",
-      "community": 46,
+      "community": 0,
       "norm_label": "supabase.ts"
     },
     {
@@ -1651,10 +1894,19 @@
       "norm_label": "issupabaseconfigured"
     },
     {
-      "label": "supabase",
+      "label": "getPortalStorageKey()",
       "file_type": "code",
       "source_file": "src/config/supabase.ts",
       "source_location": "L24",
+      "id": "config_supabase_getportalstoragekey",
+      "community": 0,
+      "norm_label": "getportalstoragekey()"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "src/config/supabase.ts",
+      "source_location": "L42",
       "id": "config_supabase_supabase",
       "community": 0,
       "norm_label": "supabase"
@@ -1827,7 +2079,7 @@
       "source_file": "src/services/interfaces/INotificationService.ts",
       "source_location": "L1",
       "id": "interfaces_inotificationservice",
-      "community": 46,
+      "community": 7,
       "norm_label": "inotificationservice.ts"
     },
     {
@@ -1836,7 +2088,7 @@
       "source_file": "src/services/interfaces/INotificationService.ts",
       "source_location": "L3",
       "id": "interfaces_inotificationservice_inotificationservice",
-      "community": 46,
+      "community": 7,
       "norm_label": "inotificationservice"
     },
     {
@@ -1845,7 +2097,7 @@
       "source_file": "src/services/interfaces/IRadarService.ts",
       "source_location": "L1",
       "id": "interfaces_iradarservice",
-      "community": 47,
+      "community": 5,
       "norm_label": "iradarservice.ts"
     },
     {
@@ -1854,7 +2106,7 @@
       "source_file": "src/services/interfaces/IRadarService.ts",
       "source_location": "L3",
       "id": "interfaces_iradarservice_iradarservice",
-      "community": 47,
+      "community": 5,
       "norm_label": "iradarservice"
     },
     {
@@ -2403,7 +2655,7 @@
       "source_file": "src/services/supabase/SupabaseDriverService.ts",
       "source_location": "L126",
       "id": "supabase_supabasedriverservice_driverservice",
-      "community": 3,
+      "community": 2,
       "norm_label": "driverservice"
     },
     {
@@ -2502,7 +2754,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L1",
       "id": "supabase_supabasenotificationservice",
-      "community": 46,
+      "community": 7,
       "norm_label": "supabasenotificationservice.ts"
     },
     {
@@ -2511,7 +2763,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L5",
       "id": "supabase_supabasenotificationservice_supabasenotificationservice",
-      "community": 46,
+      "community": 7,
       "norm_label": "supabasenotificationservice"
     },
     {
@@ -2520,7 +2772,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L6",
       "id": "supabase_supabasenotificationservice_supabasenotificationservice_getusernotifications",
-      "community": 46,
+      "community": 7,
       "norm_label": ".getusernotifications()"
     },
     {
@@ -2529,7 +2781,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L25",
       "id": "supabase_supabasenotificationservice_supabasenotificationservice_markasread",
-      "community": 46,
+      "community": 7,
       "norm_label": ".markasread()"
     },
     {
@@ -2538,7 +2790,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L38",
       "id": "supabase_supabasenotificationservice_supabasenotificationservice_markallasread",
-      "community": 46,
+      "community": 7,
       "norm_label": ".markallasread()"
     },
     {
@@ -2547,7 +2799,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L51",
       "id": "supabase_supabasenotificationservice_supabasenotificationservice_subscribetonotifications",
-      "community": 46,
+      "community": 7,
       "norm_label": ".subscribetonotifications()"
     },
     {
@@ -2556,7 +2808,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L77",
       "id": "supabase_supabasenotificationservice_supabasenotificationservice_registerpushsubscription",
-      "community": 46,
+      "community": 7,
       "norm_label": ".registerpushsubscription()"
     },
     {
@@ -2565,7 +2817,7 @@
       "source_file": "src/services/supabase/SupabaseNotificationService.ts",
       "source_location": "L101",
       "id": "supabase_supabasenotificationservice_notificationservice",
-      "community": 46,
+      "community": 7,
       "norm_label": "notificationservice"
     },
     {
@@ -2574,7 +2826,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L1",
       "id": "supabase_supabaseradarservice",
-      "community": 47,
+      "community": 5,
       "norm_label": "supabaseradarservice.ts"
     },
     {
@@ -2583,7 +2835,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L5",
       "id": "supabase_supabaseradarservice_supabaseradarservice",
-      "community": 47,
+      "community": 5,
       "norm_label": "supabaseradarservice"
     },
     {
@@ -2592,7 +2844,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L6",
       "id": "supabase_supabaseradarservice_supabaseradarservice_createtripalert",
-      "community": 47,
+      "community": 5,
       "norm_label": ".createtripalert()"
     },
     {
@@ -2601,7 +2853,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L29",
       "id": "supabase_supabaseradarservice_supabaseradarservice_getdriverradarleads",
-      "community": 47,
+      "community": 5,
       "norm_label": ".getdriverradarleads()"
     },
     {
@@ -2610,7 +2862,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L42",
       "id": "supabase_supabaseradarservice_supabaseradarservice_reveallead",
-      "community": 47,
+      "community": 5,
       "norm_label": ".reveallead()"
     },
     {
@@ -2619,7 +2871,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L60",
       "id": "supabase_supabaseradarservice_supabaseradarservice_getpassengeralerts",
-      "community": 47,
+      "community": 5,
       "norm_label": ".getpassengeralerts()"
     },
     {
@@ -2628,7 +2880,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L76",
       "id": "supabase_supabaseradarservice_radarservice",
-      "community": 47,
+      "community": 5,
       "norm_label": "radarservice"
     },
     {
@@ -3073,12 +3325,93 @@
       "norm_label": "tripservice"
     },
     {
+      "label": "DriverVerificationGuard.tsx",
+      "file_type": "code",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L1",
+      "id": "guards_driververificationguard",
+      "community": 46,
+      "norm_label": "driververificationguard.tsx"
+    },
+    {
+      "label": "DriverVerificationGuardProps",
+      "file_type": "code",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L6",
+      "id": "guards_driververificationguard_driververificationguardprops",
+      "community": 46,
+      "norm_label": "driververificationguardprops"
+    },
+    {
+      "label": "DriverVerificationGuard()",
+      "file_type": "code",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L10",
+      "id": "guards_driververificationguard_driververificationguard",
+      "community": 46,
+      "norm_label": "driververificationguard()"
+    },
+    {
+      "label": "RoleGuard.tsx",
+      "file_type": "code",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L1",
+      "id": "guards_roleguard",
+      "community": 0,
+      "norm_label": "roleguard.tsx"
+    },
+    {
+      "label": "RoleGuardProps",
+      "file_type": "code",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L6",
+      "id": "guards_roleguard_roleguardprops",
+      "community": 0,
+      "norm_label": "roleguardprops"
+    },
+    {
+      "label": "RoleGuard()",
+      "file_type": "code",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L13",
+      "id": "guards_roleguard_roleguard",
+      "community": 46,
+      "norm_label": "roleguard()"
+    },
+    {
+      "label": "useAdminRealtime.ts",
+      "file_type": "code",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L1",
+      "id": "hooks_useadminrealtime",
+      "community": 0,
+      "norm_label": "useadminrealtime.ts"
+    },
+    {
+      "label": "AdminRealtimeCallbacks",
+      "file_type": "code",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L4",
+      "id": "hooks_useadminrealtime_adminrealtimecallbacks",
+      "community": 0,
+      "norm_label": "adminrealtimecallbacks"
+    },
+    {
+      "label": "useAdminRealtime()",
+      "file_type": "code",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L11",
+      "id": "hooks_useadminrealtime_useadminrealtime",
+      "community": 46,
+      "norm_label": "useadminrealtime()"
+    },
+    {
       "label": "database.types.ts",
       "file_type": "code",
       "source_file": "src/types/database.types.ts",
       "source_location": "L1",
       "id": "types_database_types",
-      "community": 46,
+      "community": 27,
       "norm_label": "database.types.ts"
     },
     {
@@ -3087,7 +3420,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L1",
       "id": "types_database_types_json",
-      "community": 46,
+      "community": 27,
       "norm_label": "json"
     },
     {
@@ -3096,7 +3429,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L9",
       "id": "types_database_types_database",
-      "community": 46,
+      "community": 27,
       "norm_label": "database"
     },
     {
@@ -3105,7 +3438,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2099",
       "id": "types_database_types_databasewithoutinternals",
-      "community": 46,
+      "community": 27,
       "norm_label": "databasewithoutinternals"
     },
     {
@@ -3114,7 +3447,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2101",
       "id": "types_database_types_defaultschema",
-      "community": 46,
+      "community": 27,
       "norm_label": "defaultschema"
     },
     {
@@ -3123,7 +3456,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2103",
       "id": "types_database_types_tables",
-      "community": 46,
+      "community": 27,
       "norm_label": "tables"
     },
     {
@@ -3132,7 +3465,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2132",
       "id": "types_database_types_tablesinsert",
-      "community": 46,
+      "community": 27,
       "norm_label": "tablesinsert"
     },
     {
@@ -3141,7 +3474,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2157",
       "id": "types_database_types_tablesupdate",
-      "community": 46,
+      "community": 27,
       "norm_label": "tablesupdate"
     },
     {
@@ -3150,7 +3483,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2182",
       "id": "types_database_types_enums",
-      "community": 46,
+      "community": 27,
       "norm_label": "enums"
     },
     {
@@ -3159,7 +3492,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2199",
       "id": "types_database_types_compositetypes",
-      "community": 46,
+      "community": 27,
       "norm_label": "compositetypes"
     },
     {
@@ -3168,7 +3501,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2216",
       "id": "types_database_types_constants",
-      "community": 46,
+      "community": 27,
       "norm_label": "constants"
     },
     {
@@ -3276,7 +3609,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L66",
       "id": "types_domain_town",
-      "community": 2,
+      "community": 6,
       "norm_label": "town"
     },
     {
@@ -3393,7 +3726,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L254",
       "id": "types_domain_radarlead",
-      "community": 47,
+      "community": 5,
       "norm_label": "radarlead"
     },
     {
@@ -3402,7 +3735,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L269",
       "id": "types_domain_tripalert",
-      "community": 47,
+      "community": 5,
       "norm_label": "tripalert"
     },
     {
@@ -3564,7 +3897,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L510",
       "id": "types_domain_appnotification",
-      "community": 46,
+      "community": 7,
       "norm_label": "appnotification"
     },
     {
@@ -4558,6 +4891,15 @@
       "norm_label": "vite.config.ts"
     },
     {
+      "label": "mpaDevRewrites()",
+      "file_type": "code",
+      "source_file": "vite.config.ts",
+      "source_location": "L6",
+      "id": "vite_config_mpadevrewrites",
+      "community": 44,
+      "norm_label": "mpadevrewrites()"
+    },
+    {
       "label": "graphify.md",
       "file_type": "document",
       "source_file": ".agents/rules/graphify.md",
@@ -5530,9 +5872,9 @@
       "source_file": "scripts/helpers/getEnv.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "helpers_getenv",
-      "target": "helpers_getenv_dirname",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_dirname"
     },
     {
       "relation": "contains",
@@ -5540,9 +5882,9 @@
       "source_file": "scripts/helpers/getEnv.mjs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "helpers_getenv",
-      "target": "helpers_getenv_filename",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_filename"
     },
     {
       "relation": "contains",
@@ -5550,9 +5892,9 @@
       "source_file": "scripts/helpers/getEnv.mjs",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "helpers_getenv",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "contains",
@@ -5560,9 +5902,9 @@
       "source_file": "scripts/helpers/getEnv.mjs",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "helpers_getenv",
-      "target": "helpers_getenv_rootdir",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_rootdir"
     },
     {
       "relation": "imports_from",
@@ -5571,9 +5913,9 @@
       "source_file": "scripts/test_backend_phase4.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase4",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5582,9 +5924,9 @@
       "source_file": "scripts/test_backend_phase5.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase5",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5593,9 +5935,9 @@
       "source_file": "scripts/test_backend_phase6.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase6",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5604,9 +5946,9 @@
       "source_file": "scripts/test_backend_phase7.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase7",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5615,9 +5957,9 @@
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_google_maps_and_postgis",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5626,9 +5968,9 @@
       "source_file": "scripts/test_phase1.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase1",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5637,9 +5979,9 @@
       "source_file": "scripts/test_phase2.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase2",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5648,9 +5990,9 @@
       "source_file": "scripts/test_phase3.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase3",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5659,9 +6001,9 @@
       "source_file": "scripts/test_phase3_concurrency.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase3_concurrency",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5670,9 +6012,9 @@
       "source_file": "scripts/test_phase4.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase4",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports_from",
@@ -5681,9 +6023,9 @@
       "source_file": "scripts/test_phase5.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase5",
-      "target": "helpers_getenv",
-      "confidence_score": 1.0
+      "target": "helpers_getenv"
     },
     {
       "relation": "imports",
@@ -5692,9 +6034,9 @@
       "source_file": "scripts/test_backend_phase4.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase4",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5703,9 +6045,9 @@
       "source_file": "scripts/test_backend_phase5.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase5",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5714,9 +6056,9 @@
       "source_file": "scripts/test_backend_phase6.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase6",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5725,9 +6067,9 @@
       "source_file": "scripts/test_backend_phase7.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase7",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5736,9 +6078,9 @@
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_google_maps_and_postgis",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5747,9 +6089,9 @@
       "source_file": "scripts/test_phase1.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase1",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5758,9 +6100,9 @@
       "source_file": "scripts/test_phase2.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase2",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5769,9 +6111,9 @@
       "source_file": "scripts/test_phase3.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase3",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5780,9 +6122,9 @@
       "source_file": "scripts/test_phase3_concurrency.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase3_concurrency",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5791,9 +6133,9 @@
       "source_file": "scripts/test_phase4.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase4",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "imports",
@@ -5802,9 +6144,9 @@
       "source_file": "scripts/test_phase5.mjs",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase5",
-      "target": "helpers_getenv_getsupabasecredentials",
-      "confidence_score": 1.0
+      "target": "helpers_getenv_getsupabasecredentials"
     },
     {
       "relation": "contains",
@@ -5832,9 +6174,9 @@
       "source_file": "scripts/test_backend_phase4.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase4",
-      "target": "scripts_test_backend_phase4_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_backend_phase4_url_key"
     },
     {
       "relation": "contains",
@@ -5862,9 +6204,9 @@
       "source_file": "scripts/test_backend_phase5.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase5",
-      "target": "scripts_test_backend_phase5_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_backend_phase5_url_key"
     },
     {
       "relation": "contains",
@@ -5892,9 +6234,9 @@
       "source_file": "scripts/test_backend_phase6.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase6",
-      "target": "scripts_test_backend_phase6_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_backend_phase6_url_key"
     },
     {
       "relation": "contains",
@@ -5922,9 +6264,9 @@
       "source_file": "scripts/test_backend_phase7.mjs",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_backend_phase7",
-      "target": "scripts_test_backend_phase7_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_backend_phase7_url_key"
     },
     {
       "relation": "contains",
@@ -5952,9 +6294,9 @@
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_google_maps_and_postgis",
-      "target": "scripts_test_google_maps_and_postgis_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_google_maps_and_postgis_url_key"
     },
     {
       "relation": "contains",
@@ -5982,9 +6324,9 @@
       "source_file": "scripts/test_phase1.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase1",
-      "target": "scripts_test_phase1_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_phase1_url_key"
     },
     {
       "relation": "contains",
@@ -6012,9 +6354,9 @@
       "source_file": "scripts/test_phase2.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase2",
-      "target": "scripts_test_phase2_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_phase2_url_key"
     },
     {
       "relation": "contains",
@@ -6042,9 +6384,9 @@
       "source_file": "scripts/test_phase3.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase3",
-      "target": "scripts_test_phase3_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_phase3_url_key"
     },
     {
       "relation": "contains",
@@ -6072,9 +6414,9 @@
       "source_file": "scripts/test_phase3_concurrency.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase3_concurrency",
-      "target": "scripts_test_phase3_concurrency_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_phase3_concurrency_url_key"
     },
     {
       "relation": "contains",
@@ -6102,9 +6444,9 @@
       "source_file": "scripts/test_phase4.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase4",
-      "target": "scripts_test_phase4_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_phase4_url_key"
     },
     {
       "relation": "contains",
@@ -6132,9 +6474,9 @@
       "source_file": "scripts/test_phase5.mjs",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_test_phase5",
-      "target": "scripts_test_phase5_url_key",
-      "confidence_score": 1.0
+      "target": "scripts_test_phase5_url_key"
     },
     {
       "relation": "imports_from",
@@ -6518,6 +6860,1232 @@
       "weight": 1.0,
       "source": "src_app_appcontent",
       "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_admindemandanalytics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_admindemandanalytics_admindemandanalytics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminincidentconsole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminincidentconsole_adminincidentconsole",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminroutemanager",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminroutemanager_adminroutemanager",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminsupportqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminsupportqueue_adminsupportqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminverificationqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_adminverificationqueue_adminverificationqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L220",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_app_adminapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_app_adminappcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_app_admindashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_app_admintab",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "admin_navbar_adminnavbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "auth_accountmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "auth_accountmodal_accountmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "auth_authmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "auth_authmodal_authmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "components_adminuserdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "components_adminuserdirectory_adminuserdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "context_authcontext_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "guards_roleguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "guards_roleguard_roleguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "hooks_useadminrealtime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "admin_app",
+      "target": "hooks_useadminrealtime_useadminrealtime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/main.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "admin_main",
+      "target": "admin_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/admin/App.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "admin_app_admindashboard",
+      "target": "hooks_useadminrealtime_useadminrealtime"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "admin_navbar",
+      "target": "admin_navbar_adminnavbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "admin_navbar",
+      "target": "admin_navbar_adminnavbarprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "admin_navbar",
+      "target": "common_notificationbell",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "admin_navbar",
+      "target": "common_notificationbell_notificationbell",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "admin_navbar",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "admin_navbar",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/admin/Navbar.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "admin_navbar_adminnavbar",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "components_adminuserdirectory",
+      "target": "components_adminuserdirectory_adminuserdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_adminuserdirectory",
+      "target": "components_adminuserdirectory_directoryuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_adminuserdirectory",
+      "target": "config_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/components/AdminUserDirectory.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_adminuserdirectory",
+      "target": "config_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/main.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "admin_main",
+      "target": "common_errorboundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/admin/main.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "admin_main",
+      "target": "common_errorboundary_errorboundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "auth_accountmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "auth_accountmodal_accountmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "auth_authmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "auth_authmodal_authmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "context_authcontext_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L276",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_app_driverapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_app_driverappcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_app_drivercockpit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driveronboarding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driveronboarding_driveronboarding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driverradardashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driverradardashboard_driverradardashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driverrouterequestmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driverrouterequestmodal_driverrouterequestmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driversubscriptionview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_driversubscriptionview_driversubscriptionview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_navbar_drivernavbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_trippublisher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "driver_trippublisher_trippublisher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "guards_driververificationguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "guards_driververificationguard_driververificationguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "guards_roleguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "driver_app",
+      "target": "guards_roleguard_roleguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/main.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "driver_main",
+      "target": "driver_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "driver_app_drivercockpit",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/driver/App.tsx",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "driver_app_driverappcontent",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "driver_navbar",
+      "target": "common_notificationbell",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "driver_navbar",
+      "target": "common_notificationbell_notificationbell",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "driver_navbar",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "driver_navbar",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "driver_navbar",
+      "target": "driver_navbar_drivernavbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "driver_navbar",
+      "target": "driver_navbar_drivernavbarprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/driver/Navbar.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "driver_navbar_drivernavbar",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/main.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "driver_main",
+      "target": "common_errorboundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/driver/main.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "driver_main",
+      "target": "common_errorboundary_errorboundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "auth_accountmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "auth_accountmodal_accountmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "auth_authmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "auth_authmodal_authmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "common_addpickuppointmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "common_addpickuppointmodal_addpickuppointmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "config_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "config_supabase_issupabaseconfigured",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "context_authcontext_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L243",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_app_passengerapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_app_passengerappcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_navbar_passengernavbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_passengersupportmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_passengersupportmodal_passengersupportmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_passengerview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "passenger_passengerview_passengerview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "tracking_publictrackingview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "passenger_app",
+      "target": "tracking_publictrackingview_publictrackingview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/main.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "passenger_main",
+      "target": "passenger_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/passenger/App.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "passenger_app_passengerappcontent",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "passenger_navbar",
+      "target": "common_notificationbell",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "passenger_navbar",
+      "target": "common_notificationbell_notificationbell",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "passenger_navbar",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "passenger_navbar",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "passenger_navbar",
+      "target": "passenger_navbar_passengernavbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "passenger_navbar",
+      "target": "passenger_navbar_passengernavbarprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/apps/passenger/Navbar.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "passenger_navbar_passengernavbar",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/main.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "passenger_main",
+      "target": "common_errorboundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/apps/passenger/main.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "passenger_main",
+      "target": "common_errorboundary_errorboundary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -7715,6 +9283,17 @@
       "target": "types_domain_vehicle"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "guards_driververificationguard",
+      "target": "driver_driveronboarding",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -7724,6 +9303,17 @@
       "weight": 1.0,
       "source": "driver_driveronboarding_driveronboarding",
       "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "guards_driververificationguard",
+      "target": "driver_driveronboarding_driveronboarding",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -9256,6 +10846,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/config/supabase.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "config_supabase",
+      "target": "config_supabase_getportalstoragekey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/config/supabase.ts",
       "source_location": "L7",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9304,6 +10904,17 @@
       "confidence_score": 1.0,
       "source": "context_authcontext",
       "target": "config_supabase"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "hooks_useadminrealtime",
+      "target": "config_supabase",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9436,6 +11047,17 @@
       "confidence_score": 1.0,
       "source": "context_authcontext",
       "target": "config_supabase_supabase"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "hooks_useadminrealtime",
+      "target": "config_supabase_supabase",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9709,6 +11331,28 @@
       "target": "types_domain_userroletype"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "guards_driververificationguard",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "guards_roleguard",
+      "target": "context_authcontext",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "references",
       "context": "field",
       "confidence": "EXTRACTED",
@@ -9751,6 +11395,50 @@
       "confidence_score": 1.0,
       "source": "context_authcontext_authcontexttype",
       "target": "types_domain_userroletype"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "guards_driververificationguard",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "guards_driververificationguard_driververificationguard",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "guards_roleguard",
+      "target": "context_authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "guards_roleguard_roleguard",
+      "target": "context_authcontext_useauth"
     },
     {
       "relation": "contains",
@@ -13498,6 +15186,99 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "guards_driververificationguard",
+      "target": "guards_driververificationguard_driververificationguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/DriverVerificationGuard.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "guards_driververificationguard",
+      "target": "guards_driververificationguard_driververificationguardprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "guards_roleguard",
+      "target": "guards_roleguard_roleguard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "guards_roleguard",
+      "target": "guards_roleguard_roleguardprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "guards_roleguard",
+      "target": "types_domain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "guards_roleguard",
+      "target": "types_domain_userroletype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/components/guards/RoleGuard.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "guards_roleguard_roleguardprops",
+      "target": "types_domain_userroletype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "hooks_useadminrealtime",
+      "target": "hooks_useadminrealtime_adminrealtimecallbacks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/hooks/useAdminRealtime.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "hooks_useadminrealtime",
+      "target": "hooks_useadminrealtime_useadminrealtime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/types/database.types.ts",
       "source_location": "L2199",
       "weight": 1.0,
@@ -14989,6 +16770,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "vite.config.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "vite_config",
+      "target": "vite_config_mpadevrewrites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L6",
       "weight": 1.0,
@@ -15578,5 +17369,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d2767933cd5267e6a46932417c5bb4c03e5036a3"
+  "built_at_commit": "3c9c20facab74ca4d418ffdc987b0dc67d22fd6e"
 }
