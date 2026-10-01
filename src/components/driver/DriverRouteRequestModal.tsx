@@ -171,81 +171,173 @@ const LocationPicker: React.FC<LocationPickerProps> = ({ label, icon, value, onS
   );
 };
 
-// ─── Map preview (Google Maps JS or static embed fallback) ────────────────────
+// ─── Map preview ─────────────────────────────────────────────────────────────
+// Renders the route using the encoded polyline returned by the proxy.
+// No legacy DirectionsService call — uses geometry.encoding.decodePath() instead.
 
 interface MapPreviewProps {
   originLat: number | null;
   originLng: number | null;
   destLat: number | null;
   destLng: number | null;
-  mapsKey: string | null;
+  encodedPolyline: string | null;  // from compute_route proxy response
+  submitted: boolean;              // keep map visible + show overlay after submit
   mapsSDKReady: boolean;
 }
 
-const MapPreview: React.FC<MapPreviewProps> = ({ originLat, originLng, destLat, destLng, mapsKey, mapsSDKReady }) => {
+const MapPreview: React.FC<MapPreviewProps> = ({
+  originLat, originLng, destLat, destLng,
+  encodedPolyline, submitted, mapsSDKReady,
+}) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
-  const directionsServiceRef = useRef<any>(null);
-  const directionsRendererRef = useRef<any>(null);
+  const polylineRef = useRef<any>(null);
+  const originMarkerRef = useRef<any>(null);
+  const destMarkerRef = useRef<any>(null);
 
-  // Initialize map
+  // Initialise map once SDK is ready
   useEffect(() => {
     if (!mapsSDKReady || !mapRef.current || !window.google?.maps) return;
     if (mapInstanceRef.current) return;
-    const g = window.google.maps;
-    mapInstanceRef.current = new g.Map(mapRef.current, {
-      center: { lat: 0.3476, lng: 32.5825 },
-      zoom: 7,
+    mapInstanceRef.current = new window.google.maps.Map(mapRef.current, {
+      center: { lat: 1.3733, lng: 32.2903 }, // Uganda centre
+      zoom: 6,
       mapTypeControl: false,
       streetViewControl: false,
       fullscreenControl: false,
-    });
-    directionsServiceRef.current = new g.DirectionsService();
-    directionsRendererRef.current = new g.DirectionsRenderer({
-      map: mapInstanceRef.current,
-      polylineOptions: { strokeColor: '#000', strokeWeight: 4 },
+      zoomControl: true,
     });
   }, [mapsSDKReady]);
 
-  // Draw route
+  // Draw route whenever the polyline or coordinates change
   useEffect(() => {
-    if (!mapsSDKReady || !directionsServiceRef.current || !window.google?.maps) return;
-    if (!originLat || !originLng || !destLat || !destLng) return;
-    const g = window.google.maps;
-    directionsServiceRef.current.route(
-      {
-        origin: { lat: originLat, lng: originLng },
-        destination: { lat: destLat, lng: destLng },
-        travelMode: g.TravelMode.DRIVING,
-      },
-      (result: any, status: any) => {
-        if (status === 'OK') directionsRendererRef.current.setDirections(result);
-      }
-    );
-  }, [mapsSDKReady, originLat, originLng, destLat, destLng]);
+    const g = window.google?.maps;
+    if (!mapsSDKReady || !mapInstanceRef.current || !g) return;
 
-  // Fallback: static Google Maps embed when SDK not loaded but we have coords
-  if (!mapsSDKReady || !mapsKey) {
-    if (originLat && destLat) {
-      const src = `https://www.google.com/maps/embed/v1/directions?key=${mapsKey || ''}&origin=${originLat},${originLng}&destination=${destLat},${destLng}&mode=driving`;
-      return (
-        <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', border: '1px solid var(--color-hairline)', marginBottom: '16px' }}>
-          <iframe src={src} width="100%" height="280" style={{ border: 0, display: 'block' }} loading="lazy" title="Route map" />
-        </div>
-      );
+    // Clear previous drawings
+    if (polylineRef.current) { polylineRef.current.setMap(null); polylineRef.current = null; }
+    if (originMarkerRef.current) { originMarkerRef.current.setMap(null); originMarkerRef.current = null; }
+    if (destMarkerRef.current) { destMarkerRef.current.setMap(null); destMarkerRef.current = null; }
+
+    if (!originLat || !originLng || !destLat || !destLng) return;
+
+    const originPos = { lat: originLat, lng: originLng };
+    const destPos   = { lat: destLat,   lng: destLng };
+
+    // Origin marker — green pin
+    originMarkerRef.current = new g.Marker({
+      position: originPos,
+      map: mapInstanceRef.current,
+      title: 'Origin',
+      icon: {
+        path: g.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: '#16a34a',
+        fillOpacity: 1,
+        strokeColor: '#fff',
+        strokeWeight: 2,
+      },
+    });
+
+    // Destination marker — black pin
+    destMarkerRef.current = new g.Marker({
+      position: destPos,
+      map: mapInstanceRef.current,
+      title: 'Destination',
+      icon: {
+        path: g.SymbolPath.CIRCLE,
+        scale: 10,
+        fillColor: '#000',
+        fillOpacity: 1,
+        strokeColor: '#fff',
+        strokeWeight: 2,
+      },
+    });
+
+    // Decode encoded polyline and draw road path
+    if (encodedPolyline && g.geometry?.encoding) {
+      const path = g.geometry.encoding.decodePath(encodedPolyline);
+      polylineRef.current = new g.Polyline({
+        path,
+        map: mapInstanceRef.current,
+        strokeColor: '#000000',
+        strokeWeight: 4,
+        strokeOpacity: 0.85,
+      });
+
+      // Fit map to the decoded path
+      const bounds = new g.LatLngBounds();
+      path.forEach((pt: any) => bounds.extend(pt));
+      mapInstanceRef.current.fitBounds(bounds, { top: 40, bottom: 40, left: 40, right: 40 });
+    } else {
+      // No polyline yet — just fit to the two markers
+      const bounds = new g.LatLngBounds();
+      bounds.extend(originPos);
+      bounds.extend(destPos);
+      mapInstanceRef.current.fitBounds(bounds, { top: 60, bottom: 60, left: 60, right: 60 });
     }
-    return null;
-  }
+  }, [mapsSDKReady, originLat, originLng, destLat, destLng, encodedPolyline]);
+
+  // Always render the map container — hide it only when there's nothing to show yet
+  const hasPoints = Boolean(originLat && destLat);
+  if (!mapsSDKReady && !hasPoints) return null;
 
   return (
-    <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', border: '1px solid var(--color-hairline)', marginBottom: '16px', position: 'relative' }}>
+    <div style={{
+      borderRadius: 'var(--radius-xl)', overflow: 'hidden',
+      border: '1px solid var(--color-hairline)', marginBottom: '16px',
+      position: 'relative',
+      display: (mapsSDKReady || hasPoints) ? 'block' : 'none',
+    }}>
+      {/* Loading skeleton */}
       {!mapsSDKReady && (
-        <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'var(--color-canvas-soft)', flexDirection: 'column', gap: '10px' }}>
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 10,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backgroundColor: 'var(--color-canvas-soft)', flexDirection: 'column', gap: '10px',
+        }}>
           <Loader size={26} style={{ animation: 'spin 1s linear infinite' }} />
           <span className="body-sm">Loading map…</span>
         </div>
       )}
-      <div ref={mapRef} style={{ width: '100%', height: '280px' }} />
+
+      <div ref={mapRef} style={{ width: '100%', height: '300px' }} />
+
+      {/* Route computing indicator */}
+      {mapsSDKReady && hasPoints && !encodedPolyline && (
+        <div style={{
+          position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)',
+          backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 'var(--radius-pill)',
+          padding: '6px 14px', fontSize: '12px', fontWeight: 600,
+          display: 'flex', alignItems: 'center', gap: '6px',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+        }}>
+          <Loader size={12} style={{ animation: 'spin 1s linear infinite' }} />
+          Calculating road route…
+        </div>
+      )}
+
+      {/* Success overlay after submit */}
+      {submitted && (
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(22, 163, 74, 0.15)',
+          backdropFilter: 'blur(1px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <div style={{
+            backgroundColor: '#fff', borderRadius: 'var(--radius-xl)',
+            padding: '16px 24px', textAlign: 'center',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
+          }}>
+            <CheckCircle size={32} color="#16a34a" />
+            <div style={{ fontWeight: 700, fontSize: '15px' }}>Route submitted for review</div>
+            <div style={{ fontSize: '13px', color: 'var(--color-body)' }}>Admin team will activate within 24h</div>
+          </div>
+        </div>
+      )}
+
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
@@ -265,6 +357,7 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
   const [destLng, setDestLng] = useState<number | null>(null);
   const [distanceKm, setDistanceKm] = useState<number | null>(null);
   const [durationMins, setDurationMins] = useState<number | null>(null);
+  const [encodedPolyline, setEncodedPolyline] = useState<string | null>(null);
   const [description, setDescription] = useState('');
 
   // Maps key from proxy
@@ -274,6 +367,7 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
 
   // UI state
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);   // keep map + overlay visible after success
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [requests, setRequests] = useState<RouteRequestEntry[]>([]);
   const [loadingRequests, setLoadingRequests] = useState(false);
@@ -298,10 +392,11 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
       .finally(() => setKeyLoading(false));
   }, [isOpen, mapsKey]);
 
-  // Auto-compute route distance when both points selected
+  // Auto-compute route + fetch encoded polyline when both points are selected
   useEffect(() => {
     if (!originName || !destName) return;
     setRouteLoading(true);
+    setEncodedPolyline(null); // clear stale polyline while fetching
     callProxy('compute_route', {
       origin: originLat && originLng ? { lat: originLat, lng: originLng } : originName,
       destination: destLat && destLng ? { lat: destLat, lng: destLng } : destName,
@@ -309,6 +404,7 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
       .then((res) => {
         if (res?.distance_km) setDistanceKm(res.distance_km);
         if (res?.estimated_duration_minutes) setDurationMins(res.estimated_duration_minutes);
+        if (res?.polyline) setEncodedPolyline(res.polyline);
       })
       .catch(() => { /* silent */ })
       .finally(() => setRouteLoading(false));
@@ -329,6 +425,13 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
   useEffect(() => {
     if (isOpen) loadRequests();
   }, [isOpen, loadRequests]);
+
+  const resetForm = () => {
+    setOriginName(''); setOriginLat(null); setOriginLng(null);
+    setDestName('');   setDestLat(null);   setDestLng(null);
+    setDistanceKm(null); setDurationMins(null); setEncodedPolyline(null);
+    setDescription(''); setSubmitted(false); setMessage(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -353,12 +456,11 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
     if (error) {
       setMessage({ type: 'error', text: error.message || 'Failed to submit route request.' });
     } else {
+      // Keep map visible with submitted overlay; don't clear coords/polyline yet
+      setSubmitted(true);
       setMessage({ type: 'success', text: 'Route request submitted! Our admin team will review it within 24 hours.' });
-      setOriginName(''); setOriginLat(null); setOriginLng(null);
-      setDestName(''); setDestLat(null); setDestLng(null);
-      setDistanceKm(null); setDurationMins(null); setDescription('');
+      setDescription('');
       await loadRequests();
-      setActiveTab('history');
     }
   };
 
@@ -474,13 +576,14 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
               />
             </div>
 
-            {/* Map preview */}
+            {/* Map preview — road route drawn from encoded polyline, stays visible after submit */}
             <MapPreview
               originLat={originLat}
               originLng={originLng}
               destLat={destLat}
               destLng={destLng}
-              mapsKey={mapsKey}
+              encodedPolyline={encodedPolyline}
+              submitted={submitted}
               mapsSDKReady={mapsSDKReady}
             />
 
@@ -546,13 +649,36 @@ export const DriverRouteRequestModal: React.FC<DriverRouteRequestModalProps> = (
             </div>
 
             <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
-              <button type="button" className="btn btn-secondary btn-md" onClick={handleClose}>
-                Cancel
-              </button>
-              <button type="submit" className="btn btn-primary btn-md" disabled={submitting || !canSubmit}>
-                {submitting ? 'Submitting…' : 'Submit Route Request'}
-                <Send size={15} />
-              </button>
+              {submitted ? (
+                // After successful submit: map stays visible, show these actions
+                <>
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-md"
+                    onClick={() => { setActiveTab('history'); }}
+                  >
+                    <Clock size={15} /> View My Requests
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-md"
+                    onClick={resetForm}
+                  >
+                    <RouteIcon size={15} /> Add Another Route
+                  </button>
+                </>
+              ) : (
+                // Normal state
+                <>
+                  <button type="button" className="btn btn-secondary btn-md" onClick={handleClose}>
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn btn-primary btn-md" disabled={submitting || !canSubmit}>
+                    {submitting ? 'Submitting…' : 'Submit Route Request'}
+                    <Send size={15} />
+                  </button>
+                </>
+              )}
             </div>
           </form>
         )}
