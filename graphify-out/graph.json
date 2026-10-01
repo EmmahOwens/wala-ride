@@ -4,24 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "DriverOnboarding.tsx",
-      "file_type": "code",
-      "source_file": "src/components/driver/DriverOnboarding.tsx",
-      "source_location": "L1",
-      "id": "driver_driveronboarding",
-      "community": 46,
-      "norm_label": "driveronboarding.tsx"
-    },
-    {
-      "label": "DriverOnboarding()",
-      "file_type": "code",
-      "source_file": "src/components/driver/DriverOnboarding.tsx",
-      "source_location": "L11",
-      "id": "driver_driveronboarding_driveronboarding",
-      "community": 46,
-      "norm_label": "driveronboarding()"
-    },
-    {
       "label": "DriverRouteRequestModal.tsx",
       "file_type": "code",
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
@@ -115,7 +97,7 @@
       "label": "MapPreviewProps",
       "file_type": "code",
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L176",
+      "source_location": "L178",
       "id": "driver_driverrouterequestmodal_mappreviewprops",
       "community": 46,
       "norm_label": "mappreviewprops"
@@ -124,7 +106,7 @@
       "label": "MapPreview()",
       "file_type": "code",
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L185",
+      "source_location": "L188",
       "id": "driver_driverrouterequestmodal_mappreview",
       "community": 46,
       "norm_label": "mappreview()"
@@ -133,136 +115,154 @@
       "label": "DriverRouteRequestModal()",
       "file_type": "code",
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L256",
+      "source_location": "L348",
       "id": "driver_driverrouterequestmodal_driverrouterequestmodal",
       "community": 46,
       "norm_label": "driverrouterequestmodal()"
+    },
+    {
+      "label": "DriverOnboarding.tsx",
+      "file_type": "code",
+      "source_file": "src/components/driver/DriverOnboarding.tsx",
+      "source_location": "L1",
+      "community": 46,
+      "norm_label": "driveronboarding.tsx",
+      "id": "driver_driveronboarding"
+    },
+    {
+      "label": "DriverOnboarding()",
+      "file_type": "code",
+      "source_file": "src/components/driver/DriverOnboarding.tsx",
+      "source_location": "L11",
+      "community": 46,
+      "norm_label": "driveronboarding()",
+      "id": "driver_driveronboarding_driveronboarding"
     },
     {
       "label": "PassengerView.tsx",
       "file_type": "code",
       "source_file": "src/components/passenger/PassengerView.tsx",
       "source_location": "L1",
-      "id": "passenger_passengerview",
       "community": 1,
-      "norm_label": "passengerview.tsx"
+      "norm_label": "passengerview.tsx",
+      "id": "passenger_passengerview"
     },
     {
       "label": "PassengerViewProps",
       "file_type": "code",
       "source_file": "src/components/passenger/PassengerView.tsx",
       "source_location": "L14",
-      "id": "passenger_passengerview_passengerviewprops",
       "community": 1,
-      "norm_label": "passengerviewprops"
+      "norm_label": "passengerviewprops",
+      "id": "passenger_passengerview_passengerviewprops"
     },
     {
       "label": "PassengerView()",
       "file_type": "code",
       "source_file": "src/components/passenger/PassengerView.tsx",
       "source_location": "L20",
-      "id": "passenger_passengerview_passengerview",
       "community": 46,
-      "norm_label": "passengerview()"
+      "norm_label": "passengerview()",
+      "id": "passenger_passengerview_passengerview"
     },
     {
       "label": "index.ts",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L1",
-      "id": "maps_proxy_index",
       "community": 12,
-      "norm_label": "index.ts"
+      "norm_label": "index.ts",
+      "id": "maps_proxy_index"
     },
     {
       "label": "corsHeaders",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L6",
-      "id": "maps_proxy_index_corsheaders",
       "community": 12,
-      "norm_label": "corsheaders"
+      "norm_label": "corsheaders",
+      "id": "maps_proxy_index_corsheaders"
     },
     {
       "label": "LatLng",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L12",
-      "id": "maps_proxy_index_latlng",
       "community": 12,
-      "norm_label": "latlng"
+      "norm_label": "latlng",
+      "id": "maps_proxy_index_latlng"
     },
     {
       "label": "ComputeRouteRequest",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L17",
-      "id": "maps_proxy_index_computerouterequest",
       "community": 12,
-      "norm_label": "computerouterequest"
+      "norm_label": "computerouterequest",
+      "id": "maps_proxy_index_computerouterequest"
     },
     {
       "label": "AutocompleteRequest",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L24",
-      "id": "maps_proxy_index_autocompleterequest",
       "community": 12,
-      "norm_label": "autocompleterequest"
+      "norm_label": "autocompleterequest",
+      "id": "maps_proxy_index_autocompleterequest"
     },
     {
       "label": "PlaceDetailsRequest",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L30",
-      "id": "maps_proxy_index_placedetailsrequest",
       "community": 12,
-      "norm_label": "placedetailsrequest"
+      "norm_label": "placedetailsrequest",
+      "id": "maps_proxy_index_placedetailsrequest"
     },
     {
       "label": "GeocodeRequest",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L35",
-      "id": "maps_proxy_index_geocoderequest",
       "community": 12,
-      "norm_label": "geocoderequest"
+      "norm_label": "geocoderequest",
+      "id": "maps_proxy_index_geocoderequest"
     },
     {
       "label": "DistanceMatrixRequest",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L41",
-      "id": "maps_proxy_index_distancematrixrequest",
       "community": 12,
-      "norm_label": "distancematrixrequest"
+      "norm_label": "distancematrixrequest",
+      "id": "maps_proxy_index_distancematrixrequest"
     },
     {
       "label": "SnapToRoadsRequest",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L46",
-      "id": "maps_proxy_index_snaptoroadsrequest",
       "community": 12,
-      "norm_label": "snaptoroadsrequest"
+      "norm_label": "snaptoroadsrequest",
+      "id": "maps_proxy_index_snaptoroadsrequest"
     },
     {
       "label": "formatLocation()",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L50",
-      "id": "maps_proxy_index_formatlocation",
       "community": 12,
-      "norm_label": "formatlocation()"
+      "norm_label": "formatlocation()",
+      "id": "maps_proxy_index_formatlocation"
     },
     {
       "label": "handleSimulatedResponse()",
       "file_type": "code",
       "source_file": "supabase/functions/maps-proxy/index.ts",
       "source_location": "L346",
-      "id": "maps_proxy_index_handlesimulatedresponse",
       "community": 12,
-      "norm_label": "handlesimulatedresponse()"
+      "norm_label": "handlesimulatedresponse()",
+      "id": "maps_proxy_index_handlesimulatedresponse"
     },
     {
       "label": ".oxlintrc.json",
@@ -5005,6 +5005,170 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/components/driver/DriverOnboarding.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driveronboarding",
+      "target": "driver_driverrouterequestmodal"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "config_supabase_supabase"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "context_authcontext_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_callproxy"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L256",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_driverrouterequestmodal"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_driverrouterequestmodalprops"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_loadgooglemapssdk"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_locationpicker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L76",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_locationpickerprops"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L185",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_mappreview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L176",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_mappreviewprops"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_mapscallbacks"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_placeprediction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_routerequestentry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driverrouterequestmodal",
+      "target": "driver_driverrouterequestmodal_window"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverOnboarding.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "driver_driveronboarding",
+      "target": "driver_driverrouterequestmodal_driverrouterequestmodal"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/driver/DriverOnboarding.tsx",
       "source_location": "L2",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -5053,28 +5217,6 @@
       "confidence_score": 1.0,
       "source": "driver_driveronboarding",
       "target": "driver_driverradardashboard_driverradardashboard"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverOnboarding.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "driver_driveronboarding",
-      "target": "driver_driverrouterequestmodal",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverOnboarding.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "driver_driveronboarding",
-      "target": "driver_driverrouterequestmodal_driverrouterequestmodal",
-      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -5207,148 +5349,6 @@
       "confidence_score": 1.0,
       "source": "src_app",
       "target": "driver_driveronboarding_driveronboarding"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "config_supabase_supabase",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "context_authcontext_useauth",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L66",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_callproxy",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L256",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_driverrouterequestmodal",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L30",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_driverrouterequestmodalprops",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L43",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_loadgooglemapssdk",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L84",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_locationpicker",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L76",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_locationpickerprops",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L185",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_mappreview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L176",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_mappreviewprops",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L41",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_mapscallbacks",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_placeprediction",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_routerequestentry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
-      "source_location": "L37",
-      "weight": 1.0,
-      "source": "driver_driverrouterequestmodal",
-      "target": "driver_driverrouterequestmodal_window",
-      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -5509,9 +5509,9 @@
       "source_file": "src/components/passenger/PassengerView.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "passenger_passengerview",
-      "target": "supabase_supabasetripservice_tripservice",
-      "confidence_score": 1.0
+      "target": "supabase_supabasetripservice_tripservice"
     },
     {
       "relation": "imports_from",
@@ -5597,9 +5597,9 @@
       "source_file": "src/components/passenger/PassengerView.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "passenger_passengerview",
-      "target": "types_domain_route",
-      "confidence_score": 1.0
+      "target": "types_domain_route"
     },
     {
       "relation": "imports",
@@ -14998,5 +14998,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7193ab8f639fee013c3ca8c5b47ec0d645fe3a04"
+  "built_at_commit": "74d28a73f520970548870f9d798f1bb242b6fb01"
 }
