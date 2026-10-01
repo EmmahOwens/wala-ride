@@ -3,7 +3,6 @@ import { useAuth } from '../../context/AuthContext';
 import { authService } from '../../services/supabase/SupabaseAuthService';
 import {
   X,
-  Phone,
   Mail,
   Lock,
   User,
@@ -23,21 +22,19 @@ import type { UserRoleType } from '../../types/domain';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialMode?: 'phone_otp' | 'email_otp' | 'password';
+  initialMode?: 'email_otp' | 'password';
 }
 
 export const AuthModal: React.FC<AuthModalProps> = ({
   isOpen,
   onClose,
-  initialMode = 'phone_otp',
+  initialMode = 'email_otp',
 }) => {
   const {
     user,
     profile,
     isPasswordRecovery,
     setIsPasswordRecovery,
-    signInWithOtp,
-    verifyOtp,
     sendEmailOtp,
     verifyEmailOtp,
     signInWithPassword,
@@ -49,14 +46,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     refreshProfile,
   } = useAuth();
 
-  // Mode: 'phone_otp' | 'email_otp' | 'password' | 'verify_otp' | 'forgot_password' | 'recovery'
-  const [authMode, setAuthMode] = useState<'phone_otp' | 'email_otp' | 'password' | 'verify_otp' | 'forgot_password' | 'recovery'>(
+  // Mode: 'email_otp' | 'password' | 'verify_otp' | 'forgot_password' | 'recovery'
+  const [authMode, setAuthMode] = useState<'email_otp' | 'password' | 'verify_otp' | 'forgot_password' | 'recovery'>(
     isPasswordRecovery ? 'recovery' : initialMode
   );
 
-  // OTP Verification target: 'phone' or 'email'
-  const [otpTargetType, setOtpTargetType] = useState<'phone' | 'email'>('phone');
-  const [phone, setPhone] = useState<string>('+2567');
   const [email, setEmail] = useState<string>('');
   const [otpToken, setOtpToken] = useState<string>('');
   const [countdown, setCountdown] = useState<number>(0);
@@ -108,33 +102,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     return cleaned;
   };
 
-  // SEND PHONE OTP
-  const handleSendPhoneOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMessage(null);
-    setSuccessMessage(null);
-    setLoading(true);
-
-    const formatted = formatUgandaPhone(phone);
-    if (!formatted.startsWith('+256') || formatted.length < 12) {
-      setErrorMessage('Please enter a valid Ugandan phone number (e.g. +256 701 234 567).');
-      setLoading(false);
-      return;
-    }
-
-    const { error } = await signInWithOtp(formatted);
-    setLoading(false);
-
-    if (error) {
-      setErrorMessage(error.message);
-    } else {
-      setOtpTargetType('phone');
-      setAuthMode('verify_otp');
-      setCountdown(60);
-      setSuccessMessage(`We sent a 6-digit verification code to ${formatted}.`);
-    }
-  };
-
   // SEND EMAIL OTP
   const handleSendEmailOtp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -155,75 +122,47 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     if (error) {
       setErrorMessage(error.message);
     } else {
-      setOtpTargetType('email');
       setAuthMode('verify_otp');
       setCountdown(60);
       setSuccessMessage(`We sent a 6-digit verification code to ${cleanEmail}.`);
     }
   };
 
-  // RESEND OTP (Phone or Email)
+  // RESEND EMAIL OTP
   const handleResendOtp = async () => {
     if (countdown > 0 || loading) return;
     setErrorMessage(null);
     setLoading(true);
 
-    if (otpTargetType === 'phone') {
-      const formatted = formatUgandaPhone(phone);
-      const { error } = await signInWithOtp(formatted);
-      setLoading(false);
-      if (error) {
-        setErrorMessage(error.message);
-      } else {
-        setCountdown(60);
-        setSuccessMessage(`A new 6-digit code was sent to ${formatted}.`);
-      }
+    const cleanEmail = email.trim();
+    const { error } = await sendEmailOtp(cleanEmail);
+    setLoading(false);
+
+    if (error) {
+      setErrorMessage(error.message);
     } else {
-      const cleanEmail = email.trim();
-      const { error } = await sendEmailOtp(cleanEmail);
-      setLoading(false);
-      if (error) {
-        setErrorMessage(error.message);
-      } else {
-        setCountdown(60);
-        setSuccessMessage(`A new 6-digit code was sent to ${cleanEmail}.`);
-      }
+      setCountdown(60);
+      setSuccessMessage(`A new 6-digit code was sent to ${cleanEmail}.`);
     }
   };
 
-  // VERIFY OTP (Handles both Phone and Email OTP)
+  // VERIFY EMAIL OTP
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
     setLoading(true);
 
-    if (otpTargetType === 'phone') {
-      const formatted = formatUgandaPhone(phone);
-      const { error } = await verifyOtp(formatted, otpToken.trim());
-      setLoading(false);
+    const cleanEmail = email.trim();
+    const { error } = await verifyEmailOtp(cleanEmail, otpToken.trim(), isSignUp ? 'signup' : 'email');
+    setLoading(false);
 
-      if (error) {
-        setErrorMessage(error.message || 'Invalid or expired phone verification code.');
-      } else {
-        if (profile && (profile.first_name || profile.last_name)) {
-          onClose();
-        } else {
-          setStep('onboarding');
-        }
-      }
+    if (error) {
+      setErrorMessage(error.message || 'Invalid or expired verification code.');
     } else {
-      const cleanEmail = email.trim();
-      const { error } = await verifyEmailOtp(cleanEmail, otpToken.trim(), isSignUp ? 'signup' : 'email');
-      setLoading(false);
-
-      if (error) {
-        setErrorMessage(error.message || 'Invalid or expired email verification code.');
+      if (profile && (profile.first_name || profile.last_name)) {
+        onClose();
       } else {
-        if (profile && (profile.first_name || profile.last_name)) {
-          onClose();
-        } else {
-          setStep('onboarding');
-        }
+        setStep('onboarding');
       }
     }
   };
@@ -265,10 +204,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         setErrorMessage(error.message);
       } else if (requiresEmailConfirmation) {
         // Automatically switch to Email OTP Verification code entry!
-        setOtpTargetType('email');
         setAuthMode('verify_otp');
         setCountdown(60);
-        setSuccessMessage(`Account created! A 6-digit confirmation code has been sent to ${email.trim()}.`);
+        setSuccessMessage(`Account created! A 6-digit verification code has been sent to ${email.trim()}.`);
       } else {
         setSuccessMessage('Account created and verified successfully!');
         setTimeout(() => onClose(), 600);
@@ -586,7 +524,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </form>
           </div>
         ) : authMode === 'verify_otp' ? (
-          /* STEP: UNIFIED 6-DIGIT OTP VERIFICATION (FOR PHONE OR EMAIL) */
+          /* STEP: 6-DIGIT EMAIL OTP VERIFICATION */
           <div>
             <div style={{ textAlign: 'center', marginBottom: '22px' }}>
               <div
@@ -601,10 +539,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   margin: '0 auto 12px',
                 }}
               >
-                {otpTargetType === 'phone' ? <Phone size={24} /> : <Mail size={24} />}
+                <Mail size={24} />
               </div>
               <h2 className="display-md" style={{ margin: 0 }}>
-                {otpTargetType === 'phone' ? 'Verify your phone' : 'Verify your email'}
+                Verify your email
               </h2>
               <p className="body-sm" style={{ marginTop: '6px', color: 'var(--color-body)' }}>
                 Enter the 6-digit verification code sent to
@@ -619,11 +557,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   marginTop: '4px',
                 }}
               >
-                <span>{otpTargetType === 'phone' ? phone : email}</span>
+                <span>{email}</span>
                 <button
                   type="button"
                   onClick={() => {
-                    setAuthMode(otpTargetType === 'phone' ? 'phone_otp' : 'email_otp');
+                    setAuthMode('email_otp');
                     setOtpToken('');
                   }}
                   style={{
@@ -693,7 +631,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     }}
                   >
                     <RefreshCw size={13} />
-                    Resend {otpTargetType === 'phone' ? 'SMS Code' : 'Email Code'}
+                    Resend Email Code
                   </button>
                 )}
               </div>
@@ -837,7 +775,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </form>
           </div>
         ) : (
-          /* STEP: PRIMARY AUTH METHODS (PHONE OTP / EMAIL OTP / PASSWORD) */
+          /* STEP: PRIMARY AUTH METHODS (EMAIL OTP / PASSWORD) */
           <div>
             {/* Header Branding */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '22px' }}>
@@ -870,98 +808,36 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 padding: '4px',
                 borderRadius: 'var(--radius-pill)',
                 marginBottom: '20px',
-                gap: '2px',
+                gap: '4px',
               }}
             >
               <button
                 type="button"
-                className={`btn btn-sm ${authMode === 'phone_otp' ? 'btn-primary' : 'btn-subtle'}`}
-                style={{ flex: 1, fontSize: '12px', padding: '6px 8px' }}
-                onClick={() => {
-                  setAuthMode('phone_otp');
-                  setErrorMessage(null);
-                  setSuccessMessage(null);
-                }}
-              >
-                <Phone size={13} /> Phone OTP
-              </button>
-              <button
-                type="button"
                 className={`btn btn-sm ${authMode === 'email_otp' ? 'btn-primary' : 'btn-subtle'}`}
-                style={{ flex: 1, fontSize: '12px', padding: '6px 8px' }}
+                style={{ flex: 1, fontSize: '13px', padding: '8px 12px' }}
                 onClick={() => {
                   setAuthMode('email_otp');
                   setErrorMessage(null);
                   setSuccessMessage(null);
                 }}
               >
-                <Mail size={13} /> Email OTP
+                <Mail size={14} /> Email OTP
               </button>
               <button
                 type="button"
                 className={`btn btn-sm ${authMode === 'password' ? 'btn-primary' : 'btn-subtle'}`}
-                style={{ flex: 1, fontSize: '12px', padding: '6px 8px' }}
+                style={{ flex: 1, fontSize: '13px', padding: '8px 12px' }}
                 onClick={() => {
                   setAuthMode('password');
                   setErrorMessage(null);
                   setSuccessMessage(null);
                 }}
               >
-                <Lock size={13} /> Password
+                <Lock size={14} /> Password
               </button>
             </div>
 
-            {/* 1. PHONE OTP AUTH */}
-            {authMode === 'phone_otp' && (
-              <form onSubmit={handleSendPhoneOtp}>
-                <div className="form-group">
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                    <label className="form-label" style={{ margin: 0 }}>
-                      Uganda Phone Number
-                    </label>
-                    <span style={{ fontSize: '11px', color: 'var(--color-body)' }}>MTN / Airtel</span>
-                  </div>
-                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        left: '14px',
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        color: 'var(--color-ink)',
-                        pointerEvents: 'none',
-                      }}
-                    >
-                      🇺🇬
-                    </span>
-                    <input
-                      type="tel"
-                      className="input-field"
-                      placeholder="+256 701 234 567"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      style={{ paddingLeft: '42px', fontWeight: 500 }}
-                      required
-                    />
-                  </div>
-                  <span className="body-sm" style={{ marginTop: '6px', display: 'block', color: 'var(--color-body)' }}>
-                    We'll send a 6-digit SMS verification code to your phone.
-                  </span>
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg btn-full"
-                  disabled={loading}
-                  style={{ marginTop: '16px' }}
-                >
-                  {loading ? 'Sending code...' : 'Continue with Phone'}
-                  <ArrowRight size={18} />
-                </button>
-              </form>
-            )}
-
-            {/* 2. EMAIL OTP AUTH (6-DIGIT CODE SENT TO EMAIL) */}
+            {/* 1. EMAIL OTP AUTH (6-DIGIT CODE SENT TO EMAIL) */}
             {authMode === 'email_otp' && (
               <form onSubmit={handleSendEmailOtp}>
                 <div className="form-group">
@@ -991,7 +867,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               </form>
             )}
 
-            {/* 3. PASSWORD AUTH (SIGN IN & CREATE ACCOUNT) */}
+            {/* 2. PASSWORD AUTH (SIGN IN & CREATE ACCOUNT) */}
             {authMode === 'password' && (
               <div>
                 {/* Segmented Sign In vs Sign Up */}

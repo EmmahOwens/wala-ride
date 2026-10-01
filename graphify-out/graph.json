@@ -853,7 +853,7 @@
       "label": "AuthModalProps",
       "file_type": "code",
       "source_file": "src/components/auth/AuthModal.tsx",
-      "source_location": "L23",
+      "source_location": "L22",
       "id": "auth_authmodal_authmodalprops",
       "community": 0,
       "norm_label": "authmodalprops"
@@ -862,7 +862,7 @@
       "label": "AuthModal()",
       "file_type": "code",
       "source_file": "src/components/auth/AuthModal.tsx",
-      "source_location": "L29",
+      "source_location": "L28",
       "id": "auth_authmodal_authmodal",
       "community": 0,
       "norm_label": "authmodal()"
@@ -10526,9 +10526,9 @@
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "supabase_supabaseauthservice_supabaseauthservice",
-      "target": "supabase_supabaseauthservice_supabaseauthservice_sendemailotp",
-      "confidence_score": 1.0
+      "target": "supabase_supabaseauthservice_supabaseauthservice_sendemailotp"
     },
     {
       "relation": "method",
@@ -10616,9 +10616,9 @@
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "supabase_supabaseauthservice_supabaseauthservice",
-      "target": "supabase_supabaseauthservice_supabaseauthservice_verifyemailotp",
-      "confidence_score": 1.0
+      "target": "supabase_supabaseauthservice_supabaseauthservice_verifyemailotp"
     },
     {
       "relation": "method",
@@ -10637,9 +10637,9 @@
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "supabase_supabaseauthservice_supabaseauthservice_sendemailotp",
-      "target": "supabase_supabaseauthservice_supabaseauthservice_signinwithotp",
-      "confidence_score": 1.0
+      "target": "supabase_supabaseauthservice_supabaseauthservice_signinwithotp"
     },
     {
       "relation": "calls",
@@ -10659,9 +10659,9 @@
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "supabase_supabaseauthservice_supabaseauthservice_verifyemailotp",
-      "target": "supabase_supabaseauthservice_supabaseauthservice_verifyotp",
-      "confidence_score": 1.0
+      "target": "supabase_supabaseauthservice_supabaseauthservice_verifyotp"
     },
     {
       "relation": "references",
@@ -14621,5 +14621,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e3bcc5e99813eb43fa0c62d3356074db3d689dda"
+  "built_at_commit": "c75b4de0e636a371afdc99868e9fb2c0fd2f3c57"
 }
