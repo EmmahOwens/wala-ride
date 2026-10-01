@@ -33,7 +33,7 @@ create or replace function public.report_incident(
 ) returns jsonb
 language plpgsql
 security definer
-set search_path = public
+set search_path = public, extensions
 as $$
 declare
   v_user_id             uuid;
@@ -98,7 +98,7 @@ begin
        order by created_at desc limit 1;
 
       if v_share_token is null then
-        v_share_token := encode(gen_random_bytes(16), 'hex');
+        v_share_token := encode(extensions.gen_random_bytes(16), 'hex');
         insert into trip_shares (booking_id, share_token, expires_at)
         values (p_booking_id, v_share_token, now() + interval '48 hours');
       end if;

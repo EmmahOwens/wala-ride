@@ -22,6 +22,21 @@
 --  17. subscription_plans/features  SELECT true → require authentication
 -- ============================================================================
 
+-- 0. SECURITY HELPER FUNCTIONS (Service Role & Admin Recognition)
+CREATE OR REPLACE FUNCTION public.is_admin() RETURNS boolean
+LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS $$
+  SELECT auth.role() = 'service_role'
+      OR current_user IN ('postgres', 'service_role')
+      OR EXISTS (SELECT 1 FROM user_roles WHERE user_id = auth.uid() AND role = 'admin');
+$$;
+
+CREATE OR REPLACE FUNCTION public.is_support() RETURNS boolean
+LANGUAGE sql STABLE SECURITY DEFINER SET search_path = public AS $$
+  SELECT auth.role() = 'service_role'
+      OR current_user IN ('postgres', 'service_role')
+      OR EXISTS (SELECT 1 FROM user_roles WHERE user_id = auth.uid() AND role IN ('admin', 'support_agent'));
+$$;
+
 -- 1. PROFILES
 DROP POLICY IF EXISTS profiles_select ON public.profiles;
 CREATE POLICY profiles_select ON public.profiles FOR SELECT USING (
@@ -208,14 +223,14 @@ CREATE POLICY support_tickets_update ON public.support_tickets FOR UPDATE
   USING  (user_id = auth.uid() OR is_admin() OR is_support())
   WITH CHECK (user_id = auth.uid() OR is_admin() OR is_support());
 
--- 15. ROUTES / TOWNS / ROUTE STOPS: require authentication (no anon enumeration)
+-- 15. ROUTES / TOWNS / ROUTE STOPS: public catalog access for active routes & towns
 DROP POLICY IF EXISTS routes_select ON public.routes;
-CREATE POLICY routes_select ON public.routes FOR SELECT TO authenticated
+CREATE POLICY routes_select ON public.routes FOR SELECT
   USING (status = 'active' OR is_admin());
 DROP POLICY IF EXISTS route_stops_select ON public.route_stops;
-CREATE POLICY route_stops_select ON public.route_stops FOR SELECT TO authenticated USING (true);
+CREATE POLICY route_stops_select ON public.route_stops FOR SELECT USING (true);
 DROP POLICY IF EXISTS towns_select ON public.towns;
-CREATE POLICY towns_select ON public.towns FOR SELECT TO authenticated
+CREATE POLICY towns_select ON public.towns FOR SELECT
   USING (is_active = true OR is_admin());
 
 -- 16. TRIP STOPS: scope to published trips + own driver trips

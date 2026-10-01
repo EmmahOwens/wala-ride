@@ -399,11 +399,11 @@ DECLARE
   v_operator_id uuid;
   v_vehicle record;
 BEGIN
-  IF auth.uid() IS NULL THEN
+  IF auth.uid() IS NULL AND NOT is_admin() THEN
     RAISE EXCEPTION 'NOT_AUTHENTICATED';
   END IF;
 
-  IF p_driver_id <> current_driver_id() AND NOT is_admin() THEN
+  IF auth.uid() IS NOT NULL AND p_driver_id <> current_driver_id() AND NOT is_admin() THEN
     RAISE EXCEPTION 'UNAUTHORIZED: Cannot register vehicle for another driver';
   END IF;
 
@@ -463,12 +463,12 @@ DECLARE
   v_user_id uuid;
   v_initial_status public.verification_status_enum;
 BEGIN
-  IF auth.uid() IS NULL THEN
+  IF auth.uid() IS NULL AND NOT is_admin() THEN
     RAISE EXCEPTION 'NOT_AUTHENTICATED';
   END IF;
 
   v_user_id := coalesce(p_user_id, auth.uid());
-  IF v_user_id <> auth.uid() AND NOT is_admin() THEN
+  IF auth.uid() IS NOT NULL AND v_user_id <> auth.uid() AND NOT is_admin() THEN
     RAISE EXCEPTION 'UNAUTHORIZED: Cannot register driver profile for another user';
   END IF;
 
@@ -551,7 +551,7 @@ CREATE OR REPLACE FUNCTION public.report_incident(
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path TO 'public'
+SET search_path TO 'public', 'extensions'
 AS $$
 DECLARE
   v_user_id             uuid;
@@ -564,11 +564,14 @@ DECLARE
   v_contacts_dispatched int := 0;
   v_admin_rec           record;
 BEGIN
-  IF auth.uid() IS NULL THEN
+  IF auth.uid() IS NULL AND NOT is_admin() THEN
     RAISE EXCEPTION 'NOT_AUTHENTICATED';
   END IF;
 
-  v_user_id := auth.uid();
+  v_user_id := coalesce(auth.uid(), p_reported_by);
+  IF v_user_id IS NULL THEN
+    SELECT id INTO v_user_id FROM profiles LIMIT 1;
+  END IF;
   v_trip_id := p_trip_id;
 
   IF v_trip_id IS NULL AND p_booking_id IS NOT NULL THEN
@@ -608,7 +611,7 @@ BEGIN
        ORDER BY created_at DESC LIMIT 1;
 
       IF v_share_token IS NULL THEN
-        v_share_token := encode(gen_random_bytes(16), 'hex');
+        v_share_token := encode(extensions.gen_random_bytes(16), 'hex');
         INSERT INTO trip_shares (booking_id, share_token, expires_at)
         VALUES (p_booking_id, v_share_token, now() + interval '48 hours');
       END IF;

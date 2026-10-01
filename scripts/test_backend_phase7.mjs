@@ -1,8 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 import { spawn } from 'child_process';
+import { existsSync } from 'fs';
 
-const url = 'https://rmpsvmizgdlepkqggtrm.supabase.co';
-const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJtcHN2bWl6Z2RsZXBrcWdndHJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2OTYxMzEsImV4cCI6MjEwNjI3MjEzMX0.w9eEmOigBq3M50B-x4gO-H65gVGPqPwc2ulC_O7rUxU';
+const url = process.env.SUPABASE_URL || 'https://rmpsvmizgdlepkqggtrm.supabase.co';
+const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJtcHN2bWl6Z2RsZXBrcWdndHJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2OTYxMzEsImV4cCI6MjEwNjI3MjEzMX0.w9eEmOigBq3M50B-x4gO-H65gVGPqPwc2ulC_O7rUxU';
 
 const supabase = createClient(url, key);
 
@@ -168,7 +169,8 @@ async function runBackendPhase7Verification() {
   // 7. Module 10.3: Health Check & System Status Endpoint
   console.log('\n7. Testing System Health Check Edge Function (Task 10.3)...');
   const healthPort = 8020;
-  const edgeProcess = spawn('/home/iammbayo/.deno/bin/deno', [
+  const denoBin = process.env.DENO_BIN || (existsSync('/home/iammbayo/.deno/bin/deno') ? '/home/iammbayo/.deno/bin/deno' : 'deno');
+  const edgeProcess = spawn(denoBin, [
     'run',
     '--allow-net',
     '--allow-env',

@@ -448,7 +448,7 @@
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase6.mjs",
-      "source_location": "L7",
+      "source_location": "L8",
       "id": "scripts_test_backend_phase6_supabase",
       "community": 28,
       "norm_label": "supabase"
@@ -457,7 +457,7 @@
       "label": "runBackendPhase6Verification()",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase6.mjs",
-      "source_location": "L9",
+      "source_location": "L10",
       "id": "scripts_test_backend_phase6_runbackendphase6verification",
       "community": 28,
       "norm_label": "runbackendphase6verification()"
@@ -475,7 +475,7 @@
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase7.mjs",
-      "source_location": "L7",
+      "source_location": "L8",
       "id": "scripts_test_backend_phase7_supabase",
       "community": 29,
       "norm_label": "supabase"
@@ -484,7 +484,7 @@
       "label": "runBackendPhase7Verification()",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase7.mjs",
-      "source_location": "L9",
+      "source_location": "L10",
       "id": "scripts_test_backend_phase7_runbackendphase7verification",
       "community": 29,
       "norm_label": "runbackendphase7verification()"
@@ -7293,9 +7293,9 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "driver_driverrouterequestmodal",
-      "target": "config_supabase",
-      "confidence_score": 1.0
+      "target": "config_supabase"
     },
     {
       "relation": "imports",
@@ -7315,9 +7315,9 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "driver_driverrouterequestmodal",
-      "target": "context_authcontext",
-      "confidence_score": 1.0
+      "target": "context_authcontext"
     },
     {
       "relation": "imports",
@@ -8172,9 +8172,9 @@
       "source_file": "src/components/passenger/PassengerView.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "passenger_passengerview",
-      "target": "supabase_supabasetripservice",
-      "confidence_score": 1.0
+      "target": "supabase_supabasetripservice"
     },
     {
       "relation": "imports",
@@ -15042,5 +15042,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d491f4eff22bc11c1adad3971f2849444f1c9b94"
+  "built_at_commit": "088ca82d3598c7a021e616fad9091e85c9500149"
 }
