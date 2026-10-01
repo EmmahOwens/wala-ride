@@ -1,4 +1,9 @@
 {
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any", "no-import-prefix", "no-unversioned-import"]
+    }
+  },
   "compilerOptions": {
     "lib": ["deno.window", "deno.ns"]
   },
