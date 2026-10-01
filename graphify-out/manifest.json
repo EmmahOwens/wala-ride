@@ -655,13 +655,13 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/admin/App.tsx": {
-    "mtime": 1790870956.615172,
-    "ast_hash": "26d35e427f8b4ebc4c7972bb47b56a2d",
+    "mtime": 1790871555.7693756,
+    "ast_hash": "24b95382c8ad1810c97befa162a08b7e",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/admin/Navbar.tsx": {
-    "mtime": 1790870816.5160897,
-    "ast_hash": "a8edc7ed56e29ada9226abcb2fe1b0dd",
+    "mtime": 1790871531.918057,
+    "ast_hash": "9e9a6970a82f509ac3e619095cae3561",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/admin/components/AdminUserDirectory.tsx": {
@@ -675,13 +675,13 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/driver/App.tsx": {
-    "mtime": 1790870939.9091694,
-    "ast_hash": "cca36a66a0a0b7271de6a83e422673e6",
+    "mtime": 1790871520.4394002,
+    "ast_hash": "3acc60e1f4f769b7c62cd325a72bc30c",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/driver/Navbar.tsx": {
-    "mtime": 1790870742.6179729,
-    "ast_hash": "9613da59dab654c09dbeec28237ee89e",
+    "mtime": 1790871500.174032,
+    "ast_hash": "f64a868f863c05e778ce80d8300b798a",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/driver/main.tsx": {
@@ -690,8 +690,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/passenger/App.tsx": {
-    "mtime": 1790870923.2151651,
-    "ast_hash": "fde26ba7e4e8a06ad9ba86418896319b",
+    "mtime": 1790871577.8657794,
+    "ast_hash": "3ea16aa5597a35b43fa89de28d1106a8",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/apps/passenger/Navbar.tsx": {
@@ -727,6 +727,11 @@
   "/home/iammbayo/Documents/Projects/wala-ride/driver.html": {
     "mtime": 1790870790.5810556,
     "ast_hash": "86a5766246fc5040e52f4d3125ec3ba2",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/shared/components/layout/Footer.tsx": {
+    "mtime": 1790871488.4404137,
+    "ast_hash": "64bd6bf2edd92b9b737a05d3e403559e",
     "semantic_hash": ""
   }
 }

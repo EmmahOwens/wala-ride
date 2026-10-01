@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from '../../context/AuthContext';
 import { DriverNavbar } from './Navbar';
+import { Footer } from '../../shared/components/layout/Footer';
 import { AuthModal } from '../../components/auth/AuthModal';
 import { AccountModal } from '../../components/auth/AccountModal';
 import { RoleGuard } from '../../shared/components/guards/RoleGuard';
@@ -216,9 +217,6 @@ const DriverAppContent: React.FC = () => {
               className="btn btn-primary btn-lg"
               onClick={() => setIsAuthOpen(true)}
               style={{
-                backgroundColor: '#22c55e',
-                color: '#000000',
-                border: 'none',
                 fontWeight: 700,
                 padding: '14px 32px',
                 fontSize: '16px',
@@ -242,22 +240,8 @@ const DriverAppContent: React.FC = () => {
         )}
       </main>
 
-      {/* Driver Footer */}
-      <footer style={{
-        backgroundColor: '#0a0a0a',
-        color: '#888888',
-        padding: '32px 0',
-        borderTop: '1px solid #222222',
-        fontSize: '13px',
-      }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <div>&copy; {new Date().getFullYear()} Wala Ride Driver Portal — Uganda Transport Network</div>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <a href="/" style={{ color: '#aaaaaa', textDecoration: 'none' }}>Passenger App</a>
-            <a href="/admin" style={{ color: '#aaaaaa', textDecoration: 'none' }}>Admin Operations</a>
-          </div>
-        </div>
-      </footer>
+      {/* Shared Unified Footer */}
+      <Footer />
 
       {/* Modals */}
       <AuthModal

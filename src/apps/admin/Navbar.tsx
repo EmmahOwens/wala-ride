@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { ShieldCheck, LogOut, ExternalLink, Activity } from 'lucide-react';
+import { ShieldCheck, LogOut, Compass, Car, Activity } from 'lucide-react';
 import { NotificationBell } from '../../components/common/NotificationBell';
 
 interface AdminNavbarProps {
@@ -16,9 +16,8 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({
 
   return (
     <header style={{
-      borderBottom: '1px solid #1f2937',
-      backgroundColor: '#0f172a',
-      color: '#ffffff',
+      borderBottom: '1px solid var(--color-hairline)',
+      backgroundColor: 'var(--color-canvas)',
       position: 'sticky',
       top: 0,
       zIndex: 100,
@@ -27,52 +26,79 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '70px',
+        height: '72px',
       }}>
         {/* Brand & Live Ops Pulse */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
           <a
             href="/admin"
-            style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', color: '#ffffff' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '10px',
-              backgroundColor: '#dc2626',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-            }}>
-              <ShieldCheck size={22} />
-            </div>
+            <img
+              src="/wala-ride.jpeg"
+              alt="Wala Ride"
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                objectFit: 'cover',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+              }}
+            />
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{
-                  fontFamily: 'var(--font-family-display)',
-                  fontSize: '18px',
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
-                }}>
-                  WALA OPS
-                </span>
-                <span style={{
-                  fontSize: '10px',
-                  fontWeight: 800,
-                  backgroundColor: '#7f1d1d',
-                  color: '#fecaca',
-                  padding: '2px 6px',
-                  borderRadius: 'var(--radius-sm)',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                }}>
-                  Admin
-                </span>
-              </div>
+              <span style={{
+                fontFamily: 'var(--font-family-display)',
+                fontSize: '20px',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                color: 'var(--color-ink)',
+              }}>
+                WALA
+              </span>
+              <span style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                backgroundColor: '#fee2e2',
+                color: '#991b1b',
+                padding: '2px 6px',
+                borderRadius: 'var(--radius-sm)',
+                marginLeft: '6px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}>
+                ADMIN
+              </span>
             </div>
           </a>
 
+          {/* Navigation Links */}
+          <nav style={{ display: 'none', gap: '8px' }} className="desktop-nav">
+            <a
+              href="/"
+              className="btn-pill-tab"
+              style={{ textDecoration: 'none' }}
+            >
+              <Compass size={16} /> Intercity Rides
+            </a>
+            <a
+              href="/driver"
+              className="btn-pill-tab"
+              style={{ textDecoration: 'none' }}
+            >
+              <Car size={16} /> Driver Portal
+            </a>
+            <a
+              href="/admin"
+              className="btn-pill-tab active"
+              style={{ textDecoration: 'none' }}
+            >
+              <ShieldCheck size={16} /> Admin Console
+            </a>
+          </nav>
+        </div>
+
+        {/* Right side navigation and account */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           {/* Realtime Live Pulse */}
           <div style={{
             display: 'inline-flex',
@@ -80,62 +106,23 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({
             gap: '6px',
             padding: '4px 10px',
             borderRadius: 'var(--radius-pill)',
-            backgroundColor: '#1e293b',
-            border: '1px solid #334155',
+            backgroundColor: 'var(--color-canvas-soft)',
+            border: '1px solid var(--color-hairline)',
             fontSize: '12px',
-            color: '#38bdf8',
+            color: 'var(--color-body)',
             fontWeight: 600,
           }}>
             <span style={{
               width: '8px',
               height: '8px',
               borderRadius: '50%',
-              backgroundColor: '#22c55e',
-              boxShadow: '0 0 8px #22c55e',
+              backgroundColor: 'var(--color-success)',
+              boxShadow: '0 0 6px var(--color-success)',
               display: 'inline-block',
             }} />
-            <Activity size={12} />
-            <span>Realtime Channels Active</span>
+            <Activity size={12} color="var(--color-success)" />
+            <span>Live Sync Active</span>
           </div>
-        </div>
-
-        {/* Right side navigation and account */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <a
-            href="/"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '12px',
-              color: '#94a3b8',
-              textDecoration: 'none',
-              padding: '6px 12px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid #334155',
-            }}
-          >
-            <span>Passenger App</span>
-            <ExternalLink size={12} />
-          </a>
-
-          <a
-            href="/driver"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '12px',
-              color: '#94a3b8',
-              textDecoration: 'none',
-              padding: '6px 12px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid #334155',
-            }}
-          >
-            <span>Driver Portal</span>
-            <ExternalLink size={12} />
-          </a>
 
           {user && (
             <NotificationBell onOpenTicket={onOpenTicket} />
@@ -153,19 +140,20 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({
                   gap: '8px',
                   padding: '6px 14px',
                   borderRadius: 'var(--radius-pill)',
-                  backgroundColor: '#1e293b',
+                  backgroundColor: 'var(--color-canvas-soft)',
                   fontSize: '13px',
                   fontWeight: 600,
-                  border: '1px solid #334155',
+                  border: '1px solid var(--color-hairline)',
                   cursor: 'pointer',
-                  color: '#ffffff',
+                  color: 'var(--color-ink)',
+                  transition: 'background-color 0.15s ease',
                 }}
               >
                 <div style={{
                   width: '22px',
                   height: '22px',
                   borderRadius: 'var(--radius-pill)',
-                  backgroundColor: '#dc2626',
+                  backgroundColor: '#000000',
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
@@ -184,7 +172,7 @@ export const AdminNavbar: React.FC<AdminNavbarProps> = ({
                 className="btn btn-subtle btn-sm"
                 onClick={signOut}
                 title="Sign Out"
-                style={{ padding: '8px', color: '#94a3b8' }}
+                style={{ padding: '8px' }}
               >
                 <LogOut size={16} />
               </button>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AuthProvider } from '../../context/AuthContext';
 import { AdminNavbar } from './Navbar';
+import { Footer } from '../../shared/components/layout/Footer';
 import { RoleGuard } from '../../shared/components/guards/RoleGuard';
 import { AuthModal } from '../../components/auth/AuthModal';
 import { AccountModal } from '../../components/auth/AccountModal';
@@ -186,22 +187,8 @@ const AdminAppContent: React.FC = () => {
         </RoleGuard>
       </main>
 
-      {/* Admin Footer */}
-      <footer style={{
-        backgroundColor: '#0f172a',
-        color: '#64748b',
-        padding: '24px 0',
-        borderTop: '1px solid #1e293b',
-        fontSize: '12px',
-      }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-          <div>Wala Ride Platform Operations Console &bull; Uganda Corridors</div>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <a href="/" style={{ color: '#94a3b8', textDecoration: 'none' }}>Passenger App</a>
-            <a href="/driver" style={{ color: '#94a3b8', textDecoration: 'none' }}>Driver Portal</a>
-          </div>
-        </div>
-      </footer>
+      {/* Shared Unified Footer */}
+      <Footer />
 
       {/* Modals */}
       <AuthModal

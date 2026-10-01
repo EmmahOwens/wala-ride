@@ -1,20 +1,22 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Car, LogOut, ShieldCheck, Clock, AlertTriangle, ExternalLink } from 'lucide-react';
+import { Car, Compass, LogOut, ShieldCheck, Clock, AlertTriangle, LifeBuoy } from 'lucide-react';
 import { NotificationBell } from '../../components/common/NotificationBell';
 
 interface DriverNavbarProps {
   onOpenAuth: () => void;
   onOpenAccount?: () => void;
   onOpenTicket?: (ticketId: string) => void;
+  onOpenSupport?: () => void;
 }
 
 export const DriverNavbar: React.FC<DriverNavbarProps> = ({
   onOpenAuth,
   onOpenAccount,
   onOpenTicket,
+  onOpenSupport,
 }) => {
-  const { user, profile, driverProfile, signOut } = useAuth();
+  const { user, profile, roles, driverProfile, signOut } = useAuth();
 
   const getKycBadge = () => {
     if (!driverProfile) return null;
@@ -26,8 +28,8 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
           gap: '4px',
           padding: '3px 8px',
           borderRadius: 'var(--radius-pill)',
-          backgroundColor: '#dcfce7',
-          color: '#166534',
+          backgroundColor: 'var(--color-success-bg)',
+          color: 'var(--color-success)',
           fontSize: '11px',
           fontWeight: 700,
         }}>
@@ -44,8 +46,8 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
           gap: '4px',
           padding: '3px 8px',
           borderRadius: 'var(--radius-pill)',
-          backgroundColor: '#fef3c7',
-          color: '#92400e',
+          backgroundColor: 'var(--color-warning-bg)',
+          color: 'var(--color-warning)',
           fontSize: '11px',
           fontWeight: 700,
         }}>
@@ -61,8 +63,8 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
         gap: '4px',
         padding: '3px 8px',
         borderRadius: 'var(--radius-pill)',
-        backgroundColor: '#fee2e2',
-        color: '#991b1b',
+        backgroundColor: 'var(--color-danger-bg)',
+        color: 'var(--color-danger)',
         fontSize: '11px',
         fontWeight: 700,
       }}>
@@ -75,8 +77,7 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
   return (
     <header style={{
       borderBottom: '1px solid var(--color-hairline)',
-      backgroundColor: '#0a0a0a',
-      color: '#ffffff',
+      backgroundColor: 'var(--color-canvas)',
       position: 'sticky',
       top: 0,
       zIndex: 100,
@@ -85,75 +86,94 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '70px',
+        height: '72px',
       }}>
         {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
           <a
             href="/driver"
-            style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', color: '#ffffff' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none', color: 'inherit' }}
           >
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '10px',
-              backgroundColor: '#22c55e',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#000000',
-              fontWeight: 800,
-            }}>
-              <Car size={22} />
-            </div>
+            <img
+              src="/wala-ride.jpeg"
+              alt="Wala Ride"
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                objectFit: 'cover',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+              }}
+            />
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{
-                  fontFamily: 'var(--font-family-display)',
-                  fontSize: '18px',
-                  fontWeight: 800,
-                  letterSpacing: '-0.02em',
-                }}>
-                  WALA DRIVER
-                </span>
-                <span style={{
-                  fontSize: '10px',
-                  fontWeight: 700,
-                  backgroundColor: '#222222',
-                  color: '#22c55e',
-                  padding: '2px 6px',
-                  borderRadius: 'var(--radius-sm)',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
-                }}>
-                  Portal
-                </span>
-              </div>
+              <span style={{
+                fontFamily: 'var(--font-family-display)',
+                fontSize: '20px',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                color: 'var(--color-ink)',
+              }}>
+                WALA
+              </span>
+              <span style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                backgroundColor: 'var(--color-canvas-soft)',
+                color: 'var(--color-ink)',
+                padding: '2px 6px',
+                borderRadius: 'var(--radius-sm)',
+                marginLeft: '6px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}>
+                DRIVER
+              </span>
             </div>
           </a>
 
-          {getKycBadge()}
+          {/* Navigation Links */}
+          <nav style={{ display: 'none', gap: '8px' }} className="desktop-nav">
+            <a
+              href="/"
+              className="btn-pill-tab"
+              style={{ textDecoration: 'none' }}
+            >
+              <Compass size={16} /> Intercity Rides
+            </a>
+            <a
+              href="/driver"
+              className="btn-pill-tab active"
+              style={{ textDecoration: 'none' }}
+            >
+              <Car size={16} /> Driver Portal
+            </a>
+            {roles.includes('admin') && (
+              <a
+                href="/admin"
+                className="btn-pill-tab"
+                style={{ textDecoration: 'none' }}
+              >
+                <ShieldCheck size={16} /> Admin Console
+              </a>
+            )}
+          </nav>
         </div>
 
         {/* Right side actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <a
-            href="/"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '12px',
-              color: '#aaaaaa',
-              textDecoration: 'none',
-              padding: '6px 12px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid #333333',
-            }}
-          >
-            <span>Passenger App</span>
-            <ExternalLink size={12} />
-          </a>
+          {getKycBadge()}
+
+          {onOpenSupport && (
+            <button
+              className="btn btn-subtle btn-sm"
+              onClick={onOpenSupport}
+              title="Customer Support"
+              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              <LifeBuoy size={16} color="var(--color-primary)" />
+              <span style={{ fontWeight: 600 }}>Help</span>
+            </button>
+          )}
 
           {user && (
             <NotificationBell onOpenTicket={onOpenTicket} />
@@ -161,6 +181,7 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
 
           {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              {/* User avatar / name */}
               <button
                 type="button"
                 onClick={onOpenAccount}
@@ -171,20 +192,21 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
                   gap: '8px',
                   padding: '6px 14px',
                   borderRadius: 'var(--radius-pill)',
-                  backgroundColor: '#1e1e1e',
+                  backgroundColor: 'var(--color-canvas-soft)',
                   fontSize: '13px',
                   fontWeight: 600,
-                  border: '1px solid #333333',
+                  border: '1px solid var(--color-hairline)',
                   cursor: 'pointer',
-                  color: '#ffffff',
+                  color: 'var(--color-ink)',
+                  transition: 'background-color 0.15s ease',
                 }}
               >
                 <div style={{
                   width: '22px',
                   height: '22px',
                   borderRadius: 'var(--radius-pill)',
-                  backgroundColor: '#22c55e',
-                  color: '#000000',
+                  backgroundColor: '#000000',
+                  color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -202,7 +224,7 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
                 className="btn btn-subtle btn-sm"
                 onClick={signOut}
                 title="Sign Out"
-                style={{ padding: '8px', color: '#aaaaaa' }}
+                style={{ padding: '8px' }}
               >
                 <LogOut size={16} />
               </button>
@@ -211,7 +233,6 @@ export const DriverNavbar: React.FC<DriverNavbarProps> = ({
             <button
               className="btn btn-primary btn-md"
               onClick={onOpenAuth}
-              style={{ backgroundColor: '#22c55e', color: '#000000', border: 'none' }}
             >
               Driver Login / Register
             </button>
