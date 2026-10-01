@@ -1,0 +1,5 @@
+# Gitleaks ignore list for false positive test commits
+d2767933cd5267e6a46932417c5bb4c03e5036a3:scripts/test_backend_phase6.mjs:jwt:6
+d2767933cd5267e6a46932417c5bb4c03e5036a3:scripts/test_backend_phase5.mjs:jwt:4
+d276793:scripts/test_backend_phase6.mjs:jwt:6
+d276793:scripts/test_backend_phase5.mjs:jwt:4

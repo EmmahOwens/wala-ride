@@ -382,6 +382,51 @@
       "norm_label": "vite"
     },
     {
+      "label": "getEnv.mjs",
+      "file_type": "code",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L1",
+      "id": "helpers_getenv",
+      "community": 26,
+      "norm_label": "getenv.mjs"
+    },
+    {
+      "label": "__filename",
+      "file_type": "code",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L5",
+      "id": "helpers_getenv_filename",
+      "community": 26,
+      "norm_label": "__filename"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L6",
+      "id": "helpers_getenv_dirname",
+      "community": 26,
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "rootDir",
+      "file_type": "code",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L7",
+      "id": "helpers_getenv_rootdir",
+      "community": 26,
+      "norm_label": "rootdir"
+    },
+    {
+      "label": "getSupabaseCredentials()",
+      "file_type": "code",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L9",
+      "id": "helpers_getenv_getsupabasecredentials",
+      "community": 26,
+      "norm_label": "getsupabasecredentials()"
+    },
+    {
       "label": "test_backend_phase4.mjs",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase4.mjs",
@@ -391,10 +436,19 @@
       "norm_label": "test_backend_phase4.mjs"
     },
     {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_backend_phase4.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_backend_phase4_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
+    },
+    {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase4.mjs",
-      "source_location": "L7",
+      "source_location": "L6",
       "id": "scripts_test_backend_phase4_supabase",
       "community": 26,
       "norm_label": "supabase"
@@ -403,7 +457,7 @@
       "label": "runBackendPhase4Verification()",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase4.mjs",
-      "source_location": "L9",
+      "source_location": "L8",
       "id": "scripts_test_backend_phase4_runbackendphase4verification",
       "community": 26,
       "norm_label": "runbackendphase4verification()"
@@ -414,25 +468,34 @@
       "source_file": "scripts/test_backend_phase5.mjs",
       "source_location": "L1",
       "id": "scripts_test_backend_phase5",
-      "community": 27,
+      "community": 26,
       "norm_label": "test_backend_phase5.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_backend_phase5.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_backend_phase5_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase5.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_backend_phase5_supabase",
-      "community": 27,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runBackendPhase5Verification()",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase5.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_backend_phase5_runbackendphase5verification",
-      "community": 27,
+      "community": 26,
       "norm_label": "runbackendphase5verification()"
     },
     {
@@ -441,25 +504,34 @@
       "source_file": "scripts/test_backend_phase6.mjs",
       "source_location": "L1",
       "id": "scripts_test_backend_phase6",
-      "community": 28,
+      "community": 26,
       "norm_label": "test_backend_phase6.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_backend_phase6.mjs",
+      "source_location": "L6",
+      "id": "scripts_test_backend_phase6_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase6.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_backend_phase6_supabase",
-      "community": 28,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runBackendPhase6Verification()",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase6.mjs",
-      "source_location": "L10",
+      "source_location": "L9",
       "id": "scripts_test_backend_phase6_runbackendphase6verification",
-      "community": 28,
+      "community": 26,
       "norm_label": "runbackendphase6verification()"
     },
     {
@@ -468,25 +540,34 @@
       "source_file": "scripts/test_backend_phase7.mjs",
       "source_location": "L1",
       "id": "scripts_test_backend_phase7",
-      "community": 29,
+      "community": 26,
       "norm_label": "test_backend_phase7.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_backend_phase7.mjs",
+      "source_location": "L6",
+      "id": "scripts_test_backend_phase7_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase7.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_backend_phase7_supabase",
-      "community": 29,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runBackendPhase7Verification()",
       "file_type": "code",
       "source_file": "scripts/test_backend_phase7.mjs",
-      "source_location": "L10",
+      "source_location": "L9",
       "id": "scripts_test_backend_phase7_runbackendphase7verification",
-      "community": 29,
+      "community": 26,
       "norm_label": "runbackendphase7verification()"
     },
     {
@@ -495,25 +576,34 @@
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
       "source_location": "L1",
       "id": "scripts_test_google_maps_and_postgis",
-      "community": 30,
+      "community": 26,
       "norm_label": "test_google_maps_and_postgis.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_google_maps_and_postgis.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_google_maps_and_postgis_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_google_maps_and_postgis_supabase",
-      "community": 30,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runMapsAndPostGISTests()",
       "file_type": "code",
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_google_maps_and_postgis_runmapsandpostgistests",
-      "community": 30,
+      "community": 26,
       "norm_label": "runmapsandpostgistests()"
     },
     {
@@ -522,25 +612,34 @@
       "source_file": "scripts/test_phase1.mjs",
       "source_location": "L1",
       "id": "scripts_test_phase1",
-      "community": 31,
+      "community": 26,
       "norm_label": "test_phase1.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_phase1.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_phase1_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_phase1.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_phase1_supabase",
-      "community": 31,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runPhase1Verification()",
       "file_type": "code",
       "source_file": "scripts/test_phase1.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_phase1_runphase1verification",
-      "community": 31,
+      "community": 26,
       "norm_label": "runphase1verification()"
     },
     {
@@ -549,25 +648,34 @@
       "source_file": "scripts/test_phase2.mjs",
       "source_location": "L1",
       "id": "scripts_test_phase2",
-      "community": 32,
+      "community": 26,
       "norm_label": "test_phase2.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_phase2.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_phase2_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_phase2.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_phase2_supabase",
-      "community": 32,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runPhase2Verification()",
       "file_type": "code",
       "source_file": "scripts/test_phase2.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_phase2_runphase2verification",
-      "community": 32,
+      "community": 26,
       "norm_label": "runphase2verification()"
     },
     {
@@ -576,25 +684,34 @@
       "source_file": "scripts/test_phase3.mjs",
       "source_location": "L1",
       "id": "scripts_test_phase3",
-      "community": 33,
+      "community": 26,
       "norm_label": "test_phase3.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_phase3.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_phase3_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_phase3.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_phase3_supabase",
-      "community": 33,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runPhase3Verification()",
       "file_type": "code",
       "source_file": "scripts/test_phase3.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_phase3_runphase3verification",
-      "community": 33,
+      "community": 26,
       "norm_label": "runphase3verification()"
     },
     {
@@ -603,25 +720,34 @@
       "source_file": "scripts/test_phase3_concurrency.mjs",
       "source_location": "L1",
       "id": "scripts_test_phase3_concurrency",
-      "community": 34,
+      "community": 26,
       "norm_label": "test_phase3_concurrency.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_phase3_concurrency.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_phase3_concurrency_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_phase3_concurrency.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_phase3_concurrency_supabase",
-      "community": 34,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runConcurrencyAndPrivateHireTests()",
       "file_type": "code",
       "source_file": "scripts/test_phase3_concurrency.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_phase3_concurrency_runconcurrencyandprivatehiretests",
-      "community": 34,
+      "community": 26,
       "norm_label": "runconcurrencyandprivatehiretests()"
     },
     {
@@ -630,25 +756,34 @@
       "source_file": "scripts/test_phase4.mjs",
       "source_location": "L1",
       "id": "scripts_test_phase4",
-      "community": 35,
+      "community": 26,
       "norm_label": "test_phase4.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_phase4.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_phase4_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_phase4.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_phase4_supabase",
-      "community": 35,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runPhase4Verification()",
       "file_type": "code",
       "source_file": "scripts/test_phase4.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_phase4_runphase4verification",
-      "community": 35,
+      "community": 26,
       "norm_label": "runphase4verification()"
     },
     {
@@ -657,25 +792,34 @@
       "source_file": "scripts/test_phase5.mjs",
       "source_location": "L1",
       "id": "scripts_test_phase5",
-      "community": 36,
+      "community": 26,
       "norm_label": "test_phase5.mjs"
+    },
+    {
+      "label": "{ url, key }",
+      "file_type": "code",
+      "source_file": "scripts/test_phase5.mjs",
+      "source_location": "L4",
+      "id": "scripts_test_phase5_url_key",
+      "community": 26,
+      "norm_label": "{ url, key }"
     },
     {
       "label": "supabase",
       "file_type": "code",
       "source_file": "scripts/test_phase5.mjs",
-      "source_location": "L6",
+      "source_location": "L5",
       "id": "scripts_test_phase5_supabase",
-      "community": 36,
+      "community": 26,
       "norm_label": "supabase"
     },
     {
       "label": "runPhase5Verification()",
       "file_type": "code",
       "source_file": "scripts/test_phase5.mjs",
-      "source_location": "L8",
+      "source_location": "L7",
       "id": "scripts_test_phase5_runphase5verification",
-      "community": 36,
+      "community": 26,
       "norm_label": "runphase5verification()"
     },
     {
@@ -792,7 +936,7 @@
       "source_file": "src/components/admin/AdminSupportQueue.tsx",
       "source_location": "L24",
       "id": "admin_adminsupportqueue_adminsupportqueue",
-      "community": 46,
+      "community": 9,
       "norm_label": "adminsupportqueue()"
     },
     {
@@ -891,7 +1035,7 @@
       "source_file": "src/components/booking/BookingHoldModal.tsx",
       "source_location": "L15",
       "id": "booking_bookingholdmodal_bookingholdmodal",
-      "community": 46,
+      "community": 1,
       "norm_label": "bookingholdmodal()"
     },
     {
@@ -1089,7 +1233,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L1",
       "id": "driver_driverrouterequestmodal",
-      "community": 7,
+      "community": 5,
       "norm_label": "driverrouterequestmodal.tsx"
     },
     {
@@ -1098,7 +1242,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L11",
       "id": "driver_driverrouterequestmodal_routerequestentry",
-      "community": 7,
+      "community": 5,
       "norm_label": "routerequestentry"
     },
     {
@@ -1107,7 +1251,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L23",
       "id": "driver_driverrouterequestmodal_placeprediction",
-      "community": 7,
+      "community": 5,
       "norm_label": "placeprediction"
     },
     {
@@ -1116,7 +1260,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L30",
       "id": "driver_driverrouterequestmodal_driverrouterequestmodalprops",
-      "community": 7,
+      "community": 5,
       "norm_label": "driverrouterequestmodalprops"
     },
     {
@@ -1125,7 +1269,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L37",
       "id": "driver_driverrouterequestmodal_window",
-      "community": 7,
+      "community": 5,
       "norm_label": "window"
     },
     {
@@ -1134,7 +1278,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L41",
       "id": "driver_driverrouterequestmodal_mapscallbacks",
-      "community": 7,
+      "community": 5,
       "norm_label": "mapscallbacks"
     },
     {
@@ -1143,7 +1287,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L43",
       "id": "driver_driverrouterequestmodal_loadgooglemapssdk",
-      "community": 7,
+      "community": 5,
       "norm_label": "loadgooglemapssdk()"
     },
     {
@@ -1152,7 +1296,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L66",
       "id": "driver_driverrouterequestmodal_callproxy",
-      "community": 7,
+      "community": 5,
       "norm_label": "callproxy()"
     },
     {
@@ -1161,7 +1305,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L76",
       "id": "driver_driverrouterequestmodal_locationpickerprops",
-      "community": 7,
+      "community": 5,
       "norm_label": "locationpickerprops"
     },
     {
@@ -1170,7 +1314,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L84",
       "id": "driver_driverrouterequestmodal_locationpicker",
-      "community": 7,
+      "community": 5,
       "norm_label": "locationpicker()"
     },
     {
@@ -1179,7 +1323,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L178",
       "id": "driver_driverrouterequestmodal_mappreviewprops",
-      "community": 7,
+      "community": 5,
       "norm_label": "mappreviewprops"
     },
     {
@@ -1188,7 +1332,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L188",
       "id": "driver_driverrouterequestmodal_mappreview",
-      "community": 7,
+      "community": 5,
       "norm_label": "mappreview()"
     },
     {
@@ -1197,7 +1341,7 @@
       "source_file": "src/components/driver/DriverRouteRequestModal.tsx",
       "source_location": "L348",
       "id": "driver_driverrouterequestmodal_driverrouterequestmodal",
-      "community": 7,
+      "community": 5,
       "norm_label": "driverrouterequestmodal()"
     },
     {
@@ -1233,7 +1377,7 @@
       "source_file": "src/components/driver/TripManifestModal.tsx",
       "source_location": "L1",
       "id": "driver_tripmanifestmodal",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripmanifestmodal.tsx"
     },
     {
@@ -1242,7 +1386,7 @@
       "source_file": "src/components/driver/TripManifestModal.tsx",
       "source_location": "L20",
       "id": "driver_tripmanifestmodal_tripmanifestmodalprops",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripmanifestmodalprops"
     },
     {
@@ -1251,7 +1395,7 @@
       "source_file": "src/components/driver/TripManifestModal.tsx",
       "source_location": "L27",
       "id": "driver_tripmanifestmodal_tripmanifestmodal",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripmanifestmodal()"
     },
     {
@@ -1260,7 +1404,7 @@
       "source_file": "src/components/driver/TripPublisher.tsx",
       "source_location": "L1",
       "id": "driver_trippublisher",
-      "community": 45,
+      "community": 3,
       "norm_label": "trippublisher.tsx"
     },
     {
@@ -1269,7 +1413,7 @@
       "source_file": "src/components/driver/TripPublisher.tsx",
       "source_location": "L9",
       "id": "driver_trippublisher_trippublisher",
-      "community": 5,
+      "community": 3,
       "norm_label": "trippublisher()"
     },
     {
@@ -1323,7 +1467,7 @@
       "source_file": "src/components/passenger/PassengerSupportModal.tsx",
       "source_location": "L26",
       "id": "passenger_passengersupportmodal_passengersupportmodal",
-      "community": 46,
+      "community": 9,
       "norm_label": "passengersupportmodal()"
     },
     {
@@ -1422,7 +1566,7 @@
       "source_file": "src/components/tracking/LiveTripTrackerModal.tsx",
       "source_location": "L22",
       "id": "tracking_livetriptrackermodal_livetriptrackermodalprops",
-      "community": 3,
+      "community": 1,
       "norm_label": "livetriptrackermodalprops"
     },
     {
@@ -1431,7 +1575,7 @@
       "source_file": "src/components/tracking/LiveTripTrackerModal.tsx",
       "source_location": "L29",
       "id": "tracking_livetriptrackermodal_livetriptrackermodal",
-      "community": 3,
+      "community": 1,
       "norm_label": "livetriptrackermodal()"
     },
     {
@@ -1458,7 +1602,7 @@
       "source_file": "src/components/tracking/PublicTrackingView.tsx",
       "source_location": "L20",
       "id": "tracking_publictrackingview_publictrackingview",
-      "community": 3,
+      "community": 46,
       "norm_label": "publictrackingview()"
     },
     {
@@ -1494,7 +1638,7 @@
       "source_file": "src/config/supabase.ts",
       "source_location": "L1",
       "id": "config_supabase",
-      "community": 7,
+      "community": 46,
       "norm_label": "supabase.ts"
     },
     {
@@ -1503,7 +1647,7 @@
       "source_file": "src/config/supabase.ts",
       "source_location": "L7",
       "id": "config_supabase_issupabaseconfigured",
-      "community": 7,
+      "community": 46,
       "norm_label": "issupabaseconfigured"
     },
     {
@@ -1782,7 +1926,7 @@
       "source_file": "src/services/interfaces/ITripService.ts",
       "source_location": "L1",
       "id": "interfaces_itripservice",
-      "community": 45,
+      "community": 3,
       "norm_label": "itripservice.ts"
     },
     {
@@ -1791,7 +1935,7 @@
       "source_file": "src/services/interfaces/ITripService.ts",
       "source_location": "L3",
       "id": "interfaces_itripservice_itripservice",
-      "community": 45,
+      "community": 3,
       "norm_label": "itripservice"
     },
     {
@@ -2259,7 +2403,7 @@
       "source_file": "src/services/supabase/SupabaseDriverService.ts",
       "source_location": "L126",
       "id": "supabase_supabasedriverservice_driverservice",
-      "community": 5,
+      "community": 3,
       "norm_label": "driverservice"
     },
     {
@@ -2853,7 +2997,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L1",
       "id": "supabase_supabasetripservice",
-      "community": 45,
+      "community": 3,
       "norm_label": "supabasetripservice.ts"
     },
     {
@@ -2862,7 +3006,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L5",
       "id": "supabase_supabasetripservice_supabasetripservice",
-      "community": 45,
+      "community": 3,
       "norm_label": "supabasetripservice"
     },
     {
@@ -2871,7 +3015,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L6",
       "id": "supabase_supabasetripservice_supabasetripservice_getroutes",
-      "community": 45,
+      "community": 3,
       "norm_label": ".getroutes()"
     },
     {
@@ -2880,7 +3024,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L17",
       "id": "supabase_supabasetripservice_supabasetripservice_getroutestops",
-      "community": 45,
+      "community": 3,
       "norm_label": ".getroutestops()"
     },
     {
@@ -2889,7 +3033,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L28",
       "id": "supabase_supabasetripservice_supabasetripservice_publishtrip",
-      "community": 45,
+      "community": 3,
       "norm_label": ".publishtrip()"
     },
     {
@@ -2898,7 +3042,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L55",
       "id": "supabase_supabasetripservice_supabasetripservice_getdrivertrips",
-      "community": 45,
+      "community": 3,
       "norm_label": ".getdrivertrips()"
     },
     {
@@ -2907,7 +3051,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L66",
       "id": "supabase_supabasetripservice_supabasetripservice_gettripmanifest",
-      "community": 45,
+      "community": 3,
       "norm_label": ".gettripmanifest()"
     },
     {
@@ -2916,7 +3060,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L151",
       "id": "supabase_supabasetripservice_supabasetripservice_updatetripstatus",
-      "community": 45,
+      "community": 3,
       "norm_label": ".updatetripstatus()"
     },
     {
@@ -2925,7 +3069,7 @@
       "source_file": "src/services/supabase/SupabaseTripService.ts",
       "source_location": "L165",
       "id": "supabase_supabasetripservice_tripservice",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripservice"
     },
     {
@@ -2934,7 +3078,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L1",
       "id": "types_database_types",
-      "community": 7,
+      "community": 46,
       "norm_label": "database.types.ts"
     },
     {
@@ -2943,7 +3087,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L1",
       "id": "types_database_types_json",
-      "community": 7,
+      "community": 46,
       "norm_label": "json"
     },
     {
@@ -2952,7 +3096,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L9",
       "id": "types_database_types_database",
-      "community": 7,
+      "community": 46,
       "norm_label": "database"
     },
     {
@@ -2961,7 +3105,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2099",
       "id": "types_database_types_databasewithoutinternals",
-      "community": 7,
+      "community": 46,
       "norm_label": "databasewithoutinternals"
     },
     {
@@ -2970,7 +3114,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2101",
       "id": "types_database_types_defaultschema",
-      "community": 7,
+      "community": 46,
       "norm_label": "defaultschema"
     },
     {
@@ -2979,7 +3123,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2103",
       "id": "types_database_types_tables",
-      "community": 7,
+      "community": 46,
       "norm_label": "tables"
     },
     {
@@ -2988,7 +3132,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2132",
       "id": "types_database_types_tablesinsert",
-      "community": 7,
+      "community": 46,
       "norm_label": "tablesinsert"
     },
     {
@@ -2997,7 +3141,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2157",
       "id": "types_database_types_tablesupdate",
-      "community": 7,
+      "community": 46,
       "norm_label": "tablesupdate"
     },
     {
@@ -3006,7 +3150,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2182",
       "id": "types_database_types_enums",
-      "community": 7,
+      "community": 46,
       "norm_label": "enums"
     },
     {
@@ -3015,7 +3159,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2199",
       "id": "types_database_types_compositetypes",
-      "community": 7,
+      "community": 46,
       "norm_label": "compositetypes"
     },
     {
@@ -3024,7 +3168,7 @@
       "source_file": "src/types/database.types.ts",
       "source_location": "L2216",
       "id": "types_database_types_constants",
-      "community": 7,
+      "community": 46,
       "norm_label": "constants"
     },
     {
@@ -3033,7 +3177,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L1",
       "id": "types_domain",
-      "community": 45,
+      "community": 3,
       "norm_label": "domain.ts"
     },
     {
@@ -3051,7 +3195,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L3",
       "id": "types_domain_verificationstatus",
-      "community": 45,
+      "community": 3,
       "norm_label": "verificationstatus"
     },
     {
@@ -3069,7 +3213,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L7",
       "id": "types_domain_tripstatus",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripstatus"
     },
     {
@@ -3078,7 +3222,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L9",
       "id": "types_domain_bookingstatus",
-      "community": 45,
+      "community": 3,
       "norm_label": "bookingstatus"
     },
     {
@@ -3168,7 +3312,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L113",
       "id": "types_domain_routestop",
-      "community": 45,
+      "community": 3,
       "norm_label": "routestop"
     },
     {
@@ -3177,7 +3321,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L127",
       "id": "types_domain_trip",
-      "community": 45,
+      "community": 3,
       "norm_label": "trip"
     },
     {
@@ -3186,7 +3330,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L146",
       "id": "types_domain_tripstop",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripstop"
     },
     {
@@ -3204,7 +3348,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L179",
       "id": "types_domain_booking",
-      "community": 45,
+      "community": 3,
       "norm_label": "booking"
     },
     {
@@ -3222,7 +3366,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L215",
       "id": "types_domain_manifestpassenger",
-      "community": 45,
+      "community": 3,
       "norm_label": "manifestpassenger"
     },
     {
@@ -3231,7 +3375,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L229",
       "id": "types_domain_tripmanifest",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripmanifest"
     },
     {
@@ -3321,7 +3465,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L332",
       "id": "types_domain_tripshare",
-      "community": 45,
+      "community": 3,
       "norm_label": "tripshare"
     },
     {
@@ -3375,7 +3519,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L448",
       "id": "types_domain_supportticketcategory",
-      "community": 45,
+      "community": 3,
       "norm_label": "supportticketcategory"
     },
     {
@@ -3411,7 +3555,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L508",
       "id": "types_domain_notificationchannel",
-      "community": 45,
+      "community": 3,
       "norm_label": "notificationchannel"
     },
     {
@@ -3429,7 +3573,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L522",
       "id": "types_domain_demandanalyticssummary",
-      "community": 45,
+      "community": 3,
       "norm_label": "demandanalyticssummary"
     },
     {
@@ -3438,7 +3582,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L531",
       "id": "types_domain_demandcorridormetric",
-      "community": 45,
+      "community": 3,
       "norm_label": "demandcorridormetric"
     },
     {
@@ -3447,7 +3591,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L543",
       "id": "types_domain_demanddailytrend",
-      "community": 45,
+      "community": 3,
       "norm_label": "demanddailytrend"
     },
     {
@@ -3474,7 +3618,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L564",
       "id": "types_domain_adminroutestopinput",
-      "community": 45,
+      "community": 3,
       "norm_label": "adminroutestopinput"
     },
     {
@@ -5383,6 +5527,288 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "helpers_getenv",
+      "target": "helpers_getenv_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "helpers_getenv",
+      "target": "helpers_getenv_filename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "helpers_getenv",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/helpers/getEnv.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "helpers_getenv",
+      "target": "helpers_getenv_rootdir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase4.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase4",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase5.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase5",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase6.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase6",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase7.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase7",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_google_maps_and_postgis.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_google_maps_and_postgis",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase1.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase1",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase2.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase2",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase3.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase3",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase3_concurrency.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase3_concurrency",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase4.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase4",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase5.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase5",
+      "target": "helpers_getenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase4.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase4",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase5.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase5",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase6.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase6",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase7.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase7",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_google_maps_and_postgis.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_google_maps_and_postgis",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase1.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase1",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase2.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase2",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase3.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase3",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase3_concurrency.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase3_concurrency",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase4.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase4",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase5.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_test_phase5",
+      "target": "helpers_getenv_getsupabasecredentials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/test_backend_phase4.mjs",
       "source_location": "L9",
       "weight": 1.0,
@@ -5399,6 +5825,16 @@
       "confidence_score": 1.0,
       "source": "scripts_test_backend_phase4",
       "target": "scripts_test_backend_phase4_supabase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase4.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase4",
+      "target": "scripts_test_backend_phase4_url_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5423,6 +5859,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase5.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase5",
+      "target": "scripts_test_backend_phase5_url_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/test_backend_phase6.mjs",
       "source_location": "L9",
       "weight": 1.0,
@@ -5439,6 +5885,16 @@
       "confidence_score": 1.0,
       "source": "scripts_test_backend_phase6",
       "target": "scripts_test_backend_phase6_supabase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase6.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase6",
+      "target": "scripts_test_backend_phase6_url_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5463,6 +5919,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/test_backend_phase7.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "scripts_test_backend_phase7",
+      "target": "scripts_test_backend_phase7_url_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/test_google_maps_and_postgis.mjs",
       "source_location": "L8",
       "weight": 1.0,
@@ -5479,6 +5945,16 @@
       "confidence_score": 1.0,
       "source": "scripts_test_google_maps_and_postgis",
       "target": "scripts_test_google_maps_and_postgis_supabase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_google_maps_and_postgis.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_google_maps_and_postgis",
+      "target": "scripts_test_google_maps_and_postgis_url_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5503,6 +5979,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase1.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_phase1",
+      "target": "scripts_test_phase1_url_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/test_phase2.mjs",
       "source_location": "L8",
       "weight": 1.0,
@@ -5519,6 +6005,16 @@
       "confidence_score": 1.0,
       "source": "scripts_test_phase2",
       "target": "scripts_test_phase2_supabase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase2.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_phase2",
+      "target": "scripts_test_phase2_url_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5543,6 +6039,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase3.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_phase3",
+      "target": "scripts_test_phase3_url_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/test_phase3_concurrency.mjs",
       "source_location": "L8",
       "weight": 1.0,
@@ -5559,6 +6065,16 @@
       "confidence_score": 1.0,
       "source": "scripts_test_phase3_concurrency",
       "target": "scripts_test_phase3_concurrency_supabase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase3_concurrency.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_phase3_concurrency",
+      "target": "scripts_test_phase3_concurrency_url_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5583,6 +6099,16 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase4.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_phase4",
+      "target": "scripts_test_phase4_url_key",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/test_phase5.mjs",
       "source_location": "L8",
       "weight": 1.0,
@@ -5599,6 +6125,16 @@
       "confidence_score": 1.0,
       "source": "scripts_test_phase5",
       "target": "scripts_test_phase5_supabase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test_phase5.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_test_phase5",
+      "target": "scripts_test_phase5_url_key",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15042,5 +15578,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "088ca82d3598c7a021e616fad9091e85c9500149"
+  "built_at_commit": "d2767933cd5267e6a46932417c5bb4c03e5036a3"
 }

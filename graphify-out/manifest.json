@@ -25,58 +25,58 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase4.mjs": {
-    "mtime": 1790862239.8040364,
-    "ast_hash": "2327df842290dc13c94888c3f84b124c",
+    "mtime": 1790863010.3122907,
+    "ast_hash": "807711613d2877cf165c3a0d34035d39",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase5.mjs": {
-    "mtime": 1790862256.6403294,
-    "ast_hash": "e8018192ecd3d8be851fa921d10631eb",
+    "mtime": 1790863032.0345638,
+    "ast_hash": "7cd92d099f5db36abc3fbcc80d70ec6f",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase6.mjs": {
-    "mtime": 1790862150.9178107,
-    "ast_hash": "c84ec5a75800cf4a93fe87540752baa7",
+    "mtime": 1790863052.4228148,
+    "ast_hash": "4ab7d3d2da1588a5940be9ce1f5d24f9",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_backend_phase7.mjs": {
-    "mtime": 1790862171.1668622,
-    "ast_hash": "9c2191df1849c41586470ea66a21d2da",
+    "mtime": 1790863069.38902,
+    "ast_hash": "470182f474c06d4f060d0ea93722b5a0",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_google_maps_and_postgis.mjs": {
-    "mtime": 1790862212.4649673,
-    "ast_hash": "27550ce0ffdebde4ffe109748ff3cc6c",
+    "mtime": 1790862993.6020763,
+    "ast_hash": "f67afe3ed7e456397657e176c52d6931",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase1.mjs": {
-    "mtime": 1790862183.4908936,
-    "ast_hash": "509b97bf8c1abb71aea291c766792bb9",
+    "mtime": 1790862851.625093,
+    "ast_hash": "888bc6ca808eddcde9dedb28eadafc19",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase2.mjs": {
-    "mtime": 1790862192.380916,
-    "ast_hash": "ae66486ebc6c7e781e2813b054457cb0",
+    "mtime": 1790862897.5017684,
+    "ast_hash": "95c55aea3ac957b6b11aac3056f3ddb8",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase3.mjs": {
-    "mtime": 1790862201.1179383,
-    "ast_hash": "637853c39a6108e791bda8889ece3e1f",
+    "mtime": 1790862913.669998,
+    "ast_hash": "53d5a7008f8c1928a583ada579bcdffa",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase3_concurrency.mjs": {
-    "mtime": 1790862222.9799938,
-    "ast_hash": "1b60792a2e484ecbb4395e86f304a9ca",
+    "mtime": 1790862929.2702157,
+    "ast_hash": "ce020142f43fdb57b7a3b2b993f7150b",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase4.mjs": {
-    "mtime": 1790725954.401209,
-    "ast_hash": "b1f86fe0cb881ca9ce3e8842f71f0191",
+    "mtime": 1790862949.2554896,
+    "ast_hash": "224f37298dc45e7b5bae2005bbbface4",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/scripts/test_phase5.mjs": {
-    "mtime": 1790728210.5999682,
-    "ast_hash": "5b7ac419b4315e2a7b964611dfeccc91",
+    "mtime": 1790862971.7937913,
+    "ast_hash": "7c3d725371d9821d847074c6dc7dd023",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/App.tsx": {
@@ -380,8 +380,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/system-health/index.ts": {
-    "mtime": 1790849457.2479637,
-    "ast_hash": "f4037f1169fe3450e6f1f68ab7e7901a",
+    "mtime": 1790863085.4842114,
+    "ast_hash": "9ac2dc05299d950cecd2506417996466",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/supabase/functions/tsconfig.json": {
@@ -642,6 +642,11 @@
   "/home/iammbayo/Documents/Projects/wala-ride/supabase/seed.sql": {
     "mtime": 1790862122.9407394,
     "ast_hash": "658d62d7656c9091f964f16cf5087e3d",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/scripts/helpers/getEnv.mjs": {
+    "mtime": 1790862814.9625268,
+    "ast_hash": "7429ca3745965830d9e48af5d6011bdf",
     "semantic_hash": ""
   }
 }

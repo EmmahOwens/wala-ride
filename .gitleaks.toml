@@ -1,0 +1,13 @@
+# Gitleaks Configuration for Wala Ride
+title = "Wala Ride Gitleaks Configuration"
+
+[allowlist]
+description = "Allowlist test suite mock files and specific test commit fingerprints"
+paths = [
+  '''scripts/.*''',
+  '''supabase/seed\.sql''',
+]
+commits = [
+  "d2767933cd5267e6a46932417c5bb4c03e5036a3",
+  "d276793",
+]

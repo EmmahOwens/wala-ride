@@ -1,8 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
+import { getSupabaseCredentials } from './helpers/getEnv.mjs';
 
-const url = process.env.SUPABASE_URL || 'https://rmpsvmizgdlepkqggtrm.supabase.co';
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJtcHN2bWl6Z2RsZXBrcWdndHJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2OTYxMzEsImV4cCI6MjEwNjI3MjEzMX0.w9eEmOigBq3M50B-x4gO-H65gVGPqPwc2ulC_O7rUxU';
-
+const { url, key } = getSupabaseCredentials();
 const supabase = createClient(url, key);
 
 async function runPhase2Verification() {

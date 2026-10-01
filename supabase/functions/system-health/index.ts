@@ -71,7 +71,7 @@ Deno.serve({ port: Number(Deno.env.get("PORT")) || 8000 }, async (req: Request) 
   }
 
   // 2. Google Maps Platform Subsystem Check
-  const mapsApiKey = Deno.env.get("GOOGLE_MAPS_API_KEY");
+  const mapsApiKey = Deno.env.get("GOOGLE_MAPS_API_KEY") || Deno.env.get("GOOGLE_MAPS_API");
   if (mapsApiKey) {
     checks.maps = {
       status: "ok",

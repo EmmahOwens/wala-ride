@@ -1,16 +1,16 @@
 # Graph Report - wala-ride  (2026-10-01)
 
 ## Corpus Check
-- 119 files · ~135,199 words
+- 120 files · ~135,372 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 555 nodes · 955 edges · 48 communities (28 shown, 20 thin omitted)
+- 571 nodes · 992 edges · 36 communities (27 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `088ca82d`
+- Built from commit: `d2767933`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -22,7 +22,6 @@
 - [[_COMMUNITY_Community 4|Community 4]]
 - [[_COMMUNITY_Community 5|Community 5]]
 - [[_COMMUNITY_Community 6|Community 6]]
-- [[_COMMUNITY_Community 7|Community 7]]
 - [[_COMMUNITY_Community 8|Community 8]]
 - [[_COMMUNITY_Community 9|Community 9]]
 - [[_COMMUNITY_Community 10|Community 10]]
@@ -42,23 +41,12 @@
 - [[_COMMUNITY_Community 24|Community 24]]
 - [[_COMMUNITY_Community 25|Community 25]]
 - [[_COMMUNITY_Community 26|Community 26]]
-- [[_COMMUNITY_Community 27|Community 27]]
-- [[_COMMUNITY_Community 28|Community 28]]
-- [[_COMMUNITY_Community 29|Community 29]]
-- [[_COMMUNITY_Community 30|Community 30]]
-- [[_COMMUNITY_Community 31|Community 31]]
-- [[_COMMUNITY_Community 32|Community 32]]
-- [[_COMMUNITY_Community 33|Community 33]]
-- [[_COMMUNITY_Community 34|Community 34]]
-- [[_COMMUNITY_Community 35|Community 35]]
-- [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
 - [[_COMMUNITY_Community 41|Community 41]]
 - [[_COMMUNITY_Community 42|Community 42]]
-- [[_COMMUNITY_Community 45|Community 45]]
 - [[_COMMUNITY_Community 46|Community 46]]
 - [[_COMMUNITY_Community 47|Community 47]]
 
@@ -72,15 +60,15 @@
 7. `Town` - 14 edges
 8. `SupabaseAdminService` - 13 edges
 9. `BookingTicket` - 13 edges
-10. `UserRoleType` - 11 edges
+10. `getSupabaseCredentials()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `TripAlertModalProps` --references--> `Town`  [EXTRACTED]
   src/components/passenger/TripAlertModal.tsx → src/types/domain.ts
-- `LiveTripTrackerModalProps` --references--> `BookingTicket`  [EXTRACTED]
-  src/components/tracking/LiveTripTrackerModal.tsx → src/types/domain.ts
 - `AppContent()` --calls--> `useAuth()`  [EXTRACTED]
   src/App.tsx → src/context/AuthContext.tsx
+- `BookingHoldModal()` --calls--> `useAuth()`  [EXTRACTED]
+  src/components/booking/BookingHoldModal.tsx → src/context/AuthContext.tsx
 - `ETicketModalProps` --references--> `BookingTicket`  [EXTRACTED]
   src/components/booking/ETicketModal.tsx → src/types/domain.ts
 - `DriverRouteRequestModal()` --calls--> `useAuth()`  [EXTRACTED]
@@ -89,47 +77,43 @@
 ## Import Cycles
 - None detected.
 
-## Communities (48 total, 20 thin omitted)
+## Communities (36 total, 9 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.13
 Nodes (11): AuthModalProps, supabase, AuthContext, AuthContextType, IAuthService, SignUpParams, authService, getAppRedirectUrl() (+3 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.20
-Nodes (10): BookingHoldModalProps, ETicketModal(), ETicketModalProps, IBookingService, PassengerViewProps, bookingService, SupabaseBookingService, BookingTicket (+2 more)
+Cohesion: 0.17
+Nodes (13): BookingHoldModal(), BookingHoldModalProps, ETicketModal(), ETicketModalProps, IBookingService, PassengerViewProps, bookingService, SupabaseBookingService (+5 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.11
 Nodes (15): AdminDemandAnalyticsProps, IAdminService, PendingDriverVerification, IDriverService, adminService, SupabaseAdminService, SupabaseDriverService, AdminRouteInput (+7 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.09
-Nodes (18): ITrackingService, SupabaseTrackingService, trackingService, EmergencyContactsModal(), EmergencyContactsModalProps, LiveTripTrackerModal(), LiveTripTrackerModalProps, PublicTrackingView() (+10 more)
+Cohesion: 0.06
+Nodes (38): TripManifestModal(), TripManifestModalProps, TripPublisher(), ITrackingService, ITripService, driverService, SupabaseTrackingService, trackingService (+30 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.05
 Nodes (36): Border Radius Scale, Brand & Accent, Breakpoints, Buttons, Cards & Containers, Collapsing Strategy, Colors, Components (+28 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.14
-Nodes (13): DriverRadarDashboard(), DriverRadarDashboardProps, DriverSubscriptionView(), DriverSubscriptionViewProps, TripPublisher(), ISubscriptionService, driverService, subscriptionService (+5 more)
+Cohesion: 0.09
+Nodes (19): DriverRadarDashboard(), DriverRadarDashboardProps, DriverRouteRequestModal(), DriverRouteRequestModalProps, LocationPickerProps, MapPreviewProps, mapsCallbacks, PlacePrediction (+11 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.19
 Nodes (7): AddPickupPointModal(), AddPickupPointModalProps, IGeographyService, geographyService, SupabaseGeographyService, PickupPoint, PickupPointKind
-
-### Community 7 - "Community 7"
-Cohesion: 0.08
-Nodes (19): isSupabaseConfigured, DriverRouteRequestModal(), DriverRouteRequestModalProps, LocationPickerProps, MapPreviewProps, mapsCallbacks, PlacePrediction, RouteRequestEntry (+11 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.08
 Nodes (23): dependencies, lucide-react, react, react-dom, @supabase/supabase-js, devDependencies, oxlint, @types/deno (+15 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.20
-Nodes (10): CreateTicketParams, ISupportService, PassengerSupportModalProps, SupabaseSupportService, supportService, SupportMessage, SupportTicket, SupportTicketPriority (+2 more)
+Cohesion: 0.17
+Nodes (12): AdminSupportQueue(), CreateTicketParams, ISupportService, PassengerSupportModal(), PassengerSupportModalProps, SupabaseSupportService, supportService, SupportMessage (+4 more)
 
 ### Community 10 - "Community 10"
 Cohesion: 0.10
@@ -183,37 +167,37 @@ Nodes (5): imports, @supabase/supabase-js, lint, rules, exclude
 Cohesion: 0.50
 Nodes (3): Expanding the Oxlint configuration, React Compiler, React + TypeScript + Vite
 
-### Community 45 - "Community 45"
-Cohesion: 0.12
-Nodes (21): TripManifestModal(), TripManifestModalProps, ITripService, SupabaseTripService, tripService, AdminRouteStopInput, Booking, BookingStatus (+13 more)
+### Community 26 - "Community 26"
+Cohesion: 0.05
+Nodes (26): __dirname, __filename, getSupabaseCredentials(), rootDir, supabase, { url, key }, supabase, { url, key } (+18 more)
 
 ### Community 46 - "Community 46"
-Cohesion: 0.09
-Nodes (23): AdminDemandAnalytics(), AdminIncidentConsole(), AdminRouteManager(), AdminSupportQueue(), AdminVerificationQueue(), AccountModal(), AccountModalProps, AuthModal() (+15 more)
+Cohesion: 0.07
+Nodes (32): AdminDemandAnalytics(), AdminIncidentConsole(), AdminRouteManager(), AdminVerificationQueue(), AccountModal(), AccountModalProps, AuthModal(), NotificationBell() (+24 more)
 
 ### Community 47 - "Community 47"
 Cohesion: 0.22
 Nodes (7): IRadarService, TripAlertModal(), TripAlertModalProps, radarService, SupabaseRadarService, RadarLead, TripAlert
 
 ## Knowledge Gaps
-- **201 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `recommendations` (+196 more)
+- **215 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `recommendations` (+210 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **20 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `supabase` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 6`, `Community 7`, `Community 9`, `Community 45`, `Community 46`, `Community 47`?**
+- **Why does `supabase` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`, `Community 5`, `Community 6`, `Community 9`, `Community 46`, `Community 47`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **What connects `$schema`, `plugins`, `react/rules-of-hooks` to the rest of the system?**
-  _201 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _215 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.11201079622132254 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**
-  _Cohesion score 0.09268292682926829 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.059076682316118935 - nodes in this community are weakly interconnected._
 - **Should `Community 4` be split into smaller, more focused modules?**
   _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `Community 5` be split into smaller, more focused modules?**
-  _Cohesion score 0.13846153846153847 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08558558558558559 - nodes in this community are weakly interconnected._
