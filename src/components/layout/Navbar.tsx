@@ -1,11 +1,12 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { Car, ShieldCheck, User, LogOut, Compass, PlusCircle, LifeBuoy } from 'lucide-react';
+import { Car, ShieldCheck, LogOut, Compass, PlusCircle, LifeBuoy } from 'lucide-react';
 import { NotificationBell } from '../common/NotificationBell';
 import type { UserRoleType } from '../../types/domain';
 
 interface NavbarProps {
   onOpenAuth: () => void;
+  onOpenAccount?: () => void;
   onOpenAddStage?: () => void;
   onOpenSupport?: () => void;
   onOpenTicket?: (ticketId: string) => void;
@@ -13,6 +14,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenAuth,
+  onOpenAccount,
   onOpenAddStage,
   onOpenSupport,
   onOpenTicket,
@@ -178,21 +180,45 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
 
               {/* User avatar / name */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 12px',
-                borderRadius: 'var(--radius-pill)',
-                backgroundColor: 'var(--color-canvas-soft)',
-                fontSize: '13px',
-                fontWeight: 600,
-              }}>
-                <User size={15} />
+              <button
+                type="button"
+                onClick={onOpenAccount}
+                title="Manage Account & Profile"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '6px 14px',
+                  borderRadius: 'var(--radius-pill)',
+                  backgroundColor: 'var(--color-canvas-soft)',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  border: '1px solid var(--color-hairline)',
+                  cursor: 'pointer',
+                  color: 'var(--color-ink)',
+                  transition: 'background-color 0.15s ease',
+                }}
+              >
+                <div
+                  style={{
+                    width: '22px',
+                    height: '22px',
+                    borderRadius: 'var(--radius-pill)',
+                    backgroundColor: '#000000',
+                    color: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                  }}
+                >
+                  {(profile?.first_name?.[0] || user.email?.[0] || 'U').toUpperCase()}
+                </div>
                 <span>
                   {profile?.first_name || user.email?.split('@')[0] || user.phone || 'My Account'}
                 </span>
-              </div>
+              </button>
 
               {/* Sign out */}
               <button

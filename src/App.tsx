@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar } from './components/layout/Navbar';
 import { AuthModal } from './components/auth/AuthModal';
+import { AccountModal } from './components/auth/AccountModal';
 import { DriverOnboarding } from './components/driver/DriverOnboarding';
 import { AdminVerificationQueue } from './components/admin/AdminVerificationQueue';
 import { AdminIncidentConsole } from './components/admin/AdminIncidentConsole';
@@ -26,8 +27,9 @@ import {
 } from 'lucide-react';
 
 const AppContent: React.FC = () => {
-  const { user, activeRole } = useAuth();
+  const { user, activeRole, isPasswordRecovery, setActiveRole } = useAuth();
   const [isAuthOpen, setIsAuthOpen] = useState<boolean>(false);
+  const [isAccountOpen, setIsAccountOpen] = useState<boolean>(false);
   const [isAddStageOpen, setIsAddStageOpen] = useState<boolean>(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState<boolean>(false);
   const [supportBookingRef, setSupportBookingRef] = useState<string | null>(null);
@@ -37,6 +39,13 @@ const AppContent: React.FC = () => {
   const [trackToken, setTrackToken] = useState<string | null>(() => {
     return new URLSearchParams(window.location.search).get('track');
   });
+
+  // Automatically open auth modal when password recovery link is clicked
+  React.useEffect(() => {
+    if (isPasswordRecovery) {
+      setIsAuthOpen(true);
+    }
+  }, [isPasswordRecovery]);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-canvas)' }}>
@@ -64,6 +73,7 @@ const AppContent: React.FC = () => {
       {/* Top Navigation */}
       <Navbar
         onOpenAuth={() => setIsAuthOpen(true)}
+        onOpenAccount={() => setIsAccountOpen(true)}
         onOpenAddStage={() => setIsAddStageOpen(true)}
         onOpenSupport={() => {
           setSupportBookingRef(null);
@@ -309,6 +319,15 @@ const AppContent: React.FC = () => {
       <AuthModal
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
+      />
+
+      <AccountModal
+        isOpen={isAccountOpen}
+        onClose={() => setIsAccountOpen(false)}
+        onSwitchToDriver={() => {
+          setIsAccountOpen(false);
+          setActiveRole('driver');
+        }}
       />
 
       <AddPickupPointModal

@@ -80,8 +80,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/App.tsx": {
-    "mtime": 1790727969.2424784,
-    "ast_hash": "fd032eeefece177e7467b4af716ee70e",
+    "mtime": 1790850530.9658294,
+    "ast_hash": "261c44ad40b52ef09774146ceaf33700",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/admin/AdminDemandAnalytics.tsx": {
@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/auth/AuthModal.tsx": {
-    "mtime": 1790706731.664119,
-    "ast_hash": "57d9e751370e192bc8419c7745444965",
+    "mtime": 1790850992.5140786,
+    "ast_hash": "b4acde04aef961775fe3205c50850a7d",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/booking/BookingHoldModal.tsx": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/layout/Navbar.tsx": {
-    "mtime": 1790727620.0981243,
-    "ast_hash": "b967b1ec2f7925aaaddb6464f4ed7944",
+    "mtime": 1790850612.0383432,
+    "ast_hash": "b0cfd7742303821641de6efbd42e11ce",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/passenger/PassengerSupportModal.tsx": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/context/AuthContext.tsx": {
-    "mtime": 1790703464.3907466,
-    "ast_hash": "eb36b2c7054fd450fb11b5472b804879",
+    "mtime": 1790850863.693573,
+    "ast_hash": "3d77a64a58c30c5afe04f62a340cc59d",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/main.tsx": {
@@ -225,8 +225,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IAuthService.ts": {
-    "mtime": 1790703382.154752,
-    "ast_hash": "e39a5743ba6114fbcf349743bc2c4932",
+    "mtime": 1790850784.6128318,
+    "ast_hash": "3a06ccbfdb34912329f84253d2e95992",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/services/interfaces/IBookingService.ts": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseAuthService.ts": {
-    "mtime": 1790703425.7302082,
-    "ast_hash": "16708c4a50faef07f240e9748b33c6b3",
+    "mtime": 1790850802.6252437,
+    "ast_hash": "9136cd21da908d291b2c245eecb3add7",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseBookingService.ts": {
@@ -602,6 +602,16 @@
   "/home/iammbayo/Documents/Projects/wala-ride/src/assets/vite.svg": {
     "mtime": 1790702607.4183211,
     "ast_hash": "9960a24288958394ac50e57ff638b036",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/src/components/auth/AccountModal.tsx": {
+    "mtime": 1790850573.0811722,
+    "ast_hash": "a0d0ad2f90ffd1d52df969904594f6eb",
+    "semantic_hash": ""
+  },
+  "/home/iammbayo/Documents/Projects/wala-ride/supabase/migrations/20261001160000_supabase_auth_system_enhancements.sql": {
+    "mtime": 1790850228.6351485,
+    "ast_hash": "e6418050fa62e44cfced2ad9ffd81d1f",
     "semantic_hash": ""
   }
 }
