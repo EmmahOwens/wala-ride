@@ -102,6 +102,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     return cleaned;
   };
 
+  const formatAuthErrorMessage = (msg: string): string => {
+    if (msg.toLowerCase().includes('error sending confirmation email') || msg.includes('535') || msg.includes('BadCredentials')) {
+      return 'Email delivery failed: Supabase Custom SMTP authentication was rejected. If using Gmail, use an App Password, or turn off "Enable Custom SMTP" in Supabase to use the default mailer.';
+    }
+    return msg;
+  };
+
   // SEND EMAIL OTP
   const handleSendEmailOtp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,7 +127,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     setLoading(false);
 
     if (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(formatAuthErrorMessage(error.message));
     } else {
       setAuthMode('verify_otp');
       setCountdown(60);
@@ -139,7 +146,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     setLoading(false);
 
     if (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(formatAuthErrorMessage(error.message));
     } else {
       setCountdown(60);
       setSuccessMessage(`A new 6-digit code was sent to ${cleanEmail}.`);
@@ -201,7 +208,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       setLoading(false);
 
       if (error) {
-        setErrorMessage(error.message);
+        setErrorMessage(formatAuthErrorMessage(error.message));
       } else if (requiresEmailConfirmation) {
         // Automatically switch to Email OTP Verification code entry!
         setAuthMode('verify_otp');
