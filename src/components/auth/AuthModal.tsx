@@ -131,7 +131,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     } else {
       setAuthMode('verify_otp');
       setCountdown(60);
-      setSuccessMessage(`We sent a 6-digit verification code to ${cleanEmail}.`);
+      setSuccessMessage(`We sent a verification code to ${cleanEmail}.`);
     }
   };
 
@@ -149,22 +149,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       setErrorMessage(formatAuthErrorMessage(error.message));
     } else {
       setCountdown(60);
-      setSuccessMessage(`A new 6-digit code was sent to ${cleanEmail}.`);
+      setSuccessMessage(`A new verification code was sent to ${cleanEmail}.`);
     }
   };
 
-  // VERIFY EMAIL OTP
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // VERIFY EMAIL OTP — shared logic
+  const doVerifyOtp = async (token: string) => {
     setErrorMessage(null);
     setLoading(true);
 
     const cleanEmail = email.trim();
-    const { error } = await verifyEmailOtp(cleanEmail, otpToken.trim(), isSignUp ? 'signup' : 'email');
+    const { error } = await verifyEmailOtp(cleanEmail, token.trim(), isSignUp ? 'signup' : 'email');
     setLoading(false);
 
     if (error) {
-      setErrorMessage(error.message || 'Invalid or expired verification code.');
+      setErrorMessage(error.message || 'Invalid or expired verification code. Make sure you entered all the digits.');
     } else {
       if (profile && (profile.first_name || profile.last_name)) {
         onClose();
@@ -173,6 +172,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       }
     }
   };
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await doVerifyOtp(otpToken);
+  };
+
+  // Auto-submit when all 8 digits are entered (Supabase sends 8-digit codes)
+  useEffect(() => {
+    if (otpToken.length === 8 && authMode === 'verify_otp' && !loading) {
+      doVerifyOtp(otpToken);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [otpToken]);
 
   // PASSWORD AUTH (SIGN IN / SIGN UP)
   const handlePasswordAuth = async (e: React.FormEvent) => {
@@ -552,7 +564,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 Verify your email
               </h2>
               <p className="body-sm" style={{ marginTop: '6px', color: 'var(--color-body)' }}>
-                Enter the 6-digit verification code sent to
+                Enter the verification code sent to
               </p>
               <div
                 style={{
@@ -590,8 +602,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <input
                   type="text"
                   className="input-field"
-                  placeholder="123456"
-                  maxLength={6}
+                  placeholder="••••••••"
+                  maxLength={8}
                   autoFocus
                   value={otpToken}
                   onChange={(e) => setOtpToken(e.target.value.replace(/\D/g, ''))}
@@ -604,6 +616,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   }}
                   required
                 />
+                <p style={{ fontSize: '12px', color: 'var(--color-body)', textAlign: 'center', marginTop: '6px', opacity: 0.75 }}>
+                  Enter all digits from your email — do not stop early
+                </p>
               </div>
 
               <button

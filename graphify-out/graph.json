@@ -1116,7 +1116,7 @@
       "source_file": "src/components/driver/TripManifestModal.tsx",
       "source_location": "L1",
       "id": "driver_tripmanifestmodal",
-      "community": 3,
+      "community": 45,
       "norm_label": "tripmanifestmodal.tsx"
     },
     {
@@ -1134,7 +1134,7 @@
       "source_file": "src/components/driver/TripManifestModal.tsx",
       "source_location": "L27",
       "id": "driver_tripmanifestmodal_tripmanifestmodal",
-      "community": 3,
+      "community": 45,
       "norm_label": "tripmanifestmodal()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "src/components/driver/TripPublisher.tsx",
       "source_location": "L1",
       "id": "driver_trippublisher",
-      "community": 0,
+      "community": 45,
       "norm_label": "trippublisher.tsx"
     },
     {
@@ -1242,7 +1242,7 @@
       "source_file": "src/components/passenger/TripAlertModal.tsx",
       "source_location": "L1",
       "id": "passenger_tripalertmodal",
-      "community": 6,
+      "community": 5,
       "norm_label": "tripalertmodal.tsx"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "src/components/passenger/TripAlertModal.tsx",
       "source_location": "L6",
       "id": "passenger_tripalertmodal_tripalertmodalprops",
-      "community": 6,
+      "community": 5,
       "norm_label": "tripalertmodalprops"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_file": "src/components/passenger/TripAlertModal.tsx",
       "source_location": "L17",
       "id": "passenger_tripalertmodal_tripalertmodal",
-      "community": 6,
+      "community": 5,
       "norm_label": "tripalertmodal()"
     },
     {
@@ -1269,7 +1269,7 @@
       "source_file": "src/components/tracking/EmergencyContactsModal.tsx",
       "source_location": "L1",
       "id": "tracking_emergencycontactsmodal",
-      "community": 3,
+      "community": 1,
       "norm_label": "emergencycontactsmodal.tsx"
     },
     {
@@ -1278,7 +1278,7 @@
       "source_file": "src/components/tracking/EmergencyContactsModal.tsx",
       "source_location": "L6",
       "id": "tracking_emergencycontactsmodal_emergencycontactsmodalprops",
-      "community": 3,
+      "community": 1,
       "norm_label": "emergencycontactsmodalprops"
     },
     {
@@ -1287,7 +1287,7 @@
       "source_file": "src/components/tracking/EmergencyContactsModal.tsx",
       "source_location": "L12",
       "id": "tracking_emergencycontactsmodal_emergencycontactsmodal",
-      "community": 3,
+      "community": 1,
       "norm_label": "emergencycontactsmodal()"
     },
     {
@@ -1296,7 +1296,7 @@
       "source_file": "src/components/tracking/LiveTripTrackerModal.tsx",
       "source_location": "L1",
       "id": "tracking_livetriptrackermodal",
-      "community": 3,
+      "community": 1,
       "norm_label": "livetriptrackermodal.tsx"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_file": "src/components/tracking/TripRatingModal.tsx",
       "source_location": "L1",
       "id": "tracking_tripratingmodal",
-      "community": 3,
+      "community": 1,
       "norm_label": "tripratingmodal.tsx"
     },
     {
@@ -1359,7 +1359,7 @@
       "source_file": "src/components/tracking/TripRatingModal.tsx",
       "source_location": "L5",
       "id": "tracking_tripratingmodal_tripratingmodalprops",
-      "community": 3,
+      "community": 1,
       "norm_label": "tripratingmodalprops"
     },
     {
@@ -1368,7 +1368,7 @@
       "source_file": "src/components/tracking/TripRatingModal.tsx",
       "source_location": "L14",
       "id": "tracking_tripratingmodal_tripratingmodal",
-      "community": 3,
+      "community": 1,
       "norm_label": "tripratingmodal()"
     },
     {
@@ -1395,7 +1395,7 @@
       "source_file": "src/config/supabase.ts",
       "source_location": "L24",
       "id": "config_supabase_supabase",
-      "community": 7,
+      "community": 2,
       "norm_label": "supabase"
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "src/services/supabase/SupabaseAdminService.ts",
       "source_location": "L145",
       "id": "supabase_supabaseadminservice_supabaseadminservice_upserttown",
-      "community": 6,
+      "community": 2,
       "norm_label": ".upserttown()"
     },
     {
@@ -1813,10 +1813,19 @@
       "norm_label": "supabaseauthservice.ts"
     },
     {
-      "label": "SupabaseAuthService",
+      "label": "getAppRedirectUrl()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
       "source_location": "L5",
+      "id": "supabase_supabaseauthservice_getappredirecturl",
+      "community": 0,
+      "norm_label": "getappredirecturl()"
+    },
+    {
+      "label": "SupabaseAuthService",
+      "file_type": "code",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L20",
       "id": "supabase_supabaseauthservice_supabaseauthservice",
       "community": 0,
       "norm_label": "supabaseauthservice"
@@ -1825,7 +1834,7 @@
       "label": ".signInWithOtp()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L6",
+      "source_location": "L21",
       "id": "supabase_supabaseauthservice_supabaseauthservice_signinwithotp",
       "community": 0,
       "norm_label": ".signinwithotp()"
@@ -1834,7 +1843,7 @@
       "label": ".verifyOtp()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L17",
+      "source_location": "L32",
       "id": "supabase_supabaseauthservice_supabaseauthservice_verifyotp",
       "community": 0,
       "norm_label": ".verifyotp()"
@@ -1843,7 +1852,7 @@
       "label": ".sendEmailOtp()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L30",
+      "source_location": "L45",
       "id": "supabase_supabaseauthservice_supabaseauthservice_sendemailotp",
       "community": 0,
       "norm_label": ".sendemailotp()"
@@ -1852,7 +1861,7 @@
       "label": ".verifyEmailOtp()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L45",
+      "source_location": "L60",
       "id": "supabase_supabaseauthservice_supabaseauthservice_verifyemailotp",
       "community": 0,
       "norm_label": ".verifyemailotp()"
@@ -1861,7 +1870,7 @@
       "label": ".signInWithPassword()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L80",
+      "source_location": "L95",
       "id": "supabase_supabaseauthservice_supabaseauthservice_signinwithpassword",
       "community": 0,
       "norm_label": ".signinwithpassword()"
@@ -1870,7 +1879,7 @@
       "label": ".signUpWithPassword()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L92",
+      "source_location": "L107",
       "id": "supabase_supabaseauthservice_supabaseauthservice_signupwithpassword",
       "community": 0,
       "norm_label": ".signupwithpassword()"
@@ -1879,7 +1888,7 @@
       "label": ".signInWithMagicLink()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L144",
+      "source_location": "L159",
       "id": "supabase_supabaseauthservice_supabaseauthservice_signinwithmagiclink",
       "community": 0,
       "norm_label": ".signinwithmagiclink()"
@@ -1888,7 +1897,7 @@
       "label": ".signInWithOAuth()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L158",
+      "source_location": "L173",
       "id": "supabase_supabaseauthservice_supabaseauthservice_signinwithoauth",
       "community": 0,
       "norm_label": ".signinwithoauth()"
@@ -1897,7 +1906,7 @@
       "label": ".resetPasswordForEmail()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L172",
+      "source_location": "L187",
       "id": "supabase_supabaseauthservice_supabaseauthservice_resetpasswordforemail",
       "community": 0,
       "norm_label": ".resetpasswordforemail()"
@@ -1906,7 +1915,7 @@
       "label": ".updatePassword()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L183",
+      "source_location": "L198",
       "id": "supabase_supabaseauthservice_supabaseauthservice_updatepassword",
       "community": 0,
       "norm_label": ".updatepassword()"
@@ -1915,7 +1924,7 @@
       "label": ".signOut()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L194",
+      "source_location": "L209",
       "id": "supabase_supabaseauthservice_supabaseauthservice_signout",
       "community": 0,
       "norm_label": ".signout()"
@@ -1924,7 +1933,7 @@
       "label": ".getSession()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L198",
+      "source_location": "L213",
       "id": "supabase_supabaseauthservice_supabaseauthservice_getsession",
       "community": 0,
       "norm_label": ".getsession()"
@@ -1933,7 +1942,7 @@
       "label": ".getProfile()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L203",
+      "source_location": "L218",
       "id": "supabase_supabaseauthservice_supabaseauthservice_getprofile",
       "community": 0,
       "norm_label": ".getprofile()"
@@ -1942,7 +1951,7 @@
       "label": ".updateProfile()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L214",
+      "source_location": "L229",
       "id": "supabase_supabaseauthservice_supabaseauthservice_updateprofile",
       "community": 0,
       "norm_label": ".updateprofile()"
@@ -1951,7 +1960,7 @@
       "label": ".getUserRoles()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L226",
+      "source_location": "L241",
       "id": "supabase_supabaseauthservice_supabaseauthservice_getuserroles",
       "community": 0,
       "norm_label": ".getuserroles()"
@@ -1960,7 +1969,7 @@
       "label": ".assignRole()",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L236",
+      "source_location": "L251",
       "id": "supabase_supabaseauthservice_supabaseauthservice_assignrole",
       "community": 0,
       "norm_label": ".assignrole()"
@@ -1969,7 +1978,7 @@
       "label": "authService",
       "file_type": "code",
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
-      "source_location": "L257",
+      "source_location": "L272",
       "id": "supabase_supabaseauthservice_authservice",
       "community": 0,
       "norm_label": "authservice"
@@ -2358,7 +2367,7 @@
       "source_file": "src/services/supabase/SupabaseRadarService.ts",
       "source_location": "L76",
       "id": "supabase_supabaseradarservice_radarservice",
-      "community": 6,
+      "community": 5,
       "norm_label": "radarservice"
     },
     {
@@ -2718,7 +2727,7 @@
       "source_file": "src/services/supabase/SupabaseTrackingService.ts",
       "source_location": "L352",
       "id": "supabase_supabasetrackingservice_trackingservice",
-      "community": 3,
+      "community": 1,
       "norm_label": "trackingservice"
     },
     {
@@ -2907,7 +2916,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L1",
       "id": "types_domain",
-      "community": 5,
+      "community": 45,
       "norm_label": "domain.ts"
     },
     {
@@ -2925,7 +2934,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L3",
       "id": "types_domain_verificationstatus",
-      "community": 5,
+      "community": 45,
       "norm_label": "verificationstatus"
     },
     {
@@ -2952,7 +2961,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L9",
       "id": "types_domain_bookingstatus",
-      "community": 5,
+      "community": 45,
       "norm_label": "bookingstatus"
     },
     {
@@ -3006,7 +3015,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L66",
       "id": "types_domain_town",
-      "community": 6,
+      "community": 2,
       "norm_label": "town"
     },
     {
@@ -3060,7 +3069,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L146",
       "id": "types_domain_tripstop",
-      "community": 5,
+      "community": 45,
       "norm_label": "tripstop"
     },
     {
@@ -3078,7 +3087,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L179",
       "id": "types_domain_booking",
-      "community": 5,
+      "community": 45,
       "norm_label": "booking"
     },
     {
@@ -3195,7 +3204,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L332",
       "id": "types_domain_tripshare",
-      "community": 5,
+      "community": 45,
       "norm_label": "tripshare"
     },
     {
@@ -3249,7 +3258,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L448",
       "id": "types_domain_supportticketcategory",
-      "community": 5,
+      "community": 45,
       "norm_label": "supportticketcategory"
     },
     {
@@ -3285,7 +3294,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L508",
       "id": "types_domain_notificationchannel",
-      "community": 5,
+      "community": 45,
       "norm_label": "notificationchannel"
     },
     {
@@ -3303,7 +3312,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L522",
       "id": "types_domain_demandanalyticssummary",
-      "community": 5,
+      "community": 45,
       "norm_label": "demandanalyticssummary"
     },
     {
@@ -3312,7 +3321,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L531",
       "id": "types_domain_demandcorridormetric",
-      "community": 5,
+      "community": 45,
       "norm_label": "demandcorridormetric"
     },
     {
@@ -3321,7 +3330,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L543",
       "id": "types_domain_demanddailytrend",
-      "community": 5,
+      "community": 45,
       "norm_label": "demanddailytrend"
     },
     {
@@ -3348,7 +3357,7 @@
       "source_file": "src/types/domain.ts",
       "source_location": "L564",
       "id": "types_domain_adminroutestopinput",
-      "community": 5,
+      "community": 45,
       "norm_label": "adminroutestopinput"
     },
     {
@@ -10433,6 +10442,16 @@
       "source_file": "src/services/supabase/SupabaseAuthService.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "source": "supabase_supabaseauthservice",
+      "target": "supabase_supabaseauthservice_getappredirecturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L5",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "supabase_supabaseauthservice",
       "target": "supabase_supabaseauthservice_supabaseauthservice"
@@ -10469,6 +10488,61 @@
       "confidence_score": 1.0,
       "source": "supabase_supabaseauthservice",
       "target": "types_domain_userroletype"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "supabase_supabaseauthservice_supabaseauthservice_resetpasswordforemail",
+      "target": "supabase_supabaseauthservice_getappredirecturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "supabase_supabaseauthservice_supabaseauthservice_sendemailotp",
+      "target": "supabase_supabaseauthservice_getappredirecturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "supabase_supabaseauthservice_supabaseauthservice_signinwithmagiclink",
+      "target": "supabase_supabaseauthservice_getappredirecturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "supabase_supabaseauthservice_supabaseauthservice_signinwithoauth",
+      "target": "supabase_supabaseauthservice_getappredirecturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/supabase/SupabaseAuthService.ts",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "supabase_supabaseauthservice_supabaseauthservice_signupwithpassword",
+      "target": "supabase_supabaseauthservice_getappredirecturl",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -14621,5 +14695,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c75b4de0e636a371afdc99868e9fb2c0fd2f3c57"
+  "built_at_commit": "b9559f14e4d067dbd722ff4eaeb4243df85046e7"
 }

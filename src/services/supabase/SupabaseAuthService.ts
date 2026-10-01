@@ -2,6 +2,21 @@ import { supabase } from '../../config/supabase';
 import type { IAuthService, SignUpParams } from '../interfaces/IAuthService';
 import type { UserProfile, UserRoleType } from '../../types/domain';
 
+export const getAppRedirectUrl = (): string => {
+  const envUrl = import.meta.env.VITE_SITE_URL || (import.meta.env as any).VITE_PUBLIC_SITE_URL;
+  if (envUrl && typeof envUrl === 'string' && envUrl.startsWith('http')) {
+    return envUrl;
+  }
+  if (typeof window !== 'undefined') {
+    // If running in browser on vercel or non-localhost domain, use current origin
+    if (window.location.origin.includes('vercel.app') || (!window.location.origin.includes('localhost') && !window.location.origin.includes('127.0.0.1'))) {
+      return window.location.origin;
+    }
+  }
+  // Default to live Vercel production app so verification emails work anywhere
+  return 'https://wala-ride.vercel.app';
+};
+
 export class SupabaseAuthService implements IAuthService {
   async signInWithOtp(phone: string): Promise<{ error: Error | null }> {
     try {
@@ -33,7 +48,7 @@ export class SupabaseAuthService implements IAuthService {
         email,
         options: {
           shouldCreateUser: true,
-          emailRedirectTo: window.location.origin,
+          emailRedirectTo: getAppRedirectUrl(),
         },
       });
       return { error: error ? new Error(error.message) : null };
@@ -131,7 +146,7 @@ export class SupabaseAuthService implements IAuthService {
             phone: phone,
             role: role,
           },
-          emailRedirectTo: window.location.origin,
+          emailRedirectTo: getAppRedirectUrl(),
         },
       });
 
@@ -146,7 +161,7 @@ export class SupabaseAuthService implements IAuthService {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: window.location.origin,
+          emailRedirectTo: getAppRedirectUrl(),
         },
       });
       return { error: error ? new Error(error.message) : null };
@@ -160,7 +175,7 @@ export class SupabaseAuthService implements IAuthService {
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: getAppRedirectUrl(),
         },
       });
       return { error: error ? new Error(error.message) : null };
@@ -172,7 +187,7 @@ export class SupabaseAuthService implements IAuthService {
   async resetPasswordForEmail(email: string): Promise<{ error: Error | null }> {
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}?reset_password=true`,
+        redirectTo: `${getAppRedirectUrl()}?reset_password=true`,
       });
       return { error: error ? new Error(error.message) : null };
     } catch (err: any) {

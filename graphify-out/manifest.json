@@ -110,8 +110,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/auth/AuthModal.tsx": {
-    "mtime": 1790853081.723026,
-    "ast_hash": "ca2fa76c8c1986510e00164019248c3f",
+    "mtime": 1790854331.3692534,
+    "ast_hash": "a7206655eb9d966c228f758295ccdec1",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/components/booking/BookingHoldModal.tsx": {
@@ -280,8 +280,8 @@
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseAuthService.ts": {
-    "mtime": 1790850802.6252437,
-    "ast_hash": "9136cd21da908d291b2c245eecb3add7",
+    "mtime": 1790854257.7039144,
+    "ast_hash": "f5d00519ea926ad86828d958afdcef23",
     "semantic_hash": ""
   },
   "/home/iammbayo/Documents/Projects/wala-ride/src/services/supabase/SupabaseBookingService.ts": {
