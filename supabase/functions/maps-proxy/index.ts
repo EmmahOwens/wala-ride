@@ -60,14 +60,25 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const apiKey = Deno.env.get('GOOGLE_MAPS_API_KEY');
+    // Accept either secret name: GOOGLE_MAPS_API (user-defined) or GOOGLE_MAPS_API_KEY (legacy)
+    const apiKey = Deno.env.get('GOOGLE_MAPS_API') || Deno.env.get('GOOGLE_MAPS_API_KEY');
     const url = new URL(req.url);
     const body = req.method === 'POST' ? await req.json().catch(() => ({})) : {};
     const action = body.action || url.searchParams.get('action');
 
+    // get_public_key — returns the key to authenticated callers so the Maps JS SDK
+    // can be loaded in the browser. The key should have HTTP referrer restrictions
+    // set in Google Cloud Console so it's safe to expose.
+    if (action === 'get_public_key') {
+      return new Response(
+        JSON.stringify({ key: apiKey || null, available: Boolean(apiKey) }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     // If API key is missing, provide a clear structured notice with fallback/simulation
     if (!apiKey) {
-      console.warn('GOOGLE_MAPS_API_KEY is not set in Supabase secrets. Providing simulated response.');
+      console.warn('No Maps API key found in Supabase secrets (tried GOOGLE_MAPS_API and GOOGLE_MAPS_API_KEY). Providing simulated response.');
       return handleSimulatedResponse(action, body);
     }
 
@@ -317,7 +328,7 @@ Deno.serve(async (req: Request) => {
       default:
         return new Response(
           JSON.stringify({
-            error: `Unsupported action: ${action}. Supported: compute_route, autocomplete, place_details, geocode, reverse_geocode, distance_matrix, snap_roads`,
+            error: `Unsupported action: ${action}. Supported: get_public_key, compute_route, autocomplete, place_details, geocode, reverse_geocode, distance_matrix, snap_roads`,
           }),
           { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
@@ -438,7 +449,7 @@ function handleSimulatedResponse(action: string | null, body: any): Response {
       return new Response(
         JSON.stringify({
           simulated: true,
-          message: 'GOOGLE_MAPS_API_KEY missing from Supabase secrets. Set via `supabase secrets set GOOGLE_MAPS_API_KEY=your_key`',
+          message: 'Google Maps API key missing from Supabase secrets. Set via: supabase secrets set GOOGLE_MAPS_API=your_key',
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );

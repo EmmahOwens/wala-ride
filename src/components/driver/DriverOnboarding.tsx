@@ -5,12 +5,14 @@ import type { DriverDocument, Vehicle } from '../../types/domain';
 import { TripPublisher } from './TripPublisher';
 import { DriverRadarDashboard } from './DriverRadarDashboard';
 import { DriverSubscriptionView } from './DriverSubscriptionView';
-import { ShieldCheck, Clock, AlertTriangle, Upload, Car, FileText, ChevronRight, Calendar, Radio, CreditCard } from 'lucide-react';
+import { DriverRouteRequestModal } from './DriverRouteRequestModal';
+import { ShieldCheck, Clock, AlertTriangle, Upload, Car, FileText, ChevronRight, Calendar, Radio, CreditCard, Route as RouteIcon, Plus } from 'lucide-react';
 
 export const DriverOnboarding: React.FC = () => {
   const { user, driverProfile, refreshProfile } = useAuth();
 
-  const [activeTab, setActiveTab] = useState<'profile' | 'documents' | 'vehicle' | 'trips' | 'radar' | 'subscription'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'documents' | 'vehicle' | 'trips' | 'radar' | 'subscription' | 'routes'>('profile');
+  const [isRouteRequestOpen, setIsRouteRequestOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -219,6 +221,12 @@ export const DriverOnboarding: React.FC = () => {
           onClick={() => setActiveTab('subscription')}
         >
           <CreditCard size={16} /> 6. Subscriptions
+        </button>
+        <button
+          className={`btn-pill-tab ${activeTab === 'routes' ? 'active' : ''}`}
+          onClick={() => setActiveTab('routes')}
+        >
+          <RouteIcon size={16} /> 7. Routes
         </button>
       </div>
 
@@ -529,6 +537,53 @@ export const DriverOnboarding: React.FC = () => {
           onPlanChanged={() => refreshProfile()}
         />
       )}
+
+      {/* TAB 7: Route Requests */}
+      {activeTab === 'routes' && (
+        <div className="card">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px', flexWrap: 'wrap', gap: '16px' }}>
+            <div>
+              <h2 className="display-md" style={{ marginBottom: '4px' }}>Corridor Routes</h2>
+              <p className="body-md">
+                Browse active corridor routes or request a new one for your regular intercity journey.
+              </p>
+            </div>
+            <button
+              className="btn btn-primary btn-md"
+              onClick={() => setIsRouteRequestOpen(true)}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+            >
+              <Plus size={16} />
+              Request New Route
+            </button>
+          </div>
+
+          <div style={{
+            padding: '20px',
+            borderRadius: 'var(--radius-lg)',
+            backgroundColor: 'var(--color-canvas-soft)',
+            border: '1px solid var(--color-hairline)',
+            marginTop: '16px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
+              <RouteIcon size={18} color="var(--color-primary)" />
+              <h3 style={{ fontSize: '16px', fontWeight: 700 }}>How Route Requests Work</h3>
+            </div>
+            <ol style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', lineHeight: 1.6 }}>
+              <li>Click <strong>Request New Route</strong> and use the Google Maps picker to select your origin and destination in Uganda.</li>
+              <li>The map automatically calculates driving distance and estimated duration for the corridor.</li>
+              <li>Submit the request — our admin team reviews it within 24 hours.</li>
+              <li>Once approved, the corridor appears in <strong>Publish Trips</strong> (Tab 4) for you and all other drivers to schedule trips on.</li>
+            </ol>
+          </div>
+        </div>
+      )}
+
+      {/* Route Request Modal */}
+      <DriverRouteRequestModal
+        isOpen={isRouteRequestOpen}
+        onClose={() => setIsRouteRequestOpen(false)}
+      />
     </div>
   );
 };

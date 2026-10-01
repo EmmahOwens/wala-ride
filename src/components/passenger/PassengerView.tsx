@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { geographyService } from '../../services/supabase/SupabaseGeographyService';
 import { bookingService } from '../../services/supabase/SupabaseBookingService';
+import { tripService } from '../../services/supabase/SupabaseTripService';
 import { BookingHoldModal } from '../booking/BookingHoldModal';
 import { ETicketModal } from '../booking/ETicketModal';
 import { TripAlertModal } from './TripAlertModal';
 import { LiveTripTrackerModal } from '../tracking/LiveTripTrackerModal';
 import { EmergencyContactsModal } from '../tracking/EmergencyContactsModal';
-import type { Town, PickupPoint, SearchResultTrip, BookingTicket } from '../../types/domain';
-import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock, ShieldAlert, LifeBuoy } from 'lucide-react';
+import type { Town, PickupPoint, SearchResultTrip, BookingTicket, Route } from '../../types/domain';
+import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock, ShieldAlert, LifeBuoy, Route as RouteIcon, ExternalLink } from 'lucide-react';
 
 interface PassengerViewProps {
   onOpenAuth: () => void;
@@ -38,6 +39,9 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
   const [hasSearched, setHasSearched] = useState<boolean>(false);
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
 
+  // All active corridor routes
+  const [allRoutes, setAllRoutes] = useState<Route[]>([]);
+
   // Active Passenger Tickets
   const [passengerTickets, setPassengerTickets] = useState<BookingTicket[]>([]);
 
@@ -59,6 +63,8 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
         setDestinationTownId(mbarara.id);
       }
     });
+    // Load all active corridor routes for the browse section
+    tripService.getRoutes().then(setAllRoutes);
   }, []);
 
   useEffect(() => {
@@ -491,6 +497,114 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
       {/* VALUE PROPOSITIONS & WHY WALA */}
       <section style={{ padding: '60px 0', borderTop: '1px solid var(--color-hairline)' }}>
         <div className="container">
+          {/* BROWSE ALL ROUTES */}
+          {allRoutes.length > 0 && (
+            <div style={{ marginBottom: '60px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
+                <div>
+                  <h2 className="display-md">All Active Corridor Routes</h2>
+                  <p className="body-md" style={{ marginTop: '4px' }}>
+                    {allRoutes.length} intercity corridors currently served by Wala Ride drivers.
+                  </p>
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '14px' }}>
+                {allRoutes.map((route) => (
+                  <div
+                    key={route.id}
+                    className="card"
+                    style={{
+                      padding: '18px 20px',
+                      cursor: 'pointer',
+                      transition: 'box-shadow 0.2s, transform 0.15s',
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)';
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(0,0,0,0.10)';
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLDivElement).style.transform = '';
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = '';
+                    }}
+                    onClick={() => {
+                      if (route.origin_town?.id) setOriginTownId(route.origin_town.id);
+                      if (route.destination_town?.id) setDestinationTownId(route.destination_town.id);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                      <div style={{
+                        width: '32px', height: '32px', borderRadius: 'var(--radius-pill)',
+                        backgroundColor: '#000', color: '#fff',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                      }}>
+                        <RouteIcon size={16} />
+                      </div>
+                      <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.3 }}>{route.name}</div>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                      <MapPin size={13} color="var(--color-primary)" />
+                      <span style={{ fontWeight: 600 }}>{route.origin_town?.name || '—'}</span>
+                      <ArrowRight size={13} />
+                      <Navigation size={13} color="var(--color-primary)" />
+                      <span style={{ fontWeight: 600 }}>{route.destination_town?.name || '—'}</span>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                      {route.distance_km && (
+                        <span style={{
+                          fontSize: '12px', fontWeight: 600,
+                          backgroundColor: 'var(--color-canvas-soft)',
+                          padding: '3px 10px', borderRadius: 'var(--radius-pill)',
+                          border: '1px solid var(--color-hairline)',
+                        }}>
+                          {route.distance_km} km
+                        </span>
+                      )}
+                      {route.estimated_duration_minutes && (
+                        <span style={{
+                          fontSize: '12px', fontWeight: 600,
+                          backgroundColor: 'var(--color-canvas-soft)',
+                          padding: '3px 10px', borderRadius: 'var(--radius-pill)',
+                          border: '1px solid var(--color-hairline)',
+                        }}>
+                          ~{Math.floor(route.estimated_duration_minutes / 60)}h {route.estimated_duration_minutes % 60}m
+                        </span>
+                      )}
+                    </div>
+
+                    <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (route.origin_town?.id) setOriginTownId(route.origin_town.id);
+                          if (route.destination_town?.id) setDestinationTownId(route.destination_town.id);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                      >
+                        Search Trips <ArrowRight size={13} />
+                      </button>
+                      {route.origin_town?.lat && route.destination_town?.lat && (
+                        <a
+                          href={`https://maps.google.com/maps/dir/${route.origin_town.lat},${route.origin_town.lng}/${route.destination_town.lat},${route.destination_town.lng}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-subtle btn-sm"
+                          onClick={(e) => e.stopPropagation()}
+                          style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
+                        >
+                          Maps <ExternalLink size={11} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="grid-3">
             <div className="card" style={{ border: 'none', padding: '16px' }}>
               <div style={{
