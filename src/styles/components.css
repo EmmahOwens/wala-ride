@@ -5,6 +5,16 @@
   padding: 0;
 }
 
+/* Hide scrollbars globally while preserving scroll functionality */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 body {
   font-family: var(--font-family-body);
   background-color: var(--color-canvas);
