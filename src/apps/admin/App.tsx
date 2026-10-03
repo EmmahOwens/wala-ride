@@ -11,6 +11,8 @@ import { AdminSupportQueue } from '../../components/admin/AdminSupportQueue';
 import { AdminDemandAnalytics } from '../../components/admin/AdminDemandAnalytics';
 import { AdminRouteManager } from '../../components/admin/AdminRouteManager';
 import { AdminUserDirectory } from './components/AdminUserDirectory';
+import { AdminGoogleMapsRadar } from '../../components/admin/AdminGoogleMapsRadar';
+import { AdminDisputeCenter } from '../../components/admin/AdminDisputeCenter';
 import { useAdminRealtime } from '../../shared/hooks/useAdminRealtime';
 import {
   ShieldAlert,
@@ -20,12 +22,14 @@ import {
   Route as RouteIcon,
   Users,
   BellRing,
+  Radio,
+  Scale,
 } from 'lucide-react';
 
-type AdminTab = 'incidents' | 'verification' | 'directory' | 'routes' | 'support' | 'demand';
+type AdminTab = 'radar' | 'incidents' | 'verification' | 'directory' | 'routes' | 'support' | 'demand' | 'disputes';
 
 const AdminDashboard: React.FC = () => {
-  const [adminTab, setAdminTab] = useState<AdminTab>('incidents');
+  const [adminTab, setAdminTab] = useState<AdminTab>('radar');
   const [realtimeNotice, setRealtimeNotice] = useState<string | null>(null);
 
   // Real-time listener for operational alerts across the platform
@@ -97,6 +101,15 @@ const AdminDashboard: React.FC = () => {
         {/* Admin Navigation Pills */}
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
           <button
+            className={`btn-pill-tab ${adminTab === 'radar' ? 'active' : ''}`}
+            onClick={() => setAdminTab('radar')}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+          >
+            <Radio size={14} color="#0284c7" />
+            <span>Live Fleet Radar</span>
+          </button>
+
+          <button
             className={`btn-pill-tab ${adminTab === 'incidents' ? 'active' : ''}`}
             onClick={() => setAdminTab('incidents')}
             style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
@@ -111,7 +124,16 @@ const AdminDashboard: React.FC = () => {
             style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
           >
             <UserCheck size={14} color="#16a34a" />
-            <span>Driver KYC</span>
+            <span>Driver KYC & Expiry</span>
+          </button>
+
+          <button
+            className={`btn-pill-tab ${adminTab === 'disputes' ? 'active' : ''}`}
+            onClick={() => setAdminTab('disputes')}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+          >
+            <Scale size={14} color="#d97706" />
+            <span>Disputes & Shield</span>
           </button>
 
           <button
@@ -153,8 +175,10 @@ const AdminDashboard: React.FC = () => {
       </div>
 
       {/* Tab Panels */}
+      {adminTab === 'radar' && <AdminGoogleMapsRadar />}
       {adminTab === 'incidents' && <AdminIncidentConsole />}
       {adminTab === 'verification' && <AdminVerificationQueue />}
+      {adminTab === 'disputes' && <AdminDisputeCenter />}
       {adminTab === 'directory' && <AdminUserDirectory />}
       {adminTab === 'routes' && <AdminRouteManager />}
       {adminTab === 'support' && <AdminSupportQueue />}

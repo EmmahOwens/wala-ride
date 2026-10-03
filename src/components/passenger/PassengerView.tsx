@@ -8,8 +8,31 @@ import { ETicketModal } from '../booking/ETicketModal';
 import { TripAlertModal } from './TripAlertModal';
 import { LiveTripTrackerModal } from '../tracking/LiveTripTrackerModal';
 import { EmergencyContactsModal } from '../tracking/EmergencyContactsModal';
+import { offlineTicketService } from '../../services/offline/OfflineTicketService';
 import type { Town, PickupPoint, SearchResultTrip, BookingTicket, Route } from '../../types/domain';
-import { Search, MapPin, Calendar, Users, Shield, ArrowRight, Wallet, CheckCircle, Navigation, Ticket, Clock, ShieldAlert, LifeBuoy, Route as RouteIcon, ExternalLink } from 'lucide-react';
+import {
+  Search,
+  MapPin,
+  Calendar,
+  Users,
+  Shield,
+  ArrowRight,
+  Wallet,
+  CheckCircle,
+  Navigation,
+  Ticket,
+  Clock,
+  ShieldAlert,
+  LifeBuoy,
+  Route as RouteIcon,
+  ExternalLink,
+  Heart,
+  Wind,
+  Star,
+  Package,
+  ArrowLeftRight,
+  Filter,
+} from 'lucide-react';
 
 interface PassengerViewProps {
   onOpenAuth: () => void;
@@ -39,10 +62,25 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
   const [hasSearched, setHasSearched] = useState<boolean>(false);
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
 
+  // Filters State
+  const [departureWindow, setDepartureWindow] = useState<'all' | 'morning' | 'afternoon' | 'evening'>('all');
+  const [filterLadiesOnly, setFilterLadiesOnly] = useState<boolean>(false);
+  const [filterAc, setFilterAc] = useState<boolean>(false);
+  const [filterTopRated, setFilterTopRated] = useState<boolean>(false);
+  const [filterParcels, setFilterParcels] = useState<boolean>(false);
+
+  // Return Journey State
+  const [showReturnCard, setShowReturnCard] = useState<boolean>(false);
+  const [returnDate, setReturnDate] = useState<string>(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 2);
+    return d.toISOString().split('T')[0];
+  });
+
   // All active corridor routes
   const [allRoutes, setAllRoutes] = useState<Route[]>([]);
 
-  // Active Passenger Tickets
+  // Active Passenger Tickets (including offline cached)
   const [passengerTickets, setPassengerTickets] = useState<BookingTicket[]>([]);
 
   // Modals
@@ -52,6 +90,7 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
   const [isLiveTrackingOpen, setIsLiveTrackingOpen] = useState<boolean>(false);
   const [isContactsOpen, setIsContactsOpen] = useState<boolean>(false);
   const [showTripAlertModal, setShowTripAlertModal] = useState<boolean>(false);
+
 
   useEffect(() => {
     geographyService.getTowns().then((tList) => {
@@ -86,14 +125,31 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
   }, [destinationTownId]);
 
   useEffect(() => {
+    // Check for cached offline tickets on mount
+    const cachedTickets = offlineTicketService.getAllTickets();
+    if (cachedTickets.length > 0) {
+      setPassengerTickets(cachedTickets);
+    }
+  }, []);
+
+  useEffect(() => {
     if (user?.id) {
       loadPassengerTickets(user.id);
     }
   }, [user?.id]);
 
   const loadPassengerTickets = async (passengerId: string) => {
-    const tickets = await bookingService.getPassengerTickets(passengerId);
-    setPassengerTickets(tickets);
+    try {
+      const tickets = await bookingService.getPassengerTickets(passengerId);
+      // Cache each ticket for offline access
+      tickets.forEach((tk) => offlineTicketService.saveTicket(tk));
+      setPassengerTickets(tickets);
+    } catch {
+      const cached = offlineTicketService.getAllTickets();
+      if (cached.length > 0) {
+        setPassengerTickets(cached);
+      }
+    }
   };
 
   const handleQuickRoute = (originName: string, destName: string) => {
@@ -111,6 +167,7 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
 
     setSearchLoading(true);
     setHasSearched(true);
+    setShowReturnCard(true);
 
     const results = await bookingService.searchTrips({
       originTownId,
@@ -123,11 +180,53 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
     setSearchLoading(false);
   };
 
+  const handleSearchReturnTrip = async () => {
+    if (!originTownId || !destinationTownId) return;
+    const prevOrigin = originTownId;
+    const prevDest = destinationTownId;
+
+    // Flip corridor
+    setOriginTownId(prevDest);
+    setDestinationTownId(prevOrigin);
+    setTravelDate(returnDate);
+    setShowReturnCard(false);
+
+    setSearchLoading(true);
+    setHasSearched(true);
+
+    const results = await bookingService.searchTrips({
+      originTownId: prevDest,
+      destTownId: prevOrigin,
+      date: returnDate,
+      seats,
+    });
+
+    setSearchResults(results);
+    setSearchLoading(false);
+  };
+
   const handleCancelBooking = async (bookingId: string) => {
     await bookingService.cancelBooking(bookingId);
+    offlineTicketService.removeTicket(bookingId);
     setSelectedTicketForView(null);
     if (user?.id) loadPassengerTickets(user.id);
   };
+
+  // Filter computation
+  const filteredSearchResults = searchResults.filter((trip) => {
+    if (departureWindow !== 'all') {
+      const d = new Date(trip.departs_at);
+      const hours = d.getHours();
+      if (departureWindow === 'morning' && (hours < 6 || hours >= 12)) return false;
+      if (departureWindow === 'afternoon' && (hours < 12 || hours >= 17)) return false;
+      if (departureWindow === 'evening' && hours < 17) return false;
+    }
+    if (filterLadiesOnly && !trip.is_ladies_only) return false;
+    if (filterAc && !trip.has_ac) return false;
+    if (filterTopRated && (trip.driver_rating < 4.5)) return false;
+    if (filterParcels && !trip.accepts_parcels) return false;
+    return true;
+  });
 
   const originTown = towns.find((t) => t.id === originTownId)?.name || 'Origin';
   const destTown = towns.find((t) => t.id === destinationTownId)?.name || 'Destination';
@@ -368,11 +467,72 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
       {hasSearched && (
         <section style={{ padding: '20px 0 60px' }}>
           <div className="container">
+            {/* RETURN TRIP PROMPT CARD */}
+            {showReturnCard && (
+              <div
+                className="card"
+                style={{
+                  backgroundColor: '#f0fdf4',
+                  border: '1px solid #bbf7d0',
+                  padding: '16px 20px',
+                  marginBottom: '24px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '14px',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: 'var(--radius-pill)',
+                    backgroundColor: '#16a34a',
+                    color: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <ArrowLeftRight size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '15px', color: '#166534' }}>
+                      Planning Your Return Leg? ({destTown} &rarr; {originTown})
+                    </div>
+                    <div className="body-sm" style={{ color: '#15803d' }}>
+                      Easily search or reserve your return trip ahead to avoid last-minute stage delays.
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Calendar size={14} color="#166534" />
+                    <input
+                      type="date"
+                      value={returnDate}
+                      onChange={(e) => setReturnDate(e.target.value)}
+                      className="input"
+                      style={{ padding: '6px 10px', fontSize: '13px', width: '150px' }}
+                    />
+                  </div>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={handleSearchReturnTrip}
+                    style={{ backgroundColor: '#ffffff', borderColor: '#86efac', color: '#166534', gap: '6px' }}
+                  >
+                    <span>Search Return</span> &rarr;
+                  </button>
+                </div>
+              </div>
+            )}
+
             <div style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: '24px',
+              marginBottom: '16px',
               flexWrap: 'wrap',
               gap: '12px',
             }}>
@@ -381,7 +541,7 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
                   Trips from {originTown} to {destTown}
                 </h2>
                 <p className="body-sm">
-                  {searchResults.length} scheduled departure(s) found for {new Date(travelDate).toLocaleDateString('en-GB', { dateStyle: 'full' })}
+                  {filteredSearchResults.length} of {searchResults.length} departure(s) match your filters for {new Date(travelDate).toLocaleDateString('en-GB', { dateStyle: 'full' })}
                 </p>
               </div>
 
@@ -393,13 +553,144 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
               </button>
             </div>
 
+            {/* QUICK FILTERS BAR */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              flexWrap: 'wrap',
+              marginBottom: '20px',
+              padding: '12px 16px',
+              backgroundColor: 'var(--color-canvas-soft)',
+              borderRadius: 'var(--radius-lg)',
+              border: '1px solid var(--color-hairline)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600, color: 'var(--color-body)' }}>
+                <Filter size={14} /> Filter:
+              </div>
+
+              {/* Time of day selector */}
+              <div style={{ display: 'flex', gap: '4px' }}>
+                {(['all', 'morning', 'afternoon', 'evening'] as const).map((win) => (
+                  <button
+                    key={win}
+                    type="button"
+                    onClick={() => setDepartureWindow(win)}
+                    style={{
+                      padding: '4px 10px',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      borderRadius: 'var(--radius-pill)',
+                      border: '1px solid var(--color-hairline)',
+                      backgroundColor: departureWindow === win ? '#000000' : '#ffffff',
+                      color: departureWindow === win ? '#ffffff' : 'var(--color-body)',
+                      cursor: 'pointer',
+                      textTransform: 'capitalize',
+                    }}
+                  >
+                    {win === 'all' ? 'Any Time' : win}
+                  </button>
+                ))}
+              </div>
+
+              <div style={{ width: '1px', height: '20px', backgroundColor: 'var(--color-hairline)' }} />
+
+              {/* Ladies Only toggle */}
+              <button
+                type="button"
+                onClick={() => setFilterLadiesOnly(!filterLadiesOnly)}
+                style={{
+                  padding: '4px 10px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  borderRadius: 'var(--radius-pill)',
+                  border: filterLadiesOnly ? '1px solid #ec4899' : '1px solid var(--color-hairline)',
+                  backgroundColor: filterLadiesOnly ? '#fdf2f8' : '#ffffff',
+                  color: filterLadiesOnly ? '#be185d' : 'var(--color-body)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+              >
+                <Heart size={12} color={filterLadiesOnly ? '#ec4899' : 'var(--color-subtle)'} />
+                Ladies Only
+              </button>
+
+              {/* AC toggle */}
+              <button
+                type="button"
+                onClick={() => setFilterAc(!filterAc)}
+                style={{
+                  padding: '4px 10px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  borderRadius: 'var(--radius-pill)',
+                  border: filterAc ? '1px solid #3b82f6' : '1px solid var(--color-hairline)',
+                  backgroundColor: filterAc ? '#eff6ff' : '#ffffff',
+                  color: filterAc ? '#1d4ed8' : 'var(--color-body)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+              >
+                <Wind size={12} color={filterAc ? '#3b82f6' : 'var(--color-subtle)'} />
+                Air Conditioned
+              </button>
+
+              {/* Top Rated toggle */}
+              <button
+                type="button"
+                onClick={() => setFilterTopRated(!filterTopRated)}
+                style={{
+                  padding: '4px 10px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  borderRadius: 'var(--radius-pill)',
+                  border: filterTopRated ? '1px solid #eab308' : '1px solid var(--color-hairline)',
+                  backgroundColor: filterTopRated ? '#fefce8' : '#ffffff',
+                  color: filterTopRated ? '#a16207' : 'var(--color-body)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+              >
+                <Star size={12} color={filterTopRated ? '#eab308' : 'var(--color-subtle)'} />
+                Super Driver (4.5★+)
+              </button>
+
+              {/* Parcels Accepted toggle */}
+              <button
+                type="button"
+                onClick={() => setFilterParcels(!filterParcels)}
+                style={{
+                  padding: '4px 10px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  borderRadius: 'var(--radius-pill)',
+                  border: filterParcels ? '1px solid #ea580c' : '1px solid var(--color-hairline)',
+                  backgroundColor: filterParcels ? '#fff7ed' : '#ffffff',
+                  color: filterParcels ? '#c2410c' : 'var(--color-body)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+              >
+                <Package size={12} color={filterParcels ? '#ea580c' : 'var(--color-subtle)'} />
+                Accepts Parcels
+              </button>
+            </div>
+
             {searchLoading ? (
               <div style={{ textAlign: 'center', padding: '60px' }}>
                 <p className="body-md">Checking available vehicle segment capacity...</p>
               </div>
-            ) : searchResults.length > 0 ? (
+            ) : filteredSearchResults.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {searchResults.map((trip) => (
+                {filteredSearchResults.map((trip) => (
                   <div
                     key={trip.trip_id}
                     className="card"
@@ -413,12 +704,76 @@ export const PassengerView: React.FC<PassengerViewProps> = ({
                     }}
                   >
                     <div>
-                      {/* Driver & Rating */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                      {/* Driver & Rating & Badges */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
                         <span style={{ fontWeight: 800, fontSize: '18px' }}>{trip.driver_name}</span>
                         <span className="badge badge-verified">
                           Verified &bull; {trip.driver_rating} &star;
                         </span>
+                        {trip.driver_rating >= 4.7 && (
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '3px',
+                            backgroundColor: '#fefce8',
+                            color: '#a16207',
+                            border: '1px solid #fef08a',
+                            borderRadius: 'var(--radius-pill)',
+                            padding: '2px 8px',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                          }}>
+                            <Star size={11} fill="#eab308" color="#eab308" /> Super Driver
+                          </span>
+                        )}
+                        {trip.is_ladies_only && (
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '3px',
+                            backgroundColor: '#fdf2f8',
+                            color: '#be185d',
+                            border: '1px solid #fbcfe8',
+                            borderRadius: 'var(--radius-pill)',
+                            padding: '2px 8px',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                          }}>
+                            <Heart size={11} color="#ec4899" fill="#ec4899" /> Ladies Only
+                          </span>
+                        )}
+                        {trip.has_ac && (
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '3px',
+                            backgroundColor: '#eff6ff',
+                            color: '#1d4ed8',
+                            border: '1px solid #bfdbfe',
+                            borderRadius: 'var(--radius-pill)',
+                            padding: '2px 8px',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                          }}>
+                            <Wind size={11} color="#3b82f6" /> AC
+                          </span>
+                        )}
+                        {trip.accepts_parcels && (
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '3px',
+                            backgroundColor: '#fff7ed',
+                            color: '#c2410c',
+                            border: '1px solid #fed7aa',
+                            borderRadius: 'var(--radius-pill)',
+                            padding: '2px 8px',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                          }}>
+                            <Package size={11} color="#ea580c" /> Parcels OK
+                          </span>
+                        )}
                         <span className="body-sm">
                           {trip.vehicle_info} ({trip.vehicle_plate})
                         </span>

@@ -2336,5 +2336,78 @@ begin
 end;
 $$;
 
+-- ============================================================================
+-- ENHANCEMENTS: LUGGAGE, PARCELS, COMPLIANCE, DISPUTES, AND PREFERENCES
+-- ============================================================================
 
+-- 1. Luggage sizing
+do $$ begin
+  create type luggage_size_enum as enum ('none', 'standard', 'medium', 'heavy_cargo');
+exception when duplicate_object then null;
+end $$;
 
+alter table booking_segments 
+  add column if not exists luggage_size luggage_size_enum not null default 'standard',
+  add column if not exists luggage_notes text;
+
+-- 2. Trip preferences
+alter table trips 
+  add column if not exists is_ladies_only boolean not null default false,
+  add column if not exists has_ac boolean not null default false,
+  add column if not exists vehicle_class text not null default 'minibus',
+  add column if not exists accepts_parcels boolean not null default false,
+  add column if not exists parcel_base_fee_ugx numeric(12,2) default 10000,
+  add column if not exists max_medium_luggage integer not null default 4;
+
+-- 3. Intercity parcels
+do $$ begin
+  create type parcel_status_enum as enum ('requested', 'accepted', 'in_transit', 'delivered', 'cancelled');
+exception when duplicate_object then null;
+end $$;
+
+create table if not exists parcels (
+  id uuid primary key default gen_random_uuid(),
+  trip_id uuid not null references trips(id) on delete cascade,
+  sender_id uuid not null references profiles(id),
+  recipient_name text not null,
+  recipient_phone text not null,
+  pickup_point_id uuid references pickup_points(id),
+  dropoff_point_id uuid references pickup_points(id),
+  package_type text not null, -- 'document', 'small_box', 'sack'
+  fee_ugx numeric(12,2) not null,
+  delivery_pin text not null default substring(encode(gen_random_bytes(4), 'hex') from 1 for 6),
+  status parcel_status_enum not null default 'accepted',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+-- 4. Document compliance & expiration tracking
+create table if not exists compliance_alerts (
+  id uuid primary key default gen_random_uuid(),
+  driver_id uuid references driver_profiles(id),
+  vehicle_id uuid references vehicles(id),
+  document_type text not null,
+  expiry_date date not null,
+  days_remaining integer not null,
+  is_resolved boolean not null default false,
+  notified_at timestamptz not null default now()
+);
+
+-- 5. Booking disputes & mediation
+do $$ begin
+  create type dispute_status_enum as enum ('open', 'under_review', 'resolved', 'dismissed');
+exception when duplicate_object then null;
+end $$;
+
+create table if not exists booking_disputes (
+  id uuid primary key default gen_random_uuid(),
+  booking_id uuid not null references bookings(id) on delete cascade,
+  reported_by_user_id uuid not null references profiles(id),
+  driver_id uuid references driver_profiles(id),
+  reason text not null,
+  description text not null,
+  resolution_notes text,
+  status dispute_status_enum not null default 'open',
+  created_at timestamptz not null default now(),
+  resolved_at timestamptz
+);

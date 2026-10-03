@@ -20,9 +20,24 @@ export const TripPublisher: React.FC = () => {
   const [departsTime, setDepartsTime] = useState<string>('08:00');
   const [baseFareUgx, setBaseFareUgx] = useState<number>(35000);
   const [notes, setNotes] = useState<string>('Departing promptly. Trunk space available for passenger luggage.');
+  const [isLadiesOnly, setIsLadiesOnly] = useState<boolean>(false);
+  const [hasAc, setHasAc] = useState<boolean>(true);
+  const [acceptsParcels, setAcceptsParcels] = useState<boolean>(true);
+  const [parcelBaseFeeUgx, setParcelBaseFeeUgx] = useState<number>(10000);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const getCorridorBenchmark = (routeName?: string) => {
+    if (!routeName) return { min: 25000, avg: 35000, max: 45000 };
+    const lower = routeName.toLowerCase();
+    if (lower.includes('mbarara')) return { min: 30000, avg: 35000, max: 40000 };
+    if (lower.includes('jinja')) return { min: 12000, avg: 15000, max: 20000 };
+    if (lower.includes('mbale')) return { min: 25000, avg: 30000, max: 35000 };
+    if (lower.includes('gulu')) return { min: 40000, avg: 45000, max: 55000 };
+    if (lower.includes('masaka')) return { min: 15000, avg: 20000, max: 25000 };
+    return { min: 25000, avg: 35000, max: 45000 };
+  };
 
   // Selected Trip for Manifest Modal
   const [selectedManifestTrip, setSelectedManifestTrip] = useState<Trip | null>(null);
@@ -190,9 +205,16 @@ export const TripPublisher: React.FC = () => {
               />
             </div>
 
-            {/* Base Fare */}
+            {/* Base Fare & Price Guidance */}
             <div className="form-group">
-              <label className="form-label">End-to-End Base Fare (UGX)</label>
+              <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>End-to-End Base Fare (UGX)</span>
+                {selectedRoute && (
+                  <span style={{ fontSize: '11px', color: '#16a34a', fontWeight: 600 }}>
+                    Avg: UGX {getCorridorBenchmark(selectedRoute.name).avg.toLocaleString()}
+                  </span>
+                )}
+              </label>
               <input
                 type="number"
                 step={1000}
@@ -203,22 +225,105 @@ export const TripPublisher: React.FC = () => {
                 onChange={(e) => setBaseFareUgx(Number(e.target.value))}
                 required
               />
-              <span className="body-sm" style={{ marginTop: '4px' }}>
-                Intermediate stop prices are automatically prorated based on stage distance.
-              </span>
+              {selectedRoute && (
+                <div style={{
+                  marginTop: '6px',
+                  padding: '8px 12px',
+                  backgroundColor: '#f4fbf6',
+                  border: '1px solid #bbf7d0',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: '12px',
+                  color: '#166534',
+                }}>
+                  💡 <strong>Corridor Guidance:</strong> Typical {selectedRoute.name} fares run between <strong>UGX {getCorridorBenchmark(selectedRoute.name).min.toLocaleString()} – {getCorridorBenchmark(selectedRoute.name).max.toLocaleString()}</strong>.
+                </div>
+              )}
             </div>
 
             {/* Notes */}
             <div className="form-group">
-              <label className="form-label">Trip Notes / Guidelines (Optional)</label>
+              <label className="form-label">Trip Notes / Boarding Landmarks (Optional)</label>
               <input
                 type="text"
                 className="input-field"
-                placeholder="e.g. AC vehicle, leaving from Qualicel Gate 2"
+                placeholder="e.g. Leaving from Qualicel Gate 2, trunk space available"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
               />
             </div>
+          </div>
+
+          {/* New Trip Amenities & Cargo Settings */}
+          <div style={{
+            marginTop: '20px',
+            padding: '16px 20px',
+            backgroundColor: 'var(--color-canvas-soft)',
+            borderRadius: 'var(--radius-xl)',
+            border: '1px solid var(--color-hairline)',
+          }}>
+            <div style={{ fontWeight: 700, fontSize: '14px', marginBottom: '12px' }}>
+              Trip Preferences & Cargo Capacity
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+              {/* Parcels Acceptance */}
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={acceptsParcels}
+                  onChange={(e) => setAcceptsParcels(e.target.checked)}
+                  style={{ marginTop: '3px' }}
+                />
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: '13px' }}>Accept Intercity Parcels</div>
+                  <div className="body-sm" style={{ fontSize: '11px' }}>Earn extra income carrying small packages & envelopes in your boot.</div>
+                </div>
+              </label>
+
+              {/* Air Conditioning */}
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={hasAc}
+                  onChange={(e) => setHasAc(e.target.checked)}
+                  style={{ marginTop: '3px' }}
+                />
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: '13px' }}>Air Conditioning (AC)</div>
+                  <div className="body-sm" style={{ fontSize: '11px' }}>Vehicle has functioning AC throughout the trip.</div>
+                </div>
+              </label>
+
+              {/* Ladies Only Option */}
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer' }}>
+                <input
+                  type="checkbox"
+                  checked={isLadiesOnly}
+                  onChange={(e) => setIsLadiesOnly(e.target.checked)}
+                  style={{ marginTop: '3px' }}
+                />
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: '13px', color: '#be185d' }}>Ladies Only Trip</div>
+                  <div className="body-sm" style={{ fontSize: '11px' }}>Trip is restricted exclusively to female passengers.</div>
+                </div>
+              </label>
+            </div>
+
+            {acceptsParcels && (
+              <div style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid var(--color-hairline)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <span style={{ fontSize: '12px', fontWeight: 600 }}>Base Parcel Fee (UGX):</span>
+                <input
+                  type="number"
+                  step={1000}
+                  min={5000}
+                  value={parcelBaseFeeUgx}
+                  onChange={(e) => setParcelBaseFeeUgx(Number(e.target.value))}
+                  className="input"
+                  style={{ width: '130px', padding: '4px 8px', fontSize: '12px' }}
+                />
+                <span className="body-sm" style={{ fontSize: '11px' }}>Typical envelope/small box fee: UGX 10,000–15,000</span>
+              </div>
+            )}
           </div>
 
           <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'flex-end' }}>

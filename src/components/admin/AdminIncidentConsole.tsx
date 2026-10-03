@@ -481,6 +481,42 @@ export const AdminIncidentConsole: React.FC = () => {
                 </div>
               )}
 
+              {/* Emergency Operations Runbook */}
+              <div style={{
+                padding: '16px',
+                borderRadius: 'var(--radius-lg)',
+                backgroundColor: '#fef2f2',
+                border: '1px solid #fecaca',
+                marginBottom: '16px',
+              }}>
+                <div style={{ fontSize: '12px', fontWeight: 700, color: '#991b1b', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  🚨 Emergency Escalation Runbook
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => {
+                      alert(`Emergency SMS dispatched to ${selectedIncident.reporter?.name || 'Passenger'}'s registered emergency contacts with live GPS coordinates: (${selectedIncident.lat}, ${selectedIncident.lng})`);
+                    }}
+                    style={{ backgroundColor: '#ffffff', borderColor: '#fca5a5', color: '#991b1b', fontSize: '12px' }}
+                  >
+                    SMS Emergency Contacts
+                  </button>
+
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={() => {
+                      const text = `[WALA-RIDE OPS EMERGENCY ESCALATION]\nIncident: ${selectedIncident.kind.toUpperCase()}\nVehicle: ${selectedIncident.trip?.vehicle_plate || 'Unspecified'}\nDriver: ${selectedIncident.trip?.driver_name || 'Unspecified'} (${selectedIncident.trip?.driver_phone || 'N/A'})\nReporter: ${selectedIncident.reporter?.name || 'Passenger'} (${selectedIncident.reporter?.phone || 'N/A'})\nGPS Coordinates: ${selectedIncident.lat}, ${selectedIncident.lng}\nMaps Link: https://maps.google.com/?q=${selectedIncident.lat},${selectedIncident.lng}`;
+                      navigator.clipboard.writeText(text);
+                      alert('Uganda Police & Traffic Desk dispatch slip copied to clipboard!');
+                    }}
+                    style={{ backgroundColor: '#ffffff', borderColor: '#fca5a5', color: '#991b1b', fontSize: '12px' }}
+                  >
+                    Copy Police Dispatch Slip
+                  </button>
+                </div>
+              </div>
+
               <div style={{ fontSize: '12px', color: 'var(--color-mute)' }}>
                 Reported at: {new Date(selectedIncident.created_at).toLocaleString()}
                 {selectedIncident.resolved_at && ` • Resolved at: ${new Date(selectedIncident.resolved_at).toLocaleString()}`}

@@ -21,6 +21,9 @@ import {
   TrendingUp,
   ShieldCheck,
   UserCheck,
+  Star,
+  Award,
+  Zap,
 } from 'lucide-react';
 
 const DriverCockpit: React.FC = () => {
@@ -35,7 +38,7 @@ const DriverCockpit: React.FC = () => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: '28px',
+        marginBottom: '20px',
         flexWrap: 'wrap',
         gap: '16px',
       }}>
@@ -92,6 +95,111 @@ const DriverCockpit: React.FC = () => {
             <MapPin size={14} color="#16a34a" />
             <span>Propose Route</span>
           </button>
+        </div>
+      </div>
+
+      {/* Driver Performance & Super Driver Scorecard */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+        gap: '12px',
+        marginBottom: '28px',
+        padding: '16px 20px',
+        backgroundColor: '#ffffff',
+        borderRadius: 'var(--radius-xl)',
+        border: '1px solid var(--color-hairline)',
+        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.03)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: '#fefce8',
+            color: '#a16207',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Award size={20} />
+          </div>
+          <div>
+            <div style={{ fontSize: '11px', color: 'var(--color-mute)', fontWeight: 600, textTransform: 'uppercase' }}>
+              Tier Standing
+            </div>
+            <div style={{ fontSize: '14px', fontWeight: 800, color: '#a16207', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Star size={13} fill="#eab308" color="#eab308" /> Super Driver
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: '#f0fdf4',
+            color: '#16a34a',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <ShieldCheck size={20} />
+          </div>
+          <div>
+            <div style={{ fontSize: '11px', color: 'var(--color-mute)', fontWeight: 600, textTransform: 'uppercase' }}>
+              Verification
+            </div>
+            <div style={{ fontSize: '14px', fontWeight: 800, color: '#166534' }}>
+              100% KYC Approved
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: '#eff6ff',
+            color: '#2563eb',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <Zap size={20} />
+          </div>
+          <div>
+            <div style={{ fontSize: '11px', color: 'var(--color-mute)', fontWeight: 600, textTransform: 'uppercase' }}>
+              On-Time Rate
+            </div>
+            <div style={{ fontSize: '14px', fontWeight: 800, color: '#1e40af' }}>
+              98.4% On Schedule
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: 'var(--radius-pill)',
+            backgroundColor: '#fff7ed',
+            color: '#ea580c',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <TrendingUp size={20} />
+          </div>
+          <div>
+            <div style={{ fontSize: '11px', color: 'var(--color-mute)', fontWeight: 600, textTransform: 'uppercase' }}>
+              Completion Rate
+            </div>
+            <div style={{ fontSize: '14px', fontWeight: 800, color: '#9a3412' }}>
+              100% (0 Cancellations)
+            </div>
+          </div>
         </div>
       </div>
 

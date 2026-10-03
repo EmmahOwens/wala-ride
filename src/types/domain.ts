@@ -124,6 +124,8 @@ export interface RouteStop {
   pickup_point?: PickupPoint;
 }
 
+export type LuggageSize = 'none' | 'standard' | 'medium' | 'heavy_cargo';
+
 export interface Trip {
   id: string;
   operator_id: string;
@@ -137,6 +139,12 @@ export interface Trip {
   base_fare_ugx: number;
   notes: string | null;
   created_at: string;
+  is_ladies_only?: boolean;
+  has_ac?: boolean;
+  vehicle_class?: string;
+  accepts_parcels?: boolean;
+  parcel_base_fee_ugx?: number;
+  max_medium_luggage?: number;
   route?: Route;
   vehicle?: Vehicle;
   driver?: DriverProfile;
@@ -174,6 +182,13 @@ export interface SearchResultTrip {
   dest_trip_stop_id: string;
   dest_pickup_name: string;
   dest_town_name: string;
+  is_ladies_only?: boolean;
+  has_ac?: boolean;
+  vehicle_class?: string;
+  accepts_parcels?: boolean;
+  parcel_base_fee_ugx?: number;
+  max_medium_luggage?: number;
+  driver_total_trips?: number;
 }
 
 export interface Booking {
@@ -188,6 +203,8 @@ export interface Booking {
   contact_phone: string | null;
   created_at: string;
   confirmed_at: string | null;
+  luggage_size?: LuggageSize;
+  luggage_notes?: string;
 }
 
 export interface BookingTicket {
@@ -199,6 +216,7 @@ export interface BookingTicket {
   total_fare_ugx: number;
   passenger_name: string;
   passenger_phone: string;
+  passenger_email?: string;
   trip_departs_at: string;
   origin_town: string;
   origin_stage: string;
@@ -210,6 +228,11 @@ export interface BookingTicket {
   vehicle_info: string;
   vehicle_plate: string;
   expires_at?: string | null;
+  luggage_size?: LuggageSize;
+  luggage_notes?: string;
+  offline_token?: string;
+  is_ladies_only?: boolean;
+  has_ac?: boolean;
 }
 
 export interface ManifestPassenger {
@@ -217,6 +240,7 @@ export interface ManifestPassenger {
   booking_reference: string;
   passenger_name: string;
   passenger_phone: string;
+  passenger_email?: string;
   seats: number;
   fare_ugx: number;
   origin_stage: string;
@@ -224,11 +248,31 @@ export interface ManifestPassenger {
   dest_stage: string;
   dest_sequence: number;
   status: BookingStatus;
+  luggage_size?: LuggageSize;
+  luggage_notes?: string;
+}
+
+export type ParcelStatus = 'requested' | 'accepted' | 'in_transit' | 'delivered' | 'cancelled';
+
+export interface Parcel {
+  id: string;
+  trip_id: string;
+  sender_id: string;
+  recipient_name: string;
+  recipient_phone: string;
+  pickup_stage?: string;
+  dropoff_stage?: string;
+  package_type: string;
+  fee_ugx: number;
+  delivery_pin: string;
+  status: ParcelStatus;
+  created_at: string;
 }
 
 export interface TripManifest {
   trip: Trip;
   passengers: ManifestPassenger[];
+  parcels?: Parcel[];
   total_boarded: number;
   total_expected_fare_ugx: number;
 }
@@ -582,5 +626,36 @@ export interface AdminRouteInput {
   stops?: AdminRouteStopInput[];
 }
 
+export type ComplianceStatus = 'active' | 'warning' | 'critical' | 'expired';
 
+export interface ComplianceAlert {
+  id: string;
+  driver_id: string;
+  driver_name: string;
+  driver_phone: string;
+  vehicle_id: string;
+  vehicle_plate: string;
+  document_type: string;
+  expiry_date: string;
+  days_remaining: number;
+  status: ComplianceStatus;
+  is_resolved: boolean;
+}
 
+export type DisputeStatus = 'open' | 'under_review' | 'resolved' | 'dismissed';
+
+export interface BookingDispute {
+  id: string;
+  booking_id: string;
+  booking_reference: string;
+  reported_by_user_id: string;
+  reporter_name: string;
+  reporter_role: 'passenger' | 'driver';
+  driver_id: string;
+  driver_name: string;
+  reason: string;
+  description: string;
+  status: DisputeStatus;
+  created_at: string;
+  resolution_notes?: string | null;
+}

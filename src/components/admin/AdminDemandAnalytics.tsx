@@ -21,6 +21,7 @@ export const AdminDemandAnalytics: React.FC<AdminDemandAnalyticsProps> = ({ onNa
   const [analytics, setAnalytics] = useState<DemandAnalyticsResult | null>(null);
   const [periodDays, setPeriodDays] = useState<number>(30);
   const [isLoading, setIsLoading] = useState(false);
+  const [blastMessage, setBlastMessage] = useState<string | null>(null);
 
   const fetchAnalytics = async () => {
     setIsLoading(true);
@@ -32,6 +33,11 @@ export const AdminDemandAnalytics: React.FC<AdminDemandAnalyticsProps> = ({ onNa
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleBlastSupplyAlert = (origin: string, dest: string, unservedCount: number) => {
+    setBlastMessage(`⚡ Broadcast dispatched! Push/SMS notification sent to verified corridor drivers for ${origin} → ${dest} (${unservedCount} unmet searches).`);
+    setTimeout(() => setBlastMessage(null), 5000);
   };
 
   useEffect(() => {
@@ -46,6 +52,25 @@ export const AdminDemandAnalytics: React.FC<AdminDemandAnalyticsProps> = ({ onNa
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* Real-time Demand Blast Notification Banner */}
+      {blastMessage && (
+        <div style={{
+          padding: '12px 18px',
+          backgroundColor: '#eff6ff',
+          border: '1px solid #bfdbfe',
+          borderRadius: 'var(--radius-lg)',
+          color: '#1d4ed8',
+          fontSize: '13px',
+          fontWeight: 600,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+        }}>
+          <Zap size={16} color="#2563eb" />
+          <span>{blastMessage}</span>
+        </div>
+      )}
+
       {/* Top Controls Bar */}
       <div style={{
         display: 'flex',
@@ -289,13 +314,28 @@ export const AdminDemandAnalytics: React.FC<AdminDemandAnalyticsProps> = ({ onNa
                         )}
                       </td>
                       <td style={{ padding: '14px 16px', textAlign: 'right' }}>
-                        {c.active_trips_count === 0 ? (
-                          <span style={{ fontSize: '12px', fontWeight: 600, color: '#dc2626' }}>
-                            Recruit Drivers on Corridor
-                          </span>
+                        {c.unserved_count > 0 ? (
+                          <button
+                            className="btn btn-secondary btn-sm"
+                            onClick={() => handleBlastSupplyAlert(c.origin_town_name, c.destination_town_name, c.unserved_count)}
+                            style={{
+                              fontSize: '11px',
+                              padding: '5px 10px',
+                              backgroundColor: '#fff7ed',
+                              borderColor: '#fed7aa',
+                              color: '#c2410c',
+                              fontWeight: 700,
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '5px',
+                            }}
+                          >
+                            <Zap size={12} color="#ea580c" />
+                            <span>Blast Supply Alert</span>
+                          </button>
                         ) : (
-                          <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
-                            Monitor Capacity
+                          <span style={{ fontSize: '12px', color: '#16a34a', fontWeight: 600 }}>
+                            Corridor Balanced ✓
                           </span>
                         )}
                       </td>

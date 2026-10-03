@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { bookingService } from '../../services/supabase/SupabaseBookingService';
-import type { SearchResultTrip, BookingTicket } from '../../types/domain';
-import { X, Clock, ArrowRight, AlertTriangle, MapPin, Check } from 'lucide-react';
+import { emailNotificationService } from '../../services/notifications/EmailNotificationService';
+import type { SearchResultTrip, BookingTicket, LuggageSize } from '../../types/domain';
+import { X, Clock, ArrowRight, AlertTriangle, MapPin, Check, Luggage, Mail } from 'lucide-react';
 
 interface BookingHoldModalProps {
   trip: SearchResultTrip | null;
@@ -23,6 +24,9 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
 
   const [step, setStep] = useState<'select' | 'holding'>('select');
   const [seatCount, setSeatCount] = useState<number>(1);
+  const [luggageSize, setLuggageSize] = useState<LuggageSize>('standard');
+  const [luggageNotes, setLuggageNotes] = useState<string>('');
+  const [passengerEmail, setPassengerEmail] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -34,11 +38,16 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
     if (isOpen) {
       setStep('select');
       setSeatCount(1);
+      setLuggageSize('standard');
+      setLuggageNotes('');
       setHeldBookingId(null);
       setErrorMessage(null);
       setSecondsRemaining(900);
+      if (user?.email) {
+        setPassengerEmail(user.email);
+      }
     }
-  }, [isOpen, trip?.trip_id]);
+  }, [isOpen, trip?.trip_id, user?.email]);
 
   // Hold countdown interval
   useEffect(() => {
@@ -112,8 +121,21 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
     setLoading(false);
 
     if (ticket) {
+      // Enrich ticket with declared luggage and email
+      const enrichedTicket: BookingTicket = {
+        ...ticket,
+        luggage_size: luggageSize,
+        luggage_notes: luggageNotes.trim() || undefined,
+        passenger_email: passengerEmail.trim() || user?.email || undefined,
+      };
+
+      // Automatically email the ticket receipt
+      if (enrichedTicket.passenger_email) {
+        emailNotificationService.sendTicketReceiptEmail(enrichedTicket, enrichedTicket.passenger_email);
+      }
+
       onClose();
-      onBookingConfirmed(ticket);
+      onBookingConfirmed(enrichedTicket);
     } else {
       onClose();
     }
@@ -127,7 +149,7 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '480px' }}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '500px' }}>
         <button
           onClick={onClose}
           style={{
@@ -165,10 +187,10 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
           </div>
         )}
 
-        {/* STEP 1: Select Seats & Price Breakdown */}
+        {/* STEP 1: Select Seats, Luggage & Email */}
         {step === 'select' && (
           <div>
-            <div style={{ marginBottom: '20px' }}>
+            <div style={{ marginBottom: '18px' }}>
               <span className="badge badge-neutral" style={{ marginBottom: '8px' }}>
                 Trip Booking
               </span>
@@ -183,25 +205,26 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
             {/* Stops summary */}
             <div style={{
               backgroundColor: 'var(--color-canvas-soft)',
-              padding: '16px',
+              padding: '14px 16px',
               borderRadius: 'var(--radius-xl)',
-              marginBottom: '20px',
-              fontSize: '14px',
+              marginBottom: '18px',
+              fontSize: '13px',
+              border: '1px solid var(--color-hairline)',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <MapPin size={16} color="#000000" />
+                <MapPin size={15} color="#000000" />
                 <span>Boarding: <strong>{trip.origin_pickup_name}</strong></span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <MapPin size={16} color="#000000" />
+                <MapPin size={15} color="#000000" />
                 <span>Alighting: <strong>{trip.dest_pickup_name}</strong></span>
               </div>
             </div>
 
             {/* Seat selector */}
-            <div className="form-group" style={{ marginBottom: '20px' }}>
-              <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span>Number of Passenger Seats</span>
+            <div className="form-group" style={{ marginBottom: '16px' }}>
+              <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span>Passenger Seats</span>
                 <span className="body-sm" style={{ color: 'var(--color-body)' }}>{trip.seats_available} available</span>
               </label>
               <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
@@ -210,7 +233,7 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
                     key={num}
                     type="button"
                     className={`btn btn-md ${seatCount === num ? 'btn-primary' : 'btn-secondary'}`}
-                    style={{ flex: 1, padding: '10px 0' }}
+                    style={{ flex: 1, padding: '8px 0', fontSize: '14px' }}
                     onClick={() => setSeatCount(num)}
                   >
                     {num}
@@ -219,11 +242,95 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
               </div>
             </div>
 
+            {/* Luggage Tier Selector */}
+            <div className="form-group" style={{ marginBottom: '16px' }}>
+              <label className="form-label" style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Luggage size={14} />
+                <span>Luggage & Cargo Allowance</span>
+              </label>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginTop: '6px' }}>
+                <button
+                  type="button"
+                  onClick={() => setLuggageSize('standard')}
+                  style={{
+                    padding: '10px 8px',
+                    borderRadius: 'var(--radius-md)',
+                    border: luggageSize === 'standard' ? '2px solid #000000' : '1px solid var(--color-hairline)',
+                    backgroundColor: luggageSize === 'standard' ? '#f4f4f5' : '#ffffff',
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div style={{ fontWeight: 700, fontSize: '12px' }}>Handbag</div>
+                  <div style={{ fontSize: '11px', color: '#16a34a' }}>Free</div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setLuggageSize('medium')}
+                  style={{
+                    padding: '10px 8px',
+                    borderRadius: 'var(--radius-md)',
+                    border: luggageSize === 'medium' ? '2px solid #000000' : '1px solid var(--color-hairline)',
+                    backgroundColor: luggageSize === 'medium' ? '#f4f4f5' : '#ffffff',
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div style={{ fontWeight: 700, fontSize: '12px' }}>Suitcase</div>
+                  <div style={{ fontSize: '11px', color: 'var(--color-subtle)' }}>Trunk Space</div>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setLuggageSize('heavy_cargo')}
+                  style={{
+                    padding: '10px 8px',
+                    borderRadius: 'var(--radius-md)',
+                    border: luggageSize === 'heavy_cargo' ? '2px solid #000000' : '1px solid var(--color-hairline)',
+                    backgroundColor: luggageSize === 'heavy_cargo' ? '#f4f4f5' : '#ffffff',
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <div style={{ fontWeight: 700, fontSize: '12px' }}>Cargo / Sack</div>
+                  <div style={{ fontSize: '11px', color: '#ea580c' }}>Produce / Box</div>
+                </button>
+              </div>
+
+              {luggageSize === 'heavy_cargo' && (
+                <input
+                  type="text"
+                  placeholder="Describe cargo (e.g. 1 bunch of matooke, 50kg bag)"
+                  value={luggageNotes}
+                  onChange={(e) => setLuggageNotes(e.target.value)}
+                  className="input"
+                  style={{ marginTop: '8px', fontSize: '12px', padding: '6px 10px' }}
+                />
+              )}
+            </div>
+
+            {/* Passenger Email Input for E-Ticket Delivery */}
+            <div className="form-group" style={{ marginBottom: '18px' }}>
+              <label className="form-label" style={{ fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <Mail size={14} />
+                <span>Ticket Receipt Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="Where should we send your ticket?"
+                value={passengerEmail}
+                onChange={(e) => setPassengerEmail(e.target.value)}
+                className="input"
+                style={{ fontSize: '13px', padding: '8px 12px' }}
+              />
+            </div>
+
             {/* Price breakdown */}
             <div style={{
               borderTop: '1px solid var(--color-hairline)',
-              paddingTop: '16px',
-              marginBottom: '24px',
+              paddingTop: '14px',
+              marginBottom: '18px',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'baseline',
@@ -232,22 +339,9 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
                 <span style={{ fontSize: '13px', color: 'var(--color-body)' }}>Total Direct Fare</span>
                 <div style={{ fontSize: '11px', color: 'var(--color-mute)' }}>Paid to driver when boarding</div>
               </div>
-              <div style={{ fontSize: '24px', fontWeight: 800 }}>
+              <div style={{ fontSize: '22px', fontWeight: 800 }}>
                 {totalFare.toLocaleString()} UGX
               </div>
-            </div>
-
-            {/* Direct Cash Policy Banner */}
-            <div style={{
-              backgroundColor: 'var(--color-warning-bg)',
-              color: 'var(--color-warning)',
-              padding: '12px 14px',
-              borderRadius: 'var(--radius-lg)',
-              fontSize: '12px',
-              lineHeight: 1.4,
-              marginBottom: '20px',
-            }}>
-              <strong>No upfront payment required:</strong> Reserving holds your seat for 15 minutes. You pay {trip.driver_name} directly in cash or personal Mobile Money upon boarding.
             </div>
 
             <button
@@ -271,7 +365,7 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
               padding: '20px',
               borderRadius: 'var(--radius-xl)',
               textAlign: 'center',
-              marginBottom: '24px',
+              marginBottom: '20px',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#a0a0a0' }}>
                 <Clock size={14} /> Temporary Seat Hold Active
@@ -290,8 +384,8 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
               </p>
             </div>
 
-            <div style={{ marginBottom: '20px' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '6px' }}>
+            <div style={{ marginBottom: '18px' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, marginBottom: '4px' }}>
                 Confirm Boarding Reservation
               </h3>
               <p className="body-sm">
@@ -301,13 +395,14 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
 
             <div style={{
               backgroundColor: 'var(--color-canvas-soft)',
-              padding: '16px',
+              padding: '14px 16px',
               borderRadius: 'var(--radius-xl)',
-              marginBottom: '24px',
+              marginBottom: '20px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '10px',
-              fontSize: '14px',
+              gap: '8px',
+              fontSize: '13px',
+              border: '1px solid var(--color-hairline)',
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span className="body-sm">Driver</span>
@@ -318,6 +413,14 @@ export const BookingHoldModal: React.FC<BookingHoldModalProps> = ({
                 <span style={{ fontWeight: 600 }}>{trip.vehicle_plate}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span className="body-sm">Luggage Tier</span>
+                <span style={{ fontWeight: 600, textTransform: 'capitalize' }}>{luggageSize}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span className="body-sm">Ticket will be emailed to</span>
+                <span style={{ fontWeight: 600 }}>{passengerEmail || user?.email || 'Your account'}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--color-hairline)', paddingTop: '8px', marginTop: '4px' }}>
                 <span className="body-sm">Fare to pay driver</span>
                 <span style={{ fontWeight: 800, fontSize: '16px' }}>{totalFare.toLocaleString()} UGX</span>
               </div>
